@@ -508,7 +508,7 @@
             font-size: 17px;
             line-height: 1.47059;
             color: #1d1d1f;
-            padding: 6px 0;
+            padding: 3px 0;
             padding-left: 24px;
             position: relative;
         }
@@ -519,6 +519,23 @@
             left: 0;
             color: #5a50f3;
             font-weight: 600;
+        }
+
+        .plan li.separator {
+            padding: 0;
+            margin: 0;
+            height: 0;
+            line-height: 0;
+            font-size: 0;
+            visibility: hidden;
+        }
+
+        .plan li.separator::before {
+            content: "";
+        }
+
+        .plan .heart {
+            color: #5a50f3;
         }
 
         .plan .btn {
@@ -952,6 +969,8 @@
                     <li>Scanner (40/jour, 100/mois)</li>
                     <li>Suivi temps réel</li>
                     <li>Alertes de sorties</li>
+                    <li>Indice d'opportunité d'achat</li>
+                    <li>Recherche ultra avancée (par série, illustrateur, numéro, etc.)</li>
                     <li>Publicités incluses</li>
                 </ul>
                 <a href="#" class="btn btn-outline download-btn" style="width: 100%; text-align: center;">Commencer</a>
@@ -959,16 +978,16 @@
 
             <div class="plan">
                 <h3 class="plan-name">Premium</h3>
-                <div class="plan-price">4.99€<span>/mois</span></div>
+                <div class="plan-price">3.99€<span>/mois</span></div>
                 <ul>
-                    <li>4 collections</li>
-                    <li>Cartes illimitées</li>
-                    <li>Produits scellés illimités</li>
+                    <li>Tout du plan Gratuit</li>
+                    <li class="separator">_</li>
+                    <li>Jusqu'à 4 collections</li>
                     <li>Scanner illimité</li>
-                    <li>Suivi temps réel</li>
-                    <li>Alertes de sorties</li>
+                    <li>Indice et historique de population</li>
                     <li>Sans publicité</li>
                     <li>Support prioritaire</li>
+                    <li class="support-team">Soutient l'équipe <span class="heart">♥</span></li>
                 </ul>
                 <a href="#" class="btn btn-blue download-btn" style="width: 100%; text-align: center;">Essayer</a>
             </div>
