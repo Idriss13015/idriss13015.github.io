@@ -71,6 +71,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -87,6 +90,18 @@
             font-weight: 400;
             letter-spacing: -0.022em;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Container pour le smooth scroll */
+        #smooth-scroll-wrapper {
+            width: 100%;
+        }
+
+        /* Parallax léger pour certains éléments */
+        .parallax-slow {
+            will-change: transform;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* Navigation */
@@ -371,6 +386,7 @@
             max-width: 980px;
             margin: 80px auto;
             padding: 0 22px;
+            transition: opacity 0.3s ease-out;
         }
 
         .section-heading {
@@ -761,13 +777,118 @@
             }
         }
 
-        html {
-            scroll-behavior: smooth;
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
         }
 
         ::selection {
             background: #b3d4fc;
             color: #1d1d1f;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .animate-on-scroll.fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-on-scroll.fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .animate-on-scroll.scale-in {
+            animation: scaleIn 0.7s ease-out forwards;
+        }
+
+        /* Stagger delay pour les éléments multiples */
+        .animate-on-scroll:nth-child(1) { animation-delay: 0s; }
+        .animate-on-scroll:nth-child(2) { animation-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { animation-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { animation-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { animation-delay: 0.4s; }
+        .animate-on-scroll:nth-child(6) { animation-delay: 0.5s; }
+
+        /* Smooth transitions pour les hover */
+        .feature, .screenshot, .plan, .faq-item, .stat-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Pikacheck géant */
+        .pikacheck-giant {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .giant-text {
+            font-size: 18vw;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            color: #1d1d1f;
+            text-align: center;
+            margin: 0;
+            padding: 0 20px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .giant-text {
+                font-size: 13vw;
+                padding: 0 10px;
+            }
         }
     </style>
     <script>
@@ -796,6 +917,24 @@
                 link.href = storeUrl;
             });
 
+            // Initialiser Lenis pour un smooth scroll avec inertie
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false,
+                touchMultiplier: 2
+            });
+
+            // Boucle d'animation pour Lenis
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
             // Burger menu toggle
             const burgerMenu = document.getElementById('burgerMenu');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -813,10 +952,65 @@
                     mobileMenu.classList.remove('active');
                 });
             });
+
+            // Animation au scroll avec Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(entry.target.dataset.animation || 'fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observer tous les éléments à animer
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Scroll smooth avec Lenis pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            lenis.scrollTo(target, {
+                                offset: -80,
+                                duration: 1.5
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Effet parallaxe léger sur les images avec Lenis
+            lenis.on('scroll', ({ scroll }) => {
+                const parallaxElements = document.querySelectorAll('.parallax-slow');
+
+                parallaxElements.forEach((element) => {
+                    const rect = element.getBoundingClientRect();
+                    const elementTop = rect.top + scroll;
+                    const viewportHeight = window.innerHeight;
+
+                    if (rect.top < viewportHeight && rect.bottom > 0) {
+                        const speed = 0.08;
+                        const yPos = (scroll - elementTop) * speed;
+                        element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                    }
+                });
+            });
         });
     </script>
 </head>
 <body>
+    <div id="smooth-scroll-wrapper">
     <nav>
         <div class="nav-content">
             <a href="#" class="logo">
@@ -848,7 +1042,7 @@
     </div>
 
     <div class="hero-section">
-        <div class="hero-content">
+        <div class="hero-content animate-on-scroll" data-animation="fade-in-up">
             <div class="hero">
                 <h1>Gérez votre collection Pokémon</h1>
                 <p class="subtitle">L'app qui transforme vos cartes et produits scellés en portefeuille intelligent</p>
@@ -863,70 +1057,70 @@
             </div>
 
             <div class="stats" style="margin: 60px 0 0 0; padding: 0; justify-content: flex-start;">
-        <div class="stat-item">
+        <div class="stat-item animate-on-scroll" data-animation="fade-in">
             <div class="stat-value">30K+</div>
             <div class="stat-label">Cartes</div>
         </div>
-        <div class="stat-item">
+        <div class="stat-item animate-on-scroll" data-animation="fade-in">
             <div class="stat-value">+1000</div>
             <div class="stat-label">Items scellés</div>
         </div>
-        <div class="stat-item">
-            <div class="stat-value">+100K€</div>
+        <div class="stat-item animate-on-scroll" data-animation="fade-in">
+            <div class="stat-value">+500K€</div>
             <div class="stat-label">Valeur suivie</div>
         </div>
-        <div class="stat-item">
+        <div class="stat-item animate-on-scroll" data-animation="fade-in">
             <div class="stat-value">4.8 <span class="stat-star">★</span></div>
             <div class="stat-label">Note</div>
         </div>
-        <div class="stat-item">
+        <div class="stat-item animate-on-scroll" data-animation="fade-in">
             <div class="stat-value">1 an+</div>
             <div class="stat-label">Historique</div>
         </div>
             </div>
         </div>
 
-        <div class="hero-image">
+        <div class="hero-image animate-on-scroll parallax-slow" data-animation="scale-in">
             <img src="01.png" alt="Pikacheck App">
         </div>
     </div>
 
     <section id="features">
-        <h2 class="section-heading">Tout ce dont vous avez besoin</h2>
-        <p class="section-subheading">Des fonctionnalités pensées pour les collectionneurs</p>
+        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Tout ce dont vous avez besoin</h2>
+        <p class="section-subheading animate-on-scroll" data-animation="fade-in">Des fonctionnalités pensées pour les collectionneurs</p>
 
         <div class="features">
-            <div class="feature">
+            <div class="feature animate-on-scroll" data-animation="fade-in-up">
                 <div class="feature-icon">📊</div>
                 <h3 class="feature-title">Suivi en temps réel</h3>
                 <p class="feature-description">Suivez la valeur de votre collection de cartes et produits scellés (Boosters, Display, ETB, Coffrets) grâce aux prix Cardmarket et eBay actualisés en continu.</p>
             </div>
 
-            <div class="feature">
+            <div class="feature animate-on-scroll" data-animation="fade-in-up">
                 <div class="feature-icon">📸</div>
                 <h3 class="feature-title">Scanner intelligent</h3>
                 <p class="feature-description">Ajoutez vos cartes instantanément avec la reconnaissance visuelle. Scannez et Pikacheck identifie automatiquement chaque carte, sa version et sa valeur.</p>
             </div>
 
-            <div class="feature">
+            <div class="feature animate-on-scroll" data-animation="fade-in-up">
                 <div class="feature-icon">🔔</div>
                 <h3 class="feature-title">Alertes automatiques</h3>
                 <p class="feature-description">Recevez des notifications pour les nouvelles extensions, précommandes de boosters, displays, ETB, coffrets et événements spéciaux Pokémon.</p>
             </div>
 
-            <div class="feature">
+            <div class="feature animate-on-scroll" data-animation="fade-in-up">
                 <div class="feature-icon">🎯</div>
                 <h3 class="feature-title">Recherche avancée</h3>
                 <p class="feature-description">Trouvez n'importe quelle carte par nom, numéro, extension, rareté, type ou illustrateur. Base de données complète avec 30 000+ cartes et plus de 1000 produits scellés référencés.</p>
             </div>
 
-            <div class="feature">
+            <div class="feature animate-on-scroll" data-animation="fade-in-up">
                 <div class="feature-icon">💎</div>
                 <h3 class="feature-title">Valeur Near Mint</h3>
                 <p class="feature-description">Estimation précise en état Near Mint, la référence pour les collectionneurs. Valeur fiable et actualisée carte par carte et produit par produit.</p>
             </div>
 
-            <div class="feature">
+            <div class="feature animate-on-scroll" data-animation="fade-in-up">
                 <div class="feature-icon">📅</div>
                 <h3 class="feature-title">Calendrier des sorties</h3>
                 <p class="feature-description">Consultez toutes les dates de lancement des extensions et produits scellés à venir. Organisez votre budget collection avec des rappels personnalisés pour ne rien manquer.</p>
@@ -935,38 +1129,38 @@
     </section>
 
     <section id="screenshots">
-        <h2 class="section-heading">Découvrez l'application</h2>
-        <p class="section-subheading">Interface intuitive pour gérer votre collection</p>
+        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Découvrez l'application</h2>
+        <p class="section-subheading animate-on-scroll" data-animation="fade-in">Interface intuitive pour gérer votre collection</p>
 
         <div class="screenshots">
-            <div class="screenshot">
+            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
                 <img src="02.png" alt="Extensions">
             </div>
-            <div class="screenshot">
+            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
                 <img src="03.png" alt="Produit">
             </div>
-            <div class="screenshot">
+            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
                 <img src="04.png" alt="Cartes">
             </div>
-            <div class="screenshot">
+            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
                 <img src="05.png" alt="Calendrier">
             </div>
         </div>
     </section>
 
     <section id="pricing">
-        <h2 class="section-heading">Choisissez votre formule</h2>
-        <p class="section-subheading">Commencez gratuitement</p>
+        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Choisissez votre formule</h2>
+        <p class="section-subheading animate-on-scroll" data-animation="fade-in">Commencez gratuitement</p>
 
         <div class="pricing">
-            <div class="plan">
+            <div class="plan animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="plan-name">Gratuit</h3>
                 <div class="plan-price">0€<span>/mois</span></div>
                 <ul>
                     <li>1 collection</li>
                     <li>Cartes illimitées</li>
                     <li>Produits scellés illimités</li>
-                    <li>Scanner (40/jour, 100/mois)</li>
+                    <li>Scanner (25/jour, 60/mois)</li>
                     <li>Suivi temps réel</li>
                     <li>Alertes de sorties</li>
                     <li>Indice d'opportunité d'achat</li>
@@ -976,7 +1170,7 @@
                 <a href="#" class="btn btn-outline download-btn" style="width: 100%; text-align: center;">Commencer</a>
             </div>
 
-            <div class="plan">
+            <div class="plan animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="plan-name">Premium</h3>
                 <div class="plan-price">3.99€<span>/mois</span></div>
                 <ul>
@@ -995,30 +1189,30 @@
     </section>
 
     <section id="faq">
-        <h2 class="section-heading">Questions fréquentes</h2>
+        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Questions fréquentes</h2>
 
         <div class="faq">
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="faq-question">Sur quels appareils ?</h3>
                 <p class="faq-answer">Pikacheck est disponible sur smartphones iPhone et Android uniquement. Pas de compatibilité iPad, Mac ou Apple Vision.</p>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="faq-question">C'est vraiment gratuit ?</h3>
                 <p class="faq-answer">Oui. La version gratuite permet une collection avec cartes et produits illimités. Premium (4.99€/mois) permet 4 collections et retire les publicités.</p>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="faq-question">D'où viennent les prix ?</h3>
                 <p class="faq-answer">Cardmarket (Europe) et eBay (toutes régions). Estimation fiable et actualisée en temps réel.</p>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="faq-question">Je peux suivre mes produits scellés ?</h3>
                 <p class="faq-answer">Absolument. Boosters, Displays, ETB et Coffrets. Le suivi fonctionne comme pour les cartes.</p>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
                 <h3 class="faq-question">Comment marche le scanner ?</h3>
                 <p class="faq-answer">Pointez l'appareil photo vers la carte. Le système identifie automatiquement la carte, son édition et ses informations complètes.</p>
             </div>
@@ -1026,13 +1220,18 @@
     </section>
 
     <section style="margin-top: 120px;">
-        <div class="hero">
+        <div class="hero animate-on-scroll" data-animation="fade-in-up">
             <h1 style="font-size: 40px; line-height: 1.1;">Prêt à commencer ?</h1>
             <p class="subtitle" style="font-size: 21px;">Rejoignez des milliers de collectionneurs</p>
             <div class="cta-group">
                 <a href="#" class="btn btn-blue download-btn">Télécharger gratuitement</a>
             </div>
         </div>
+    </section>
+
+    <!-- Section Pikacheck géant -->
+    <section class="pikacheck-giant" style="margin: 120px 0 80px 0; padding: 0; max-width: 100%; overflow: hidden;">
+        <h2 class="giant-text animate-on-scroll" data-animation="fade-in">Pikacheck</h2>
     </section>
 
     <footer>
@@ -1064,5 +1263,6 @@
             </div>
         </div>
     </footer>
+    </div>
 </body>
 </html>
