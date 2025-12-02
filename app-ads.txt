@@ -1,4 +1,1 @@
 google.com, pub-7025838790875214, DIRECT, f08c47fec0942fa0
-smartadserver.com, 4194-OB, RESELLER, 060d053dcf45cbf3
-smartadserver.com, 4194, RESELLER, 060d053dcf45cbf3
-adingo.jp, 33341, RESELLER
