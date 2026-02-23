@@ -6,6 +6,8 @@ Site web officiel de Pikacheck - Application de gestion de collection Pokémon.
 
 ```
 ├── assets/
+│   ├── badges/          # Badges App Store et Google Play
+│   ├── favicons/        # Tous les favicons et icônes
 │   ├── images/          # Images du site (screenshots, logos)
 │   └── mockups/         # Mockups iPhone pour présentation
 ├── download/            # Page de téléchargement
@@ -14,7 +16,8 @@ Site web officiel de Pikacheck - Application de gestion de collection Pokémon.
 ├── comparateur-prix-pokemon.html  # Page comparateur de prix
 ├── sitemap.xml          # Plan du site pour SEO
 ├── robots.txt           # Configuration robots SEO
-└── CNAME               # Configuration domaine personnalisé
+├── CNAME                # Configuration domaine personnalisé
+└── README.md            # Documentation du projet
 ```
 
 ## Pages
