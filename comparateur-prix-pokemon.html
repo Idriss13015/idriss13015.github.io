@@ -429,8 +429,83 @@
             border-top: 1px solid #d2d2d7;
         }
 
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 10000;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 2px;
+            background: #1d1d1f;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 20px;
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 9998;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f7;
+        }
+
+        .mobile-menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a {
+            font-size: 14px;
+            color: #1d1d1f;
+            opacity: 1;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+            }
             h1 {
                 font-size: 2rem;
             }
@@ -473,11 +548,27 @@
             </a>
             <ul>
                 <li><a href="/#features">Fonctionnalités</a></li>
+                <li><a href="/#screenshots">Aperçu</a></li>
                 <li><a href="/#pricing">Tarifs</a></li>
-                <li><a href="/download/">Télécharger</a></li>
+                <li><a href="/#faq">FAQ</a></li>
             </ul>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/#features">Fonctionnalités</a></li>
+            <li><a href="/#screenshots">Aperçu</a></li>
+            <li><a href="/#pricing">Tarifs</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+        </ul>
+    </div>
 
     <!-- Article -->
     <article>
@@ -739,6 +830,26 @@
                 }
             }
         });
+
+        // Burger Menu
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (burgerMenu && mobileMenu) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Fermer le menu quand on clique sur un lien
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
     </script>
 </body>
 </html>
