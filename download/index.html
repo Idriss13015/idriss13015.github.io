@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Télécharger Pikacheck</title>
+    <meta name="description" content="Téléchargez Pikacheck, l'application pour gérer votre collection Pokémon. Disponible sur iPhone et Android.">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Télécharger Pikacheck">
+    <meta property="og:description" content="L'app #1 pour suivre la valeur de vos cartes et produits scellés Pokémon. Gratuit sur iPhone et Android.">
+    <meta property="og:url" content="https://app.pikacheck.com/download">
+    <meta property="og:image" content="https://app.pikacheck.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Pikacheck">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Télécharger Pikacheck">
+    <meta name="twitter:description" content="L'app #1 pour suivre la valeur de vos cartes et produits scellés Pokémon.">
+    <meta name="twitter:image" content="https://app.pikacheck.com/og-image.jpg">
+
+    <link rel="canonical" href="https://app.pikacheck.com/download">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- PWA / Mobile -->
+    <meta name="theme-color" content="#5a50f3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CEW27KGTHH');
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- QRCode.js library (pour générer le QR code côté client) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f8ff;
+            color: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        /* --- État de redirection (mobile) --- */
+        .redirecting {
+            display: none;
+        }
+
+        .redirecting .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e8e8ff;
+            border-top-color: #5a50f3;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .redirecting p {
+            font-size: 15px;
+            color: #888;
+        }
+
+        /* --- Badges stores --- */
+        .store-badge {
+            display: inline-block;
+            margin: 8px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .store-badge:hover {
+            transform: scale(1.04);
+            opacity: 0.9;
+        }
+
+        .store-badge img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+
+        /* --- QR code desktop --- */
+        .desktop-section {
+            display: none;
+        }
+
+        .qr-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(90, 80, 243, 0.10);
+            display: inline-block;
+            margin-bottom: 28px;
+        }
+
+        #qrcode {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qrcode canvas,
+        #qrcode img {
+            border-radius: 8px;
+        }
+
+        .qr-hint {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 16px;
+        }
+
+        .or-divider {
+            font-size: 13px;
+            color: #bbb;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .store-badges-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* --- Footer --- */
+        .footer-link {
+            display: block;
+            margin-top: 40px;
+            font-size: 13px;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #5a50f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/Pikacheck-logo-alt-nobg.svg" alt="Pikacheck" class="logo">
+        <h1>Télécharger Pikacheck</h1>
+        <p class="subtitle">L'app pour gérer votre collection Pokémon.<br>Suivi des prix, scanner & alertes.</p>
+
+        <!-- État : redirection en cours (mobile) -->
+        <div class="redirecting" id="redirecting">
+            <div class="spinner"></div>
+            <p>Redirection vers le store...</p>
+        </div>
+
+        <!-- État : desktop avec QR code -->
+        <div class="desktop-section" id="desktopSection">
+            <div class="qr-card">
+                <div id="qrcode"></div>
+                <p class="qr-hint">Scannez avec votre téléphone pour télécharger</p>
+            </div>
+
+            <div class="or-divider">ou choisissez votre store</div>
+
+            <div class="store-badges-row">
+                <a class="store-badge" href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=download_page&utm_campaign=deeplink" target="_blank" rel="noopener">
+                    <img src="/app-store-badge-fr.svg" alt="Télécharger sur l'App Store">
+                </a>
+                <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=download_page&utm_campaign=deeplink" target="_blank" rel="noopener">
+                    <img src="/google-play-badge.png" alt="Disponible sur Google Play">
+                </a>
+            </div>
+        </div>
+
+        <a href="https://app.pikacheck.com" class="footer-link">← Retour au site</a>
+    </div>
+
+    <script>
+        var IOS_URL     = 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=download_page&utm_campaign=deeplink';
+        var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=download_page&utm_campaign=deeplink';
+        var DEEPLINK_URL = 'https://app.pikacheck.com/download'; // lien canonique pour le QR code
+
+        function getPlatform() {
+            var ua = navigator.userAgent || '';
+            if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return 'ios';
+            if (/Android/.test(ua)) return 'android';
+            return 'desktop';
+        }
+
+        function trackEvent(platform) {
+            // GA4 via gtag (si présent)
+            if (typeof gtag === 'function') {
+                gtag('event', 'deeplink_redirect', {
+                    event_category: 'download',
+                    event_label: platform
+                });
+            }
+            // GTM dataLayer
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    event: 'deeplink_redirect',
+                    platform: platform
+                });
+            }
+        }
+
+        var platform = getPlatform();
+
+        if (platform === 'ios') {
+            trackEvent('ios');
+            document.getElementById('redirecting').style.display = 'block';
+            setTimeout(function() {
+                window.location.href = IOS_URL;
+            }, 300);
+
+        } else if (platform === 'android') {
+            trackEvent('android');
+            document.getElementById('redirecting').style.display = 'block';
+            setTimeout(function() {
+                window.location.href = ANDROID_URL;
+            }, 300);
+
+        } else {
+            // Desktop : affiche QR code + badges
+            trackEvent('desktop');
+            document.getElementById('desktopSection').style.display = 'block';
+
+            // Génère le QR code vers ce même lien (l'utilisateur le scanne sur mobile)
+            new QRCode(document.getElementById('qrcode'), {
+                text: DEEPLINK_URL,
+                width: 180,
+                height: 180,
+                colorDark: '#1a1a2e',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+    </script>
+</body>
+</html>

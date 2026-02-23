@@ -1,0 +1,71 @@
+# Robots.txt pour Pikacheck
+# https://pikacheck.com
+
+# Autoriser tous les bots à crawler le site
+User-agent: *
+Allow: /
+
+# Chemins spécifiques à autoriser
+Allow: /index.html
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+
+# Bloquer les fichiers sensibles (si existants)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://pikacheck.com/sitemap.xml
+
+# Règles spécifiques pour les principaux moteurs de recherche
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu (Chine)
+User-agent: Baiduspider
+Allow: /
+
+# Yandex (Russie)
+User-agent: Yandex
+Allow: /
+
+# Bloquer les bots malveillants connus
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Bloquer les scrapers agressifs
+User-agent: *
+Crawl-delay: 2

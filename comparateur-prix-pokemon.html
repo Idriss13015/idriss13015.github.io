@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Comparateur de Prix Pokémon - Trouvez les Meilleurs Prix pour vos Produits Scellés | Pikacheck</title>
+    <meta name="description" content="Comparez instantanément les prix des produits scellés Pokémon (boosters, displays, ETB, coffrets) sur toutes les boutiques françaises. Pikacheck vous aide à trouver les meilleures offres et économiser sur vos achats. Gratuit et sans inscription.">
+    <meta name="keywords" content="comparateur prix pokémon, prix boosters pokémon, prix display pokémon, acheter boosters pas cher, meilleur prix ETB pokémon, comparaison prix TCG, Le Coin des Barons, Hikaru Distribution, Kairyu, boutique pokémon">
+    <meta name="author" content="Pikacheck">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Comparateur de Prix Pokémon - Trouvez les Meilleurs Prix | Pikacheck">
+    <meta property="og:description" content="Comparez instantanément les prix des produits scellés Pokémon (boosters, displays, ETB) sur toutes les boutiques françaises. Économisez sur vos achats avec notre comparateur intelligent.">
+    <meta property="og:url" content="https://pikacheck.com/comparateur-prix-pokemon.html">
+    <meta property="og:image" content="https://pikacheck.com/og-image.jpg">
+    <meta property="og:image:alt" content="Comparateur de Prix Pokémon Pikacheck">
+    <meta property="og:site_name" content="Pikacheck">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comparateur de Prix Pokémon - Pikacheck">
+    <meta name="twitter:description" content="Trouvez les meilleurs prix pour vos produits scellés Pokémon (boosters, displays, ETB) sur toutes les boutiques françaises.">
+    <meta name="twitter:image" content="https://pikacheck.com/og-image.jpg">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Comparateur de Prix Pokémon : Trouvez les Meilleurs Prix pour vos Produits Scellés",
+        "description": "Comparez les prix des produits scellés Pokémon (boosters, displays, ETB) sur toutes les boutiques françaises avec Pikacheck",
+        "url": "https://pikacheck.com/comparateur-prix-pokemon.html",
+        "datePublished": "2026-02-23",
+        "dateModified": "2026-02-23",
+        "author": {
+            "@type": "Organization",
+            "name": "Pikacheck"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Pikacheck",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://pikacheck.com/Pikacheck-logo-alt-nobg.svg"
+            }
+        }
+    }
+    </script>
+
+    <link rel="canonical" href="https://pikacheck.com/comparateur-prix-pokemon.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- PWA / Mobile -->
+    <meta name="theme-color" content="#5a50f3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Pikacheck">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CEW27KGTHH', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #5a50f3;
+            --primary-dark: #4a40d3;
+            --primary-light: #7a70ff;
+            --secondary-color: #ffd700;
+            --success-color: #10b981;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        /* Header */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 9999;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo span {
+            font-size: 26px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 33px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Article Container */
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Article Content */
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .article-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Screenshots */
+        .screenshots-container {
+            display: flex;
+            gap: 2rem;
+            margin: 3rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .screenshot {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* Shops Section */
+        .shops-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .shop-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .shop-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        .shop-item img {
+            width: 100%;
+            max-width: 140px;
+            height: 80px;
+            object-fit: contain;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .shop-item span {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-box h2 {
+            color: white;
+            margin: 0 0 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .app-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+
+        .store-badge:hover {
+            opacity: 0.8;
+        }
+
+        .store-badge-apple img {
+            height: 54px;
+            width: auto;
+        }
+
+        .store-badge-google img {
+            height: 54px;
+            width: auto;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5f7;
+            margin-top: 120px;
+            padding: 60px 22px 40px;
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 12px;
+            line-height: 1.33337;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            display: block;
+            font-size: 12px;
+            line-height: 1.33337;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: #6e6e73;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #1d1d1f;
+        }
+
+        .footer-section p {
+            font-size: 12px;
+            line-height: 1.33337;
+            color: #6e6e73;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.33337;
+            color: #6e6e73;
+            padding-top: 20px;
+            border-top: 1px solid #d2d2d7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            article {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-content {
+                padding: 12px 20px;
+            }
+
+            .logo span {
+                font-size: 22px;
+            }
+
+            .shops-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .shop-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .shop-item img {
+                max-width: 100px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <img src="Pikacheck-logo-alt-nobg.svg" alt="Pikacheck">
+                <span>Pikacheck</span>
+            </a>
+            <ul>
+                <li><a href="/#features">Fonctionnalités</a></li>
+                <li><a href="/#pricing">Tarifs</a></li>
+                <li><a href="/download/">Télécharger</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article>
+        <div class="article-header">
+            <h1>Comparateur de Prix Pokémon : Trouvez les Meilleurs Prix pour vos Produits Scellés</h1>
+            <div class="article-meta">
+                Publié le 23 février 2026 • Lecture : 5 min
+            </div>
+            <p class="lead">
+                Vous cherchez à acheter des boosters, displays ou ETB Pokémon au meilleur prix ? Découvrez comment le comparateur de prix Pikacheck vous aide à économiser jusqu'à 40% sur vos achats de produits scellés.
+            </p>
+        </div>
+
+        <div class="article-content">
+            <h2>Pourquoi comparer les prix des produits Pokémon ?</h2>
+
+            <p>
+                Le marché des cartes Pokémon est en pleine expansion, et les prix des produits scellés (boosters, displays, Elite Trainer Box, coffrets) peuvent varier considérablement d'une boutique à l'autre. En France, des différences de <strong>20 à 40%</strong> ne sont pas rares sur un même produit.
+            </p>
+
+            <p>
+                Pour un collectionneur ou un joueur régulier, ces écarts représentent des centaines d'euros d'économies potentielles sur l'année. C'est pourquoi il devient essentiel de comparer les prix avant chaque achat.
+            </p>
+
+            <div class="highlight-box">
+                <h3>💡 Le saviez-vous ?</h3>
+                <p>
+                    Un display Pokémon peut coûter entre 120€ et 180€ selon la boutique. Sur 10 displays achetés dans l'année, comparer les prix peut vous faire économiser plus de 400€ !
+                </p>
+            </div>
+
+            <h2>Comment fonctionne le comparateur Pikacheck ?</h2>
+
+            <p>
+                Pikacheck simplifie radicalement la recherche des meilleurs prix pour vos produits Pokémon scellés. Voici comment :
+            </p>
+
+            <ol>
+                <li><strong>Téléchargez l'application</strong> Pikacheck gratuitement sur iOS ou Android</li>
+                <li><strong>Recherchez votre produit</strong> : booster, display, ETB, coffret...</li>
+                <li><strong>Comparez instantanément</strong> les prix de toutes les boutiques françaises</li>
+                <li><strong>Achetez au meilleur prix</strong> en un clic</li>
+            </ol>
+
+            <p>
+                L'application affiche les prix de chaque boutique, la disponibilité en stock, et vous permet d'accéder directement à la page produit en un clic.
+            </p>
+
+            <div class="screenshots-container">
+                <div class="screenshot">
+                    <img src="comparateur-screenshot-1.webp" alt="Comparateur de prix Pokémon - Liste des offres disponibles" loading="lazy">
+                </div>
+                <div class="screenshot">
+                    <img src="comparateur-screenshot-2.webp" alt="Comparateur de prix Pokémon - Détail du produit" loading="lazy">
+                </div>
+            </div>
+
+            <h2>Quelles boutiques sont comparées ?</h2>
+
+            <p>
+                Pikacheck compare les prix sur les principales boutiques françaises spécialisées dans les cartes Pokémon :
+            </p>
+
+            <div class="shops-grid">
+                <div class="shop-item">
+                    <img src="https://pikacheck.com/cdn/shop/files/Copie_de_La_Boutique_d76e5d3d-a522-484d-9d2a-e710a6925078.png?v=1760218906&width=300" alt="Pikacheck">
+                    <span>Pikacheck</span>
+                </div>
+                <div class="shop-item">
+                    <img src="https://lecoindesbarons.com/wp-content/uploads/2023/03/logo-barons.svg" alt="Le Coin des Barons">
+                    <span>Le Coin des Barons</span>
+                </div>
+                <div class="shop-item">
+                    <img src="https://hikarudistribution.com/cdn/shop/files/logo_hikaru.png?v=1723990438&width=160" alt="Hikaru Distribution">
+                    <span>Hikaru Distribution</span>
+                </div>
+                <div class="shop-item">
+                    <img src="https://kairyu.fr/cdn/shop/files/Couleur_60450534-9342-4eb2-90b5-d416f29f95c5.png?v=1627426404&width=300" alt="Kairyu">
+                    <span>Kairyu</span>
+                </div>
+            </div>
+
+            <p>
+                De nouvelles boutiques sont régulièrement ajoutées pour vous offrir toujours plus de choix et d'opportunités d'économies.
+            </p>
+
+            <h2>Les avantages du comparateur Pikacheck</h2>
+
+            <h3>⚡ Gain de temps considérable</h3>
+            <p>
+                Fini les onglets multiples et les recherches interminables. Toutes les informations sont centralisées dans une interface claire et intuitive.
+            </p>
+
+            <h3>💰 Économies garanties</h3>
+            <p>
+                Le comparateur vous montre immédiatement quelle boutique propose le meilleur prix. Vous économisez sur chaque achat sans effort.
+            </p>
+
+            <h3>✅ Vérification du stock</h3>
+            <p>
+                Voyez en un coup d'œil quelles boutiques ont le produit en stock pour éviter les déceptions et les délais d'attente.
+            </p>
+
+            <h3>🔗 Achat direct</h3>
+            <p>
+                Un clic sur le prix vous redirige directement vers la page produit de la boutique pour finaliser votre achat rapidement.
+            </p>
+
+            <h2>Quels produits pouvez-vous comparer ?</h2>
+
+            <p>
+                Le comparateur Pikacheck couvre tous les types de <strong>produits scellés Pokémon</strong> :
+            </p>
+
+            <ul>
+                <li><strong>Boosters</strong> : tous les boosters des dernières extensions (Écarlate & Violet, Épée & Bouclier...)</li>
+                <li><strong>Displays</strong> : boîtes de 36 boosters pour les collectionneurs et revendeurs</li>
+                <li><strong>Elite Trainer Box (ETB)</strong> : coffrets collector avec accessoires</li>
+                <li><strong>Tripack</strong> : packs de 3 boosters</li>
+                <li><strong>Duopack</strong> : packs de 2 boosters</li>
+                <li><strong>Coffrets</strong> : Collection Premium, Coffret Dresseur d'Élite, etc.</li>
+                <li><strong>Bundles</strong> : packs spéciaux et éditions limitées</li>
+            </ul>
+
+            <h2>Est-ce vraiment gratuit ?</h2>
+
+            <p>
+                Oui, le comparateur de prix Pikacheck est <strong>100% gratuit</strong>. Aucun abonnement requis, aucun frais caché. Notre mission est simple : vous aider à économiser sur vos achats de produits Pokémon.
+            </p>
+
+            <p>
+                L'application propose également une version Premium avec des fonctionnalités avancées pour la gestion de votre collection et le scanner de cartes, mais le comparateur de prix des produits scellés reste accessible gratuitement à tous les utilisateurs.
+            </p>
+
+            <h2>Comment maximiser vos économies ?</h2>
+
+            <p>
+                Pour tirer le meilleur parti du comparateur Pikacheck, voici quelques astuces :
+            </p>
+
+            <ul>
+                <li><strong>Comparez toujours avant d'acheter</strong>, même pour les petits montants - les écarts de prix peuvent être importants</li>
+                <li><strong>Vérifiez la disponibilité</strong> en stock avant de vous décider</li>
+                <li><strong>Comparez les frais de port</strong> entre boutiques pour calculer le coût total</li>
+                <li><strong>Anticipez les sorties</strong> : comparez dès qu'un nouveau produit est disponible</li>
+                <li><strong>Groupez vos achats</strong> chez un même vendeur pour optimiser les frais de livraison</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>🎯 Astuce Pro</h3>
+                <p>
+                    Les prix peuvent varier de 20 à 40% pour un même produit ! Prenez l'habitude de toujours vérifier le comparateur avant d'acheter, même si vous avez une boutique préférée.
+                </p>
+            </div>
+
+            <h2>Questions fréquentes</h2>
+
+            <h3>📱 Le comparateur fonctionne-t-il sur mobile ?</h3>
+            <p>
+                Oui ! Le comparateur est intégré dans l'application mobile Pikacheck, disponible sur iOS et Android. Vous pouvez comparer les prix où que vous soyez, même en magasin.
+            </p>
+
+            <h3>🔄 À quelle fréquence les prix sont-ils mis à jour ?</h3>
+            <p>
+                Les prix sont synchronisés régulièrement pour vous garantir des informations à jour. Vous pouvez comparer en toute confiance.
+            </p>
+
+            <h3>🏪 D'autres boutiques seront-elles ajoutées ?</h3>
+            <p>
+                Oui, nous travaillons continuellement à l'intégration de nouvelles boutiques françaises pour vous offrir toujours plus de choix.
+            </p>
+
+            <h3>💳 Comment fonctionne l'achat ?</h3>
+            <p>
+                Le comparateur vous redirige directement vers la page produit de la boutique de votre choix. Vous finalisez votre achat en toute sécurité sur leur plateforme officielle.
+            </p>
+
+            <h3>📦 Tous les produits ont-ils des comparaisons de prix ?</h3>
+            <p>
+                La disponibilité des comparaisons dépend des produits référencés par les boutiques. Les produits les plus populaires et les nouvelles sorties sont généralement bien couverts.
+            </p>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="cta-box" id="download">
+            <h2>Commencez à économiser dès aujourd'hui</h2>
+            <p>
+                Téléchargez Pikacheck gratuitement et trouvez les meilleurs prix pour vos boosters, displays et ETB Pokémon
+            </p>
+
+            <a href="/download/" class="download-btn">Télécharger l'Application</a>
+
+            <div class="app-badges">
+                <a href="/download/" class="store-badge store-badge-apple">
+                    <img src="app-store-badge-fr.svg" alt="Télécharger sur l'App Store" width="120" height="40">
+                </a>
+                <a href="/download/" class="store-badge store-badge-google">
+                    <img src="google-play-badge.png" alt="Disponible sur Google Play" loading="lazy" width="135" height="40">
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Pikacheck</h4>
+                    <p>L'app pour gérer votre collection Pokémon</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Produit</h4>
+                    <a href="/#features">Fonctionnalités</a>
+                    <a href="/comparateur-prix-pokemon.html">Comparateur de prix</a>
+                    <a href="/#pricing">Tarifs</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Télécharger</h4>
+                    <a href="/download/">Télécharger l'app</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Légal</h4>
+                    <a href="/pages/privacy.html">Confidentialité</a>
+                    <a href="/pages/terms.html">Conditions</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Pikacheck. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Analytics Event Tracking -->
+    <script>
+        // Track CTA button clicks
+        document.querySelectorAll('a[href*="apps.apple.com"], a[href*="play.google.com"]').forEach(button => {
+            button.addEventListener('click', function() {
+                gtag('event', 'download_app_click', {
+                    'event_category': 'engagement',
+                    'event_label': this.href.includes('apple') ? 'App Store' : 'Google Play',
+                    'page': 'comparateur-prix-pokemon'
+                });
+            });
+        });
+
+        // Track scroll depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > maxScroll) {
+                maxScroll = Math.round(scrollPercent / 25) * 25;
+                if (maxScroll > 0) {
+                    gtag('event', 'scroll_depth', {
+                        'event_category': 'engagement',
+                        'event_label': maxScroll + '%',
+                        'page': 'comparateur-prix-pokemon'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

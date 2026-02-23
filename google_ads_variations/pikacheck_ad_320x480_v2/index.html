@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=320,height=480">
+    <title>Pikacheck Ad</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 320px;
+            height: 480px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+        #ad-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 30px 30px 0 30px;
+            border: 1px solid #d2d2d7;
+        }
+        .logo-container {
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards 0.2s;
+        }
+        .logo { width: 90px; height: auto; }
+        .headline {
+            color: #1d1d1f;
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards 0.5s;
+        }
+        .subtitle {
+            color: #86868b;
+            font-size: 17px;
+            margin-bottom: 35px;
+            line-height: 1.4;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards 0.8s;
+        }
+        .cta-btn {
+            background-color: #5a50f3;
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.1s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: inline-block;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes popIn { to { opacity: 1; transform: scale(1); } }
+        #click-area {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 100;
+        }
+    </style>
+    <script type="text/javascript">
+        var clickTag = "https://app.pikacheck.com"; 
+    </script>
+</head>
+<body>
+    <div id="ad-container">
+        <a href="javascript:window.open(window.clickTag)" id="click-area"></a>
+        <div class="logo-container">
+            <img src="Pikacheck-logo-alt-nobg.svg" alt="Pikacheck" class="logo">
+        </div>
+        <div class="headline">Scannez vos cartes<br>instantanément</div>
+        <div class="subtitle">Reconnaissance visuelle<br>rapide et précise</div>
+        <div class="cta-btn">Scanner Maintenant</div>
+    </div>
+</body>
+</html>
