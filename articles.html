@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Articles Pokémon - Pikacheck</title>
+    <meta name="description" content="Découvrez nos articles et guides sur le TCG Pokémon : comparateurs de prix, astuces collection, et actualités.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Articles Pokémon - Pikacheck">
+    <meta property="og:description" content="Guides, comparateurs et actualités sur le TCG Pokémon.">
+    <meta property="og:url" content="https://pikacheck.com/articles">
+    <meta property="og:image" content="https://pikacheck.com/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Pikacheck">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Articles Pokémon - Pikacheck">
+    <meta name="twitter:description" content="Guides, comparateurs et actualités sur le TCG Pokémon.">
+    <meta name="twitter:image" content="https://pikacheck.com/assets/images/og-image.jpg">
+
+    <link rel="canonical" href="https://pikacheck.com/articles">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+
+    <!-- PWA / Mobile -->
+    <meta name="theme-color" content="#5a50f3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CEW27KGTHH');
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f8ff;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 9999;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo span {
+            font-size: 26px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 33px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 1;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 10000;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 2px;
+            background: #1d1d1f;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 20px;
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 9998;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu a {
+            font-size: 17px;
+            color: #1d1d1f;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 1;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        /* Article Card */
+        .article-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .article-content {
+            padding: 24px;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #e8e8ff;
+            color: #5a50f3;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+
+        .article-excerpt {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .article-date {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <img src="assets/images/Pikacheck-logo-alt-nobg.svg" alt="Pikacheck">
+                <span>Pikacheck</span>
+            </a>
+            <ul>
+                <li><a href="/#features">Fonctionnalités</a></li>
+                <li><a href="/#screenshots">Aperçu</a></li>
+                <li><a href="/#pricing">Tarifs</a></li>
+                <li><a href="/articles" class="active">Articles</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+            </ul>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/#features">Fonctionnalités</a></li>
+            <li><a href="/#screenshots">Aperçu</a></li>
+            <li><a href="/#pricing">Tarifs</a></li>
+            <li><a href="/articles">Articles</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Articles & Guides Pokémon</h1>
+        <p>Découvrez nos guides, comparateurs de prix et actualités sur l'univers des cartes Pokémon</p>
+    </div>
+
+    <!-- Articles Container -->
+    <div class="container">
+        <div class="articles-grid">
+            <!-- Article 1 - Comparateur de prix -->
+            <a href="/comparateur-prix-pokemon.html" class="article-card">
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <span class="article-category">Guide</span>
+                    <h2 class="article-title">Comparateur de prix cartes Pokémon : Trouvez les meilleures offres</h2>
+                    <p class="article-excerpt">Découvrez comment comparer efficacement les prix des cartes Pokémon et trouver les meilleures offres pour votre collection.</p>
+                    <div class="article-meta">
+                        <span class="article-date">📅 2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Placeholder pour futurs articles -->
+            <!--
+            <a href="#" class="article-card">
+                <div class="article-image"></div>
+                <div class="article-content">
+                    <span class="article-category">Actualité</span>
+                    <h2 class="article-title">Les nouvelles sorties Pokémon 2024</h2>
+                    <p class="article-excerpt">Restez informé des dernières sorties de cartes et produits Pokémon.</p>
+                    <div class="article-meta">
+                        <span class="article-date">📅 2024</span>
+                    </div>
+                </div>
+            </a>
+            -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Pikacheck</h4>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5;">L'app pour gérer votre collection Pokémon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Produit</h4>
+                <a href="/#features">Fonctionnalités</a>
+                <a href="/#pricing">Tarifs</a>
+                <a href="/articles">Articles</a>
+                <a href="/#faq">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Télécharger</h4>
+                <a href="/download/">Télécharger l'app</a>
+                <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" target="_blank" rel="noopener">App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.pikacheck.app" target="_blank" rel="noopener">Google Play</a>
+            </div>
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <a href="/pages/privacy.html">Confidentialité</a>
+                <a href="/pages/terms.html">CGU</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2024 Pikacheck. Tous droits réservés.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Burger menu toggle
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (burgerMenu && mobileMenu) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

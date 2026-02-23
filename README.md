@@ -23,6 +23,7 @@ Site web officiel de Pikacheck - Application de gestion de collection Pokémon.
 ## Pages
 
 - **/** - Page d'accueil avec présentation de l'app
+- **/articles** - Hub centralisé pour tous les articles et guides
 - **/comparateur-prix-pokemon.html** - Article SEO sur le comparateur de prix
 - **/download/** - Page de redirection vers les stores
 - **/pages/privacy.html** - Politique de confidentialité
