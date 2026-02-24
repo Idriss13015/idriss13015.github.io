@@ -929,24 +929,32 @@
             return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
         }
 
-        function getStoreUrl() {
+        // Smart download function - detects platform and redirects accordingly
+        function smartDownload(event, buttonLocation) {
+            event.preventDefault();
+
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            let platform = 'desktop';
+            let redirectUrl = '/download/';
 
-            // Détection iOS (iPhone, iPad, iPod)
+            // Detect iOS
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                return 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231';
+                platform = 'iOS';
+                redirectUrl = 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=' + buttonLocation + '&utm_campaign=download';
+            }
+            // Detect Android
+            else if (/android/i.test(userAgent)) {
+                platform = 'Android';
+                redirectUrl = 'https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=' + buttonLocation + '&utm_campaign=download';
             }
 
-            // Détection macOS
-            if (navigator.platform.indexOf('Mac') > -1) {
-                return 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231';
-            }
+            // Track conversion
+            trackConversion(buttonLocation, platform);
 
-            // Par défaut (Android et autres) -> Play Store
-            return 'https://play.google.com/store/apps/details?id=com.pikacheck.app';
+            // Redirect
+            window.location.href = redirectUrl;
         }
 
-        // Fonction pour tracker les conversions
         function trackConversion(buttonLocation, platform) {
             // Google Analytics 4
             if (typeof gtag !== 'undefined') {
@@ -968,22 +976,8 @@
             }
         }
 
-        // Mettre à jour tous les liens download au chargement de la page
+        // Initialiser l'app au chargement de la page
         document.addEventListener('DOMContentLoaded', function() {
-            const storeUrl = getStoreUrl();
-            const platform = storeUrl.includes('apple') ? 'iOS' : 'Android';
-
-            const downloadLinks = document.querySelectorAll('.download-btn');
-            downloadLinks.forEach((link, index) => {
-                link.href = storeUrl;
-
-                // Ajouter tracking aux clics
-                link.addEventListener('click', function(e) {
-                    const location = this.closest('section')?.id || `button-${index + 1}`;
-                    trackConversion(location, platform);
-                });
-            });
-
             // Initialiser Lenis pour un smooth scroll avec inertie
             const lenis = new Lenis({
                 duration: 1.2,
@@ -1116,12 +1110,7 @@
                 <h1>Gérez votre collection Pokémon</h1>
                 <p class="subtitle">L'app qui transforme vos cartes et produits scellés en portefeuille intelligent</p>
                 <div class="cta-group">
-                    <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=hero&utm_campaign=download" class="store-badge store-badge-apple" onclick="trackConversion('hero', 'iOS')">
-                        <img src="assets/badges/app-store-badge-fr.svg" alt="Télécharger sur l'App Store">
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=hero&utm_campaign=download" class="store-badge store-badge-google" onclick="trackConversion('hero', 'Android')">
-                        <img src="assets/badges/google-play-badge.png" alt="Disponible sur Google Play" loading="lazy">
-                    </a>
+                    <a href="#" class="btn btn-blue download-btn" onclick="smartDownload(event, 'hero')">Télécharger gratuitement</a>
                 </div>
             </div>
 
@@ -1237,7 +1226,7 @@
                     <li>✅ Indice d'opportunité d'achat</li>
                     <li>📱 Publicités incluses</li>
                 </ul>
-                <a href="#" class="btn btn-outline download-btn" style="width: 100%; text-align: center;">Commencer gratuitement</a>
+                <a href="#" class="btn btn-outline download-btn" style="width: 100%; text-align: center;" onclick="smartDownload(event, 'pricing_free')">Commencer gratuitement</a>
             </div>
 
             <div class="plan animate-on-scroll" data-animation="fade-in-up">
@@ -1253,7 +1242,7 @@
                     <li>⚡ Support prioritaire</li>
                     <li class="support-team">❤️ Soutient l'équipe</li>
                 </ul>
-                <a href="#" class="btn btn-blue download-btn" style="width: 100%; text-align: center;">Essayer Premium</a>
+                <a href="#" class="btn btn-blue download-btn" style="width: 100%; text-align: center;" onclick="smartDownload(event, 'pricing_premium')">Essayer Premium</a>
             </div>
         </div>
     </section>
@@ -1294,7 +1283,7 @@
             <h1 style="font-size: 40px; line-height: 1.1;">Prêt à commencer ?</h1>
             <p class="subtitle" style="font-size: 21px;">Rejoignez des milliers de collectionneurs</p>
             <div class="cta-group">
-                <a href="#" class="btn btn-blue download-btn">Télécharger gratuitement</a>
+                <a href="#" class="btn btn-blue download-btn" onclick="smartDownload(event, 'cta_bottom')">Télécharger gratuitement</a>
             </div>
         </div>
     </section>
