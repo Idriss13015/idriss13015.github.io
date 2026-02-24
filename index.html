@@ -980,7 +980,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialiser Lenis pour un smooth scroll avec inertie (seulement sur desktop)
             if (!isMobileDevice()) {
-                const lenis = new Lenis({
+                window.lenis = new Lenis({
                     duration: 1.2,
                     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                     direction: 'vertical',
@@ -992,7 +992,7 @@
 
                 // Boucle d'animation pour Lenis
                 function raf(time) {
-                    lenis.raf(time);
+                    window.lenis.raf(time);
                     requestAnimationFrame(raf);
                 }
                 requestAnimationFrame(raf);
@@ -1036,7 +1036,7 @@
                 observer.observe(element);
             });
 
-            // Scroll smooth avec Lenis pour les ancres
+            // Scroll smooth pour les ancres (fonctionne avec ou sans Lenis)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const href = this.getAttribute('href');
@@ -1044,31 +1044,43 @@
                         e.preventDefault();
                         const target = document.querySelector(href);
                         if (target) {
-                            lenis.scrollTo(target, {
-                                offset: -80,
-                                duration: 1.5
-                            });
+                            if (window.lenis) {
+                                // Si Lenis est disponible (desktop), utiliser le smooth scroll
+                                window.lenis.scrollTo(target, {
+                                    offset: -80,
+                                    duration: 1.5
+                                });
+                            } else {
+                                // Sinon (mobile), utiliser le scroll natif
+                                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                                window.scrollTo({
+                                    top: targetPosition,
+                                    behavior: 'smooth'
+                                });
+                            }
                         }
                     }
                 });
             });
 
-            // Effet parallaxe léger sur les images avec Lenis
-            lenis.on('scroll', ({ scroll }) => {
-                const parallaxElements = document.querySelectorAll('.parallax-slow');
+            // Effet parallaxe léger sur les images avec Lenis (seulement desktop)
+            if (window.lenis) {
+                window.lenis.on('scroll', ({ scroll }) => {
+                    const parallaxElements = document.querySelectorAll('.parallax-slow');
 
-                parallaxElements.forEach((element) => {
-                    const rect = element.getBoundingClientRect();
-                    const elementTop = rect.top + scroll;
-                    const viewportHeight = window.innerHeight;
+                    parallaxElements.forEach((element) => {
+                        const rect = element.getBoundingClientRect();
+                        const elementTop = rect.top + scroll;
+                        const viewportHeight = window.innerHeight;
 
-                    if (rect.top < viewportHeight && rect.bottom > 0) {
-                        const speed = 0.08;
-                        const yPos = (scroll - elementTop) * speed;
-                        element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-                    }
+                        if (rect.top < viewportHeight && rect.bottom > 0) {
+                            const speed = 0.08;
+                            const yPos = (scroll - elementTop) * speed;
+                            element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                        }
+                    });
                 });
-            });
+            }
         });
     </script>
 </head>
