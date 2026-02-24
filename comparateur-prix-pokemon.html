@@ -75,6 +75,9 @@
       });
     </script>
 
+    <!-- Lenis Smooth Scroll - Deferred -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
     <style>
         :root {
             --primary-color: #5a50f3;
@@ -536,6 +539,27 @@
                 height: 60px;
             }
         }
+
+        /* Lenis Smooth Scroll */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -832,6 +856,41 @@
                     });
                 }
             }
+        });
+
+        // Initialiser Lenis pour un smooth scroll avec inertie
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            smoothTouch: false,
+            touchMultiplier: 2
+        });
+
+        // Boucle d'animation pour Lenis
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Scroll smooth avec Lenis pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        lenis.scrollTo(target, {
+                            offset: -80,
+                            duration: 1.5
+                        });
+                    }
+                }
+            });
         });
 
         // Burger Menu

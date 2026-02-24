@@ -49,6 +49,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Lenis Smooth Scroll - Deferred -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
     <style>
         * {
             margin: 0;
@@ -339,6 +342,27 @@
             color: rgba(255,255,255,0.6);
         }
 
+        /* Lenis Smooth Scroll */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav ul {
@@ -473,6 +497,24 @@
 
     <!-- JavaScript -->
     <script>
+        // Initialiser Lenis pour un smooth scroll avec inertie
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            smoothTouch: false,
+            touchMultiplier: 2
+        });
+
+        // Boucle d'animation pour Lenis
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
         // Burger menu toggle
         const burgerMenu = document.getElementById('burgerMenu');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -492,6 +534,23 @@
                 });
             });
         }
+
+        // Scroll smooth avec Lenis pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        lenis.scrollTo(target, {
+                            offset: -80,
+                            duration: 1.5
+                        });
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
