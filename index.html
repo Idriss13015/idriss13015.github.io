@@ -978,23 +978,25 @@
 
         // Initialiser l'app au chargement de la page
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser Lenis pour un smooth scroll avec inertie
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                smooth: true,
-                smoothTouch: false,
-                touchMultiplier: 2
-            });
+            // Initialiser Lenis pour un smooth scroll avec inertie (seulement sur desktop)
+            if (!isMobileDevice()) {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    gestureDirection: 'vertical',
+                    smooth: true,
+                    smoothTouch: false,
+                    touchMultiplier: 2
+                });
 
-            // Boucle d'animation pour Lenis
-            function raf(time) {
-                lenis.raf(time);
+                // Boucle d'animation pour Lenis
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
                 requestAnimationFrame(raf);
             }
-            requestAnimationFrame(raf);
 
             // Burger menu toggle
             const burgerMenu = document.getElementById('burgerMenu');

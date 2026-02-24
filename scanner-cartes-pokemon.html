@@ -821,23 +821,32 @@
 
     <!-- JavaScript -->
     <script>
-        // Initialiser Lenis pour un smooth scroll avec inertie
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 2
-        });
+        // Détection mobile
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+        }
 
-        // Boucle d'animation pour Lenis
-        function raf(time) {
-            lenis.raf(time);
+        // Initialiser Lenis pour un smooth scroll avec inertie (seulement sur desktop)
+        let lenis = null;
+        if (!isMobileDevice()) {
+            lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false,
+                touchMultiplier: 2
+            });
+
+            // Boucle d'animation pour Lenis
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
             requestAnimationFrame(raf);
         }
-        requestAnimationFrame(raf);
 
         // Burger Menu
         const burgerMenu = document.getElementById('burgerMenu');
@@ -859,22 +868,24 @@
             });
         }
 
-        // Scroll smooth avec Lenis pour les ancres
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href !== '') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        lenis.scrollTo(target, {
-                            offset: -80,
-                            duration: 1.5
-                        });
+        // Scroll smooth avec Lenis pour les ancres (seulement sur desktop)
+        if (lenis) {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            lenis.scrollTo(target, {
+                                offset: -80,
+                                duration: 1.5
+                            });
+                        }
                     }
-                }
+                });
             });
-        });
+        }
 
         // Track scroll depth
         let maxScroll = 0;
