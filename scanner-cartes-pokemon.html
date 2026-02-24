@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Scanner de Cartes Pokémon : Reconnaissance Instantanée par IA | Pikacheck</title>
+    <meta name="description" content="Découvrez comment fonctionne le scanner de cartes Pokémon Pikacheck. Reconnaissance instantanée par intelligence artificielle, identification en 40ms, 17 000+ cartes. Guide complet des fonctionnalités et paramètres.">
+    <meta name="keywords" content="scanner carte pokémon, reconnaissance carte pokémon, identifier carte pokémon, scanner pokémon IA, application scanner pokémon, reconnaissance automatique pokémon, Pikacheck scanner, scan carte TCG">
+    <meta name="author" content="Pikacheck">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Scanner de Cartes Pokémon : Comment Fonctionne la Reconnaissance par IA">
+    <meta property="og:description" content="Guide complet du scanner Pikacheck : reconnaissance instantanée par IA, 40ms de latence, 17 000+ cartes. Découvrez la technologie derrière le meilleur scanner de cartes Pokémon.">
+    <meta property="og:url" content="https://pikacheck.com/scanner-cartes-pokemon.html">
+    <meta property="og:image" content="https://pikacheck.com/assets/images/04.png">
+    <meta property="og:image:alt" content="Scanner de Cartes Pokémon Pikacheck">
+    <meta property="og:site_name" content="Pikacheck">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scanner de Cartes Pokémon par IA - Pikacheck">
+    <meta name="twitter:description" content="Reconnaissance instantanée de vos cartes Pokémon en 40ms avec l'IA. Guide complet des fonctionnalités.">
+    <meta name="twitter:image" content="https://pikacheck.com/assets/images/04.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Scanner de Cartes Pokémon : Reconnaissance Instantanée par Intelligence Artificielle",
+        "description": "Guide complet du scanner Pikacheck pour cartes Pokémon : technologie IA, reconnaissance en 40ms, paramètres et fonctionnalités",
+        "url": "https://pikacheck.com/scanner-cartes-pokemon.html",
+        "datePublished": "2026-02-24",
+        "dateModified": "2026-02-24",
+        "author": {
+            "@type": "Organization",
+            "name": "Pikacheck"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Pikacheck",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://pikacheck.com/assets/images/Pikacheck-logo-alt-nobg.svg"
+            }
+        },
+        "image": "https://pikacheck.com/assets/images/04.png",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pikacheck.com/scanner-cartes-pokemon.html"
+        }
+    }
+    </script>
+
+    <link rel="canonical" href="https://pikacheck.com/scanner-cartes-pokemon.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+
+    <!-- PWA / Mobile -->
+    <meta name="theme-color" content="#5a50f3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CEW27KGTHH', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+
+    <!-- Lenis Smooth Scroll - Deferred -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+    <style>
+        :root {
+            --primary-color: #5a50f3;
+            --primary-dark: #4a40d3;
+            --primary-light: #7a70ff;
+            --secondary-color: #ffd700;
+            --success-color: #10b981;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        /* Header */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 9999;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo span {
+            font-size: 26px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 33px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 10000;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 2px;
+            background: #1d1d1f;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 20px;
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 9998;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu a {
+            font-size: 17px;
+            color: #1d1d1f;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-image {
+            max-width: 300px;
+            height: auto;
+            margin: 40px auto 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Article Content */
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .article-content h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 50px 0 20px;
+        }
+
+        .article-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 40px 0 16px;
+        }
+
+        .article-content p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 20px 0 20px 30px;
+            color: var(--text-secondary);
+        }
+
+        .article-content li {
+            margin-bottom: 12px;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .article-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Feature Box */
+        .feature-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 24px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .feature-box h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .feature-box p {
+            margin: 0;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 24px;
+            text-align: center;
+            margin: 60px 0 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 16px;
+            }
+
+            .article-content h2 {
+                font-size: 26px;
+            }
+
+            .article-content h3 {
+                font-size: 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .nav-content {
+                padding: 12px 20px;
+            }
+
+            .logo span {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <img src="assets/images/Pikacheck-logo-alt-nobg.svg" alt="Pikacheck">
+                <span>Pikacheck</span>
+            </a>
+            <ul>
+                <li><a href="/#features">Fonctionnalités</a></li>
+                <li><a href="/#screenshots">Aperçu</a></li>
+                <li><a href="/#pricing">Tarifs</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+            </ul>
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/#features">Fonctionnalités</a></li>
+            <li><a href="/#screenshots">Aperçu</a></li>
+            <li><a href="/#pricing">Tarifs</a></li>
+            <li><a href="/articles">Articles</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Scanner de Cartes Pokémon par Intelligence Artificielle</h1>
+        <p class="subtitle">Reconnaissance instantanée et précise de vos cartes Pokémon grâce à la technologie IA. Découvrez comment fonctionne le scanner le plus rapide du marché.</p>
+        <img src="assets/images/04.png" alt="Scanner Pikacheck" class="hero-image">
+    </section>
+
+    <!-- Article Content -->
+    <article class="article-container">
+        <div class="article-meta">
+            <span>📅 Février 2026</span>
+            <span>⏱ 8 min de lecture</span>
+            <span>🏷 Guide Technique</span>
+        </div>
+
+        <div class="article-content">
+            <h2>Comment fonctionne le scanner de cartes Pokémon Pikacheck ?</h2>
+            <p>
+                Le scanner Pikacheck utilise une <strong>technologie d'intelligence artificielle</strong> de pointe pour identifier vos cartes Pokémon en temps réel. En moins de 40 millisecondes, le système analyse l'image capturée par votre caméra et reconnaît la carte parmi plus de 17 000 références.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">40ms</div>
+                    <div class="stat-label">Temps de reconnaissance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">17 000+</div>
+                    <div class="stat-label">Cartes reconnues</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">95%</div>
+                    <div class="stat-label">Taux de précision</div>
+                </div>
+            </div>
+
+            <h2>La technologie derrière le scanner</h2>
+
+            <h3>1. Capture et traitement d'image</h3>
+            <p>
+                Dès que vous pointez votre caméra vers une carte, le scanner capture l'image en haute résolution et applique plusieurs traitements automatiques :
+            </p>
+            <ul>
+                <li><strong>Conversion YUV vers RGB</strong> en 1 milliseconde pour optimiser la qualité</li>
+                <li><strong>Redimensionnement intelligent</strong> à 320×320 pixels pour l'analyse IA</li>
+                <li><strong>Détection des contours</strong> avec identification des 4 coins de la carte</li>
+                <li><strong>Correction de perspective</strong> pour normaliser l'angle de vue</li>
+            </ul>
+
+            <h3>2. Intelligence artificielle et reconnaissance</h3>
+            <p>
+                Le cœur du système repose sur un <strong>modèle TensorFlow Lite</strong> optimisé qui s'exécute directement sur votre téléphone. Cette approche garantit :
+            </p>
+            <ul>
+                <li>Reconnaissance <strong>instantanée</strong> sans connexion internet</li>
+                <li>Protection de vos données (aucune image n'est envoyée sur un serveur)</li>
+                <li>Performance optimale grâce à l'accélération GPU</li>
+            </ul>
+
+            <div class="feature-box">
+                <h4>💡 Le saviez-vous ?</h4>
+                <p>Le scanner utilise un algorithme de "perceptual hash" qui crée une empreinte unique de chaque carte. Cette empreinte est ensuite comparée à une base de données de plus de 17 000 cartes pour trouver la correspondance exacte en seulement 2 millisecondes !</p>
+            </div>
+
+            <h3>3. Extraction des informations</h3>
+            <p>
+                Une fois la carte identifiée, Pikacheck récupère automatiquement toutes les informations importantes :
+            </p>
+            <ul>
+                <li><strong>Nom de la carte</strong> et numéro dans l'extension</li>
+                <li><strong>Extension et série</strong> (ex: Écarlate et Violet - 151)</li>
+                <li><strong>Prix actuel du marché</strong> mis à jour en temps réel</li>
+                <li><strong>Versions disponibles</strong> (normale, reverse, cosmos, etc.)</li>
+                <li><strong>Rareté et type</strong> de la carte</li>
+                <li><strong>Image haute qualité</strong> pour la visualisation</li>
+            </ul>
+
+            <h2>Paramètres et fonctionnalités du scanner</h2>
+
+            <h3>Mode rapide (Fast Mode)</h3>
+            <p>
+                Le <strong>mode rapide</strong> est parfait pour scanner rapidement plusieurs cartes d'affilée. Lorsqu'il est activé :
+            </p>
+            <ul>
+                <li>Les cartes sont <strong>ajoutées automatiquement</strong> à votre collection sans confirmation</li>
+                <li>Quantité par défaut : 1 exemplaire</li>
+                <li>Version par défaut : normale</li>
+                <li>Idéal pour scanner un booster ou un lot complet</li>
+            </ul>
+
+            <h3>Retour haptique et sonore</h3>
+            <p>
+                Pour une expérience optimale, le scanner propose des <strong>retours sensoriels personnalisables</strong> :
+            </p>
+            <ul>
+                <li><strong>Vibration</strong> à chaque détection réussie</li>
+                <li><strong>Son de confirmation</strong> configurable</li>
+                <li>Désactivables indépendamment selon vos préférences</li>
+            </ul>
+
+            <h3>Historique des scans</h3>
+            <p>
+                Pikacheck conserve un <strong>historique de vos 25 derniers scans</strong> pour vous permettre de :
+            </p>
+            <ul>
+                <li>Retrouver rapidement une carte scannée récemment</li>
+                <li>Ajouter une carte oubliée sans la rescanner</li>
+                <li>Consulter les différentes versions détectées</li>
+            </ul>
+
+            <div class="feature-box">
+                <h4>🎯 Conseil pro</h4>
+                <p>Pour une reconnaissance optimale, placez votre carte sur un fond uni et bien éclairé. Le scanner fonctionne même avec un léger angle, mais une vue frontale donnera les meilleurs résultats !</p>
+            </div>
+
+            <h2>Limites et optimisations</h2>
+
+            <h3>Limites de scan (version gratuite)</h3>
+            <p>
+                La version gratuite de Pikacheck permet <strong>50 scans par session</strong>. Cette limite garantit des performances optimales pour tous les utilisateurs. Les utilisateurs Premium bénéficient de scans illimités.
+            </p>
+
+            <h3>Performance et précision</h3>
+            <p>
+                Le scanner Pikacheck est conçu pour être à la fois rapide et précis :
+            </p>
+            <ul>
+                <li><strong>Latence totale</strong> : 40-70ms du capture à l'affichage</li>
+                <li><strong>Taux de précision</strong> : 95% sur les cartes en bon état</li>
+                <li><strong>Gestion des variants</strong> : détecte jusqu'à 3 cartes similaires</li>
+                <li><strong>Distance de Hamming</strong> : seuil à 70 bits pour éviter les faux positifs</li>
+            </ul>
+
+            <h2>Pourquoi le scanner Pikacheck est-il si rapide ?</h2>
+            <p>
+                Contrairement à d'autres solutions qui envoient les images sur un serveur distant, Pikacheck effectue <strong>100% du traitement localement</strong> sur votre téléphone. Cette architecture présente plusieurs avantages :
+            </p>
+            <ul>
+                <li><strong>Vitesse fulgurante</strong> : pas de délai réseau</li>
+                <li><strong>Fonctionne hors ligne</strong> une fois le modèle téléchargé</li>
+                <li><strong>Confidentialité totale</strong> : vos cartes restent sur votre appareil</li>
+                <li><strong>Consommation data minimale</strong> : uniquement pour les prix en temps réel</li>
+            </ul>
+
+            <h2>Mise à jour du modèle et de la base de données</h2>
+            <p>
+                Pikacheck met régulièrement à jour son <strong>modèle de reconnaissance</strong> et sa <strong>base de données de cartes</strong> pour intégrer les nouvelles extensions. Les mises à jour se font automatiquement en arrière-plan et incluent :
+            </p>
+            <ul>
+                <li>Nouvelles extensions Pokémon dès leur sortie</li>
+                <li>Améliorations du taux de reconnaissance</li>
+                <li>Optimisations de performance</li>
+                <li>Corrections pour les cartes problématiques</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+                Le scanner Pikacheck représente le <strong>summum de la technologie de reconnaissance de cartes Pokémon</strong>. Avec son IA embarquée, ses 40ms de latence et sa base de 17 000+ cartes, il rend la gestion de votre collection plus simple et plus rapide que jamais.
+            </p>
+            <p>
+                Que vous soyez un collectionneur occasionnel ou un passionné aguerri, le scanner vous fait gagner un temps précieux tout en vous garantissant des informations précises et à jour sur vos cartes.
+            </p>
+        </div>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Essayez le scanner Pikacheck dès maintenant</h2>
+        <p>Téléchargez l'application et scannez vos premières cartes en quelques secondes</p>
+        <div class="cta-buttons">
+            <a href="/download/" class="btn btn-primary">Télécharger l'app</a>
+            <a href="/articles" class="btn btn-secondary">Lire d'autres articles</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Pikacheck</h4>
+                <p>L'app pour gérer votre collection Pokémon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Produit</h4>
+                <a href="/#features">Fonctionnalités</a>
+                <a href="/#pricing">Tarifs</a>
+                <a href="/articles">Articles</a>
+                <a href="/#faq">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Télécharger</h4>
+                <a href="/download/">Télécharger l'app</a>
+                <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" target="_blank" rel="noopener">App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.pikacheck.app" target="_blank" rel="noopener">Google Play</a>
+            </div>
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <a href="/pages/privacy.html">Confidentialité</a>
+                <a href="/pages/terms.html">CGU</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Pikacheck. Tous droits réservés.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialiser Lenis pour un smooth scroll avec inertie
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            smoothTouch: false,
+            touchMultiplier: 2
+        });
+
+        // Boucle d'animation pour Lenis
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Burger Menu
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (burgerMenu && mobileMenu) {
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Fermer le menu quand on clique sur un lien
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Scroll smooth avec Lenis pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        lenis.scrollTo(target, {
+                            offset: -80,
+                            duration: 1.5
+                        });
+                    }
+                }
+            });
+        });
+
+        // Track scroll depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > maxScroll) {
+                maxScroll = Math.round(scrollPercent / 25) * 25;
+                if (maxScroll > 0 && typeof gtag === 'function') {
+                    gtag('event', 'scroll_depth', {
+                        'event_category': 'engagement',
+                        'event_label': maxScroll + '%',
+                        'page': 'scanner-cartes-pokemon'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
