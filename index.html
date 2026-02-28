@@ -154,7 +154,7 @@
             opacity: 1;
         }
 
-        /* Particules flottantes */
+        /* Particules flottantes avec effet d'antigravité */
         .floating-particles {
             position: fixed;
             top: 0;
@@ -163,42 +163,50 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            overflow: hidden;
         }
 
         .particle {
             position: absolute;
             border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
-            opacity: 0;
+            opacity: 0.4;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+            filter: blur(1px);
         }
 
-        @keyframes float {
+        /* Animation de base - flottement doux */
+        @keyframes floatBase {
             0%, 100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0;
+                transform: translateY(0) rotate(0deg);
             }
-            10% {
-                opacity: 0.3;
+            33% {
+                transform: translateY(-30px) rotate(120deg);
             }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translate(var(--tx), var(--ty)) scale(0.5);
-                opacity: 0;
+            66% {
+                transform: translateY(30px) rotate(240deg);
             }
         }
 
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; --tx: 20vw; --ty: -100vh; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; --tx: -15vw; --ty: -100vh; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; --tx: 25vw; --ty: -100vh; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 1s; --tx: -20vw; --ty: -100vh; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 3s; --tx: 15vw; --ty: -100vh; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 5s; --tx: -25vw; --ty: -100vh; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; --tx: 20vw; --ty: -100vh; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; --tx: -15vw; --ty: -100vh; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; --tx: 10vw; --ty: -100vh; }
-        .particle:nth-child(10) { left: 15%; animation-delay: 3.5s; --tx: -10vw; --ty: -100vh; }
+        .particle {
+            animation: floatBase 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { animation-duration: 7s; animation-delay: 0s; }
+        .particle:nth-child(2) { animation-duration: 9s; animation-delay: 0.5s; }
+        .particle:nth-child(3) { animation-duration: 6s; animation-delay: 1s; }
+        .particle:nth-child(4) { animation-duration: 10s; animation-delay: 1.5s; }
+        .particle:nth-child(5) { animation-duration: 8s; animation-delay: 2s; }
+        .particle:nth-child(6) { animation-duration: 7.5s; animation-delay: 2.5s; }
+        .particle:nth-child(7) { animation-duration: 9.5s; animation-delay: 0.8s; }
+        .particle:nth-child(8) { animation-duration: 6.5s; animation-delay: 1.2s; }
+        .particle:nth-child(9) { animation-duration: 8.5s; animation-delay: 1.8s; }
+        .particle:nth-child(10) { animation-duration: 7.8s; animation-delay: 0.3s; }
+        .particle:nth-child(11) { animation-duration: 9.2s; animation-delay: 2.2s; }
+        .particle:nth-child(12) { animation-duration: 8.8s; animation-delay: 1.4s; }
+        .particle:nth-child(13) { animation-duration: 7.2s; animation-delay: 0.6s; }
+        .particle:nth-child(14) { animation-duration: 10.5s; animation-delay: 1.9s; }
+        .particle:nth-child(15) { animation-duration: 6.8s; animation-delay: 2.4s; }
 
         /* Container pour le smooth scroll */
         #smooth-scroll-wrapper {
@@ -1274,48 +1282,100 @@
             //     statsObserver.observe(stat);
             // });
 
-            // Créer les particules flottantes (seulement sur desktop)
+            // Créer les particules flottantes avec effet d'antigravité (seulement sur desktop)
             if (!isMobileDevice()) {
                 const particlesContainer = document.createElement('div');
                 particlesContainer.className = 'floating-particles';
                 document.body.appendChild(particlesContainer);
 
                 const colors = ['#5a50f3', '#ff4560', '#1db9ff', '#ffb800'];
-                for (let i = 0; i < 10; i++) {
+                const particles = [];
+                const particleCount = 15;
+
+                // Créer les particules
+                for (let i = 0; i < particleCount; i++) {
                     const particle = document.createElement('div');
                     particle.className = 'particle';
-                    const size = Math.random() * 80 + 40;
+                    const size = Math.random() * 100 + 50;
                     particle.style.width = size + 'px';
                     particle.style.height = size + 'px';
-                    particle.style.bottom = Math.random() * 20 + '%';
                     particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                    const particleData = {
+                        element: particle,
+                        x: Math.random() * window.innerWidth,
+                        y: Math.random() * window.innerHeight,
+                        size: size,
+                        baseX: Math.random() * window.innerWidth,
+                        baseY: Math.random() * window.innerHeight
+                    };
+
+                    particle.style.left = particleData.x + 'px';
+                    particle.style.top = particleData.y + 'px';
+
+                    particles.push(particleData);
                     particlesContainer.appendChild(particle);
                 }
 
-                // Effet de spotlight qui suit la souris
+                // Variables pour la souris
                 let mouseX = 0;
                 let mouseY = 0;
                 let currentX = 0;
                 let currentY = 0;
 
                 document.addEventListener('mousemove', (e) => {
-                    mouseX = (e.clientX / window.innerWidth) * 100;
-                    mouseY = (e.clientY / window.innerHeight) * 100;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
                     document.body.classList.add('mouse-moved');
                 });
 
-                // Animation smooth avec lerp (linear interpolation)
-                function updateMousePosition() {
+                // Effet d'antigravité - les particules sont repoussées par la souris
+                function updateParticles() {
+                    // Smooth mouse position
                     currentX += (mouseX - currentX) * 0.1;
                     currentY += (mouseY - currentY) * 0.1;
 
-                    document.documentElement.style.setProperty('--mouse-x', currentX + '%');
-                    document.documentElement.style.setProperty('--mouse-y', currentY + '%');
+                    // Update spotlight
+                    document.documentElement.style.setProperty('--mouse-x', (currentX / window.innerWidth * 100) + '%');
+                    document.documentElement.style.setProperty('--mouse-y', (currentY / window.innerHeight * 100) + '%');
 
-                    requestAnimationFrame(updateMousePosition);
+                    // Antigravité - repousser les particules
+                    particles.forEach((p) => {
+                        const dx = p.x - currentX;
+                        const dy = p.y - currentY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        const maxDistance = 300; // Rayon d'influence de la souris
+
+                        if (distance < maxDistance) {
+                            // Force de répulsion inversement proportionnelle à la distance
+                            const force = (maxDistance - distance) / maxDistance;
+                            const angle = Math.atan2(dy, dx);
+
+                            // Déplacement de la particule (repoussée par la souris)
+                            const pushX = Math.cos(angle) * force * 100;
+                            const pushY = Math.sin(angle) * force * 100;
+
+                            p.x += pushX * 0.1;
+                            p.y += pushY * 0.1;
+                        } else {
+                            // Retour progressif vers la position de base
+                            p.x += (p.baseX - p.x) * 0.02;
+                            p.y += (p.baseY - p.y) * 0.02;
+                        }
+
+                        // Limiter les particules à l'écran
+                        p.x = Math.max(0, Math.min(window.innerWidth, p.x));
+                        p.y = Math.max(0, Math.min(window.innerHeight, p.y));
+
+                        // Appliquer la position
+                        p.element.style.left = p.x + 'px';
+                        p.element.style.top = p.y + 'px';
+                    });
+
+                    requestAnimationFrame(updateParticles);
                 }
 
-                updateMousePosition();
+                updateParticles();
             }
         });
     </script>
