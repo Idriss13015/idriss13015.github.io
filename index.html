@@ -1222,62 +1222,62 @@
                 });
             }
 
-            // Compteur animé pour les statistiques
-            function animateCounter(element) {
-                const text = element.textContent;
-                const hasPlus = text.includes('+');
-                const hasStar = text.includes('★');
-                const hasEuro = text.includes('€');
+            // Animation du compteur désactivée
+            // function animateCounter(element) {
+            //     const text = element.textContent;
+            //     const hasPlus = text.includes('+');
+            //     const hasStar = text.includes('★');
+            //     const hasEuro = text.includes('€');
 
-                // Extraire le nombre
-                let target = parseFloat(text.replace(/[^\d.]/g, ''));
-                if (text.includes('K')) target *= 1000;
-                if (text.includes('M')) target *= 1000000;
+            //     // Extraire le nombre
+            //     let target = parseFloat(text.replace(/[^\d.]/g, ''));
+            //     if (text.includes('K')) target *= 1000;
+            //     if (text.includes('M')) target *= 1000000;
 
-                let current = 0;
-                const increment = target / 60; // 60 frames pour l'animation
-                const duration = 1500; // 1.5 secondes
-                const frameTime = duration / 60;
+            //     let current = 0;
+            //     const increment = target / 60; // 60 frames pour l'animation
+            //     const duration = 1500; // 1.5 secondes
+            //     const frameTime = duration / 60;
 
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
+            //     const timer = setInterval(() => {
+            //         current += increment;
+            //         if (current >= target) {
+            //             current = target;
+            //             clearInterval(timer);
+            //         }
 
-                    let displayValue;
-                    if (text.includes('M')) {
-                        displayValue = (current / 1000000).toFixed(0) + 'M';
-                    } else if (text.includes('K')) {
-                        displayValue = Math.round(current / 1000) + 'K';
-                    } else if (text.includes('.')) {
-                        displayValue = current.toFixed(1);
-                    } else {
-                        displayValue = Math.round(current);
-                    }
+            //         let displayValue;
+            //         if (text.includes('M')) {
+            //             displayValue = (current / 1000000).toFixed(0) + 'M';
+            //         } else if (text.includes('K')) {
+            //             displayValue = Math.round(current / 1000) + 'K';
+            //         } else if (text.includes('.')) {
+            //             displayValue = current.toFixed(1);
+            //         } else {
+            //             displayValue = Math.round(current);
+            //         }
 
-                    element.textContent = (hasPlus ? '+' : '') + displayValue + (hasEuro ? '€' : '');
-                    if (hasStar) element.innerHTML += ' <span class="stat-star">★</span>';
-                }, frameTime);
-            }
+            //         element.textContent = (hasPlus ? '+' : '') + displayValue + (hasEuro ? '€' : '');
+            //         if (hasStar) element.innerHTML += ' <span class="stat-star">★</span>';
+            //     }, frameTime);
+            // }
 
-            // Observer pour déclencher l'animation uniquement pour la valeur de collection (9M€)
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                        entry.target.classList.add('counted');
-                        // Animer uniquement si c'est la stat avec €
-                        if (entry.target.textContent.includes('€')) {
-                            animateCounter(entry.target);
-                        }
-                    }
-                });
-            }, { threshold: 0.5 });
+            // // Observer pour déclencher l'animation uniquement pour la valeur de collection (9M€)
+            // const statsObserver = new IntersectionObserver((entries) => {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            //             entry.target.classList.add('counted');
+            //             // Animer uniquement si c'est la stat avec €
+            //             if (entry.target.textContent.includes('€')) {
+            //                 animateCounter(entry.target);
+            //             }
+            //         }
+            //     });
+            // }, { threshold: 0.5 });
 
-            document.querySelectorAll('.stat-value').forEach(stat => {
-                statsObserver.observe(stat);
-            });
+            // document.querySelectorAll('.stat-value').forEach(stat => {
+            //     statsObserver.observe(stat);
+            // });
 
             // Créer les particules flottantes (seulement sur desktop)
             if (!isMobileDevice()) {
