@@ -131,7 +131,7 @@
             position: relative;
         }
 
-        /* Gradient animé en arrière-plan */
+        /* Effet de curseur interactif - spotlight qui suit la souris */
         body::before {
             content: '';
             position: fixed;
@@ -139,24 +139,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(90, 80, 243, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 69, 96, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(29, 185, 255, 0.03) 0%, transparent 50%);
-            animation: gradientShift 15s ease infinite;
+            background: radial-gradient(
+                600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(90, 80, 243, 0.08),
+                transparent 40%
+            );
             pointer-events: none;
             z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes gradientShift {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1.1);
-            }
+        body.mouse-moved::before {
+            opacity: 1;
         }
 
         /* Particules flottantes */
@@ -1296,6 +1291,31 @@
                     particle.style.background = colors[Math.floor(Math.random() * colors.length)];
                     particlesContainer.appendChild(particle);
                 }
+
+                // Effet de spotlight qui suit la souris
+                let mouseX = 0;
+                let mouseY = 0;
+                let currentX = 0;
+                let currentY = 0;
+
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = (e.clientX / window.innerWidth) * 100;
+                    mouseY = (e.clientY / window.innerHeight) * 100;
+                    document.body.classList.add('mouse-moved');
+                });
+
+                // Animation smooth avec lerp (linear interpolation)
+                function updateMousePosition() {
+                    currentX += (mouseX - currentX) * 0.1;
+                    currentY += (mouseY - currentY) * 0.1;
+
+                    document.documentElement.style.setProperty('--mouse-x', currentX + '%');
+                    document.documentElement.style.setProperty('--mouse-y', currentY + '%');
+
+                    requestAnimationFrame(updateMousePosition);
+                }
+
+                updateMousePosition();
             }
         });
     </script>
