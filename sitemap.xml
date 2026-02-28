@@ -86,11 +86,19 @@
         <priority>0.9</priority>
     </url>
 
-    <!-- Scanner de Cartes Pokémon -->
+    <!-- Investir dans les Cartes Pokémon -->
     <url>
-        <loc>https://pikacheck.com/scanner-cartes-pokemon.html</loc>
-        <lastmod>2025-12-01</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://pikacheck.com/investir-cartes-pokemon.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Rareté et Grading des Cartes Pokémon -->
+    <url>
+        <loc>https://pikacheck.com/rarete-grading-cartes-pokemon.html</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
@@ -98,6 +106,14 @@
     <url>
         <loc>https://pikacheck.com/comparateur-prix-pokemon.html</loc>
         <lastmod>2026-02-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Scanner de Cartes Pokémon -->
+    <url>
+        <loc>https://pikacheck.com/scanner-cartes-pokemon.html</loc>
+        <lastmod>2025-12-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
