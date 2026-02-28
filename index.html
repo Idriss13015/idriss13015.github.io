@@ -1005,19 +1005,20 @@
         }
 
         .animate-on-scroll {
-            opacity: 0;
+            opacity: 1;
         }
 
+        /* Animations désactivées - tout est visible immédiatement */
         .animate-on-scroll.fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+            /* animation: fadeInUp 0.8s ease-out forwards; */
         }
 
         .animate-on-scroll.fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
+            /* animation: fadeIn 0.6s ease-out forwards; */
         }
 
         .animate-on-scroll.scale-in {
-            animation: scaleIn 0.7s ease-out forwards;
+            /* animation: scaleIn 0.7s ease-out forwards; */
         }
 
         /* Stagger delay pour les éléments multiples */
@@ -1155,25 +1156,25 @@
                 });
             });
 
-            // Animation au scroll avec Intersection Observer
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // Animation au scroll désactivée - tout est visible immédiatement
+            // const observerOptions = {
+            //     threshold: 0.1,
+            //     rootMargin: '0px 0px -50px 0px'
+            // };
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add(entry.target.dataset.animation || 'fade-in-up');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+            // const observer = new IntersectionObserver(function(entries) {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting) {
+            //             entry.target.classList.add(entry.target.dataset.animation || 'fade-in-up');
+            //             observer.unobserve(entry.target);
+            //         }
+            //     });
+            // }, observerOptions);
 
-            // Observer tous les éléments à animer
-            document.querySelectorAll('.animate-on-scroll').forEach(element => {
-                observer.observe(element);
-            });
+            // // Observer tous les éléments à animer
+            // document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            //     observer.observe(element);
+            // });
 
             // Scroll smooth pour les ancres (fonctionne avec ou sans Lenis)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1261,12 +1262,15 @@
                 }, frameTime);
             }
 
-            // Observer pour déclencher l'animation des stats au scroll
+            // Observer pour déclencher l'animation uniquement pour la valeur de collection (9M€)
             const statsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
                         entry.target.classList.add('counted');
-                        animateCounter(entry.target);
+                        // Animer uniquement si c'est la stat avec €
+                        if (entry.target.textContent.includes('€')) {
+                            animateCounter(entry.target);
+                        }
                     }
                 });
             }, { threshold: 0.5 });
@@ -1346,8 +1350,8 @@
             <div class="stat-label">Cartes</div>
         </div>
         <div class="stat-item animate-on-scroll" data-animation="fade-in">
-            <div class="stat-value">+1000</div>
-            <div class="stat-label">Items scellés</div>
+            <div class="stat-value">1000+</div>
+            <div class="stat-label">Produits scellés</div>
         </div>
         <div class="stat-item animate-on-scroll" data-animation="fade-in">
             <div class="stat-value">+9M€</div>
