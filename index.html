@@ -112,16 +112,49 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --card-bg: #ffffff;
+            --feature-bg: rgba(255, 255, 255, 0.8);
+            --feature-border: rgba(90, 80, 243, 0.2);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --gradient-start: #5a50f3;
+            --gradient-end: #7a70f6;
+            --card-bg: #1a1a1a;
+            --feature-bg: rgba(26, 26, 26, 0.8);
+            --feature-border: rgba(90, 80, 243, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-            background: #fff;
-            color: #1d1d1f;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             font-size: 17px;
             line-height: 1.47059;
             font-weight: 400;
@@ -150,9 +183,9 @@
         nav {
             position: sticky;
             top: 0;
-            background: rgba(255,255,255,0.72);
+            background: var(--bg-primary);
             backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid #d2d2d7;
+            border-bottom: 1px solid var(--border-color);
             z-index: 9999;
         }
 
@@ -191,7 +224,7 @@
         }
 
         nav a {
-            color: #1d1d1f;
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 12px;
             opacity: 0.8;
@@ -200,6 +233,46 @@
 
         nav a:hover {
             opacity: 1;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            color: var(--text-primary);
+            margin-left: 12px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(90, 80, 243, 0.1);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sun-icon {
+            display: none;
+        }
+
+        .moon-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            display: none;
         }
 
         /* Burger Menu */
@@ -215,7 +288,7 @@
         .burger-menu span {
             width: 25px;
             height: 2px;
-            background: #1d1d1f;
+            background: var(--text-primary);
             transition: all 0.3s;
             border-radius: 2px;
         }
@@ -467,7 +540,7 @@
             font-weight: 400;
             letter-spacing: 0.011em;
             text-align: center;
-            color: #86868b;
+            color: var(--text-secondary);
             margin-bottom: 60px;
         }
 
@@ -483,7 +556,7 @@
             text-align: left;
             padding: 28px;
             border-radius: 20px;
-            background: rgba(255,255,255,0.5);
+            background: var(--feature-bg);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0,0,0,0.05);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -577,9 +650,9 @@
         }
 
         .plan {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%);
+            background: var(--card-bg);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(210,210,215,0.5);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 48px 40px;
             text-align: left;
@@ -687,7 +760,7 @@
         }
 
         .faq-item {
-            border-bottom: 1px solid #d2d2d7;
+            border-bottom: 1px solid var(--border-color);
             padding: 24px 0;
         }
 
@@ -714,7 +787,7 @@
 
         /* Footer */
         footer {
-            background: #f5f5f7;
+            background: var(--bg-secondary);
             margin-top: 120px;
             padding: 60px 22px 40px;
         }
@@ -1246,6 +1319,10 @@
                 <li><a href="/articles">Articles</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
             <div class="burger-menu" id="burgerMenu">
                 <span></span>
                 <span></span>
@@ -1495,5 +1572,46 @@
         </div>
     </footer>
     </div>
+
+    <script>
+        // Dark mode toggle
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            // Check for saved theme preference or default to system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                html.setAttribute('data-theme', savedTheme);
+            } else if (systemPrefersDark) {
+                html.setAttribute('data-theme', 'dark');
+            }
+
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+
+                // Track theme change
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'theme_change', {
+                        'theme': newTheme
+                    });
+                }
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
