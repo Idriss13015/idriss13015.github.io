@@ -243,42 +243,51 @@
 
         /* Theme Toggle */
         .theme-toggle {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-            color: var(--text-primary);
-            margin-left: 12px;
+            background: #ff0000 !important;
+            border: 2px solid #000000 !important;
+            cursor: pointer !important;
+            padding: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 8px !important;
+            transition: all 0.3s ease !important;
+            color: #ffffff !important;
+            margin-left: 16px !important;
+            width: 40px !important;
+            height: 40px !important;
+            flex-shrink: 0 !important;
+            position: relative !important;
+            z-index: 10001 !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
         }
 
         .theme-toggle:hover {
-            background: rgba(90, 80, 243, 0.1);
+            background: rgba(90, 80, 243, 0.1) !important;
+            border-color: rgba(90, 80, 243, 0.3) !important;
         }
 
         .theme-toggle svg {
-            width: 20px;
-            height: 20px;
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
         }
 
         .sun-icon {
-            display: none;
+            display: none !important;
         }
 
         .moon-icon {
-            display: block;
+            display: block !important;
         }
 
         [data-theme="dark"] .sun-icon {
-            display: block;
+            display: block !important;
         }
 
         [data-theme="dark"] .moon-icon {
-            display: none;
+            display: none !important;
         }
 
         /* Burger Menu */
@@ -288,7 +297,7 @@
             gap: 5px;
             cursor: pointer;
             padding: 8px;
-            z-index: 10000;
+            z-index: 999;
         }
 
         .burger-menu span {
@@ -856,8 +865,16 @@
                 display: none;
             }
 
+            .nav-right {
+                gap: 12px;
+            }
+
             .burger-menu {
                 display: flex;
+            }
+
+            .theme-toggle {
+                margin-left: 0 !important;
             }
 
             .hero-section {
@@ -1587,6 +1604,13 @@
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
+            if (!themeToggle) {
+                console.error('Theme toggle button not found!');
+                return;
+            }
+
+            console.log('Theme toggle button found:', themeToggle);
+
             // Check for saved theme preference or default to system preference
             const savedTheme = localStorage.getItem('theme');
             const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1604,6 +1628,8 @@
 
                 html.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
+
+                console.log('Theme changed to:', newTheme);
 
                 // Track theme change
                 if (typeof gtag !== 'undefined') {
