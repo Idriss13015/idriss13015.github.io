@@ -219,7 +219,7 @@
         .logo span {
             font-size: 26px;
             font-weight: 600;
-            color: #1d1d1f;
+            color: var(--text-primary);
             letter-spacing: 0;
         }
 
@@ -241,53 +241,122 @@
             opacity: 1;
         }
 
-        /* Theme Toggle */
+        /* Theme Toggle - Stylé avec effet wow */
         .theme-toggle {
-            background: transparent !important;
-            border: 2px solid var(--border-color) !important;
+            position: relative !important;
+            background: linear-gradient(135deg, rgba(90, 80, 243, 0.1), rgba(122, 112, 246, 0.15)) !important;
+            border: 2px solid transparent !important;
             cursor: pointer !important;
-            padding: 8px !important;
+            padding: 0 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            border-radius: 8px !important;
-            transition: all 0.3s ease !important;
+            border-radius: 12px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             color: var(--text-primary) !important;
             margin-left: 16px !important;
-            width: 40px !important;
-            height: 40px !important;
+            width: 44px !important;
+            height: 44px !important;
             flex-shrink: 0 !important;
-            position: relative !important;
             z-index: 10001 !important;
-            min-width: 40px !important;
-            min-height: 40px !important;
+            min-width: 44px !important;
+            min-height: 44px !important;
+            overflow: hidden !important;
+            box-shadow: 0 2px 8px rgba(90, 80, 243, 0.15), inset 0 0 0 1px rgba(90, 80, 243, 0.1) !important;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(90, 80, 243, 0.4), rgba(122, 112, 246, 0.6));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 10px;
         }
 
         .theme-toggle:hover {
-            background: rgba(90, 80, 243, 0.1) !important;
-            border-color: rgba(90, 80, 243, 0.3) !important;
+            transform: translateY(-2px) scale(1.05) !important;
+            box-shadow: 0 8px 24px rgba(90, 80, 243, 0.3), inset 0 0 0 2px rgba(90, 80, 243, 0.4) !important;
+        }
+
+        .theme-toggle:hover::before {
+            opacity: 1;
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95) !important;
         }
 
         .theme-toggle svg {
-            width: 20px !important;
-            height: 20px !important;
+            width: 22px !important;
+            height: 22px !important;
             display: block !important;
+            position: relative !important;
+            z-index: 1 !important;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(15deg) scale(1.1) !important;
         }
 
         .sun-icon {
             display: none !important;
+            animation: sunRise 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
         .moon-icon {
             display: block !important;
+            animation: moonRise 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.2)) !important;
+            box-shadow: 0 2px 8px rgba(255, 193, 7, 0.2), inset 0 0 0 1px rgba(255, 193, 7, 0.15) !important;
+        }
+
+        [data-theme="dark"] .theme-toggle::before {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.4), rgba(255, 152, 0, 0.6));
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3), inset 0 0 0 2px rgba(255, 193, 7, 0.4) !important;
         }
 
         [data-theme="dark"] .sun-icon {
             display: block !important;
+            color: #ffc107 !important;
         }
 
         [data-theme="dark"] .moon-icon {
             display: none !important;
+        }
+
+        @keyframes sunRise {
+            0% {
+                transform: rotate(-90deg) scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes moonRise {
+            0% {
+                transform: rotate(90deg) scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
         }
 
         /* Burger Menu */
@@ -354,7 +423,7 @@
 
         .mobile-menu ul li a {
             font-size: 17px;
-            color: #1d1d1f;
+            color: var(--text-primary);
             text-decoration: none;
             display: block;
             opacity: 1;
@@ -514,7 +583,7 @@
             line-height: 48px;
             font-weight: 600;
             letter-spacing: -0.005em;
-            color: #1d1d1f;
+            color: var(--text-primary);
             white-space: nowrap;
         }
 
@@ -526,7 +595,7 @@
             font-size: 14px;
             line-height: 1.47059;
             font-weight: 400;
-            color: #86868b;
+            color: var(--text-secondary);
             margin-top: 4px;
             white-space: nowrap;
         }
@@ -824,7 +893,7 @@
             line-height: 1.33337;
             font-weight: 600;
             letter-spacing: -0.01em;
-            color: #1d1d1f;
+            color: var(--text-primary);
             margin-bottom: 12px;
         }
 
@@ -834,29 +903,29 @@
             line-height: 1.33337;
             font-weight: 400;
             letter-spacing: -0.01em;
-            color: #6e6e73;
+            color: var(--text-secondary);
             text-decoration: none;
             margin-bottom: 8px;
             transition: color 0.3s;
         }
 
         .footer-section a:hover {
-            color: #1d1d1f;
+            color: var(--text-primary);
         }
 
         .footer-section p {
             font-size: 12px;
             line-height: 1.33337;
-            color: #6e6e73;
+            color: var(--text-secondary);
         }
 
         .copyright {
             text-align: center;
             font-size: 12px;
             line-height: 1.33337;
-            color: #6e6e73;
+            color: var(--text-secondary);
             padding-top: 20px;
-            border-top: 1px solid #d2d2d7;
+            border-top: 1px solid var(--border-color);
         }
 
         /* Mobile */
