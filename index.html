@@ -243,100 +243,175 @@
             opacity: 1;
         }
 
-        /* Theme Toggle - Stylé avec effet wow */
-        .theme-toggle {
-            position: relative !important;
-            background: linear-gradient(135deg, rgba(90, 80, 243, 0.1), rgba(122, 112, 246, 0.15)) !important;
-            border: 2px solid transparent !important;
-            cursor: pointer !important;
-            padding: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            border-radius: 12px !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            color: var(--text-primary) !important;
-            margin-left: 16px !important;
-            width: 44px !important;
-            height: 44px !important;
-            flex-shrink: 0 !important;
-            z-index: 10001 !important;
-            min-width: 44px !important;
-            min-height: 44px !important;
-            overflow: hidden !important;
-            box-shadow: 0 2px 8px rgba(90, 80, 243, 0.15), inset 0 0 0 1px rgba(90, 80, 243, 0.1) !important;
+        /* Theme Toggle - Beautiful Sun/Moon Switch from Uiverse.io */
+        .theme-switch {
+            --toggle-size: 16px;
+            --container-width: 5.625em;
+            --container-height: 2.5em;
+            --container-radius: 6.25em;
+            --container-light-bg: #3D7EAE;
+            --container-night-bg: #1D1F2C;
+            --circle-container-diameter: 3.375em;
+            --sun-moon-diameter: 2.125em;
+            --sun-bg: #ECCA2F;
+            --moon-bg: #C4C9D1;
+            --spot-color: #959DB1;
+            --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+            --stars-color: #fff;
+            --clouds-color: #F3FDFF;
+            --back-clouds-color: #AACADF;
+            --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+            --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+            margin-left: 16px;
+            flex-shrink: 0;
         }
 
-        .theme-toggle::before {
-            content: '';
+        .theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-size: var(--toggle-size);
+        }
+
+        .theme-switch__container {
+            width: var(--container-width);
+            height: var(--container-height);
+            background-color: var(--container-light-bg);
+            border-radius: var(--container-radius);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .theme-switch__container::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(90, 80, 243, 0.4), rgba(122, 112, 246, 0.6));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 10px;
+            z-index: 1;
+            inset: 0;
+            box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+            border-radius: var(--container-radius);
         }
 
-        .theme-toggle:hover {
-            transform: translateY(-2px) scale(1.05) !important;
-            box-shadow: 0 8px 24px rgba(90, 80, 243, 0.3), inset 0 0 0 2px rgba(90, 80, 243, 0.4) !important;
+        .theme-switch__checkbox {
+            display: none;
         }
 
-        .theme-toggle:hover::before {
-            opacity: 1;
+        .theme-switch__circle-container {
+            width: var(--circle-container-diameter);
+            height: var(--circle-container-diameter);
+            background-color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            left: var(--circle-container-offset);
+            top: var(--circle-container-offset);
+            border-radius: var(--container-radius);
+            box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+            display: flex;
+            transition: var(--circle-transition);
+            pointer-events: none;
         }
 
-        .theme-toggle:active {
-            transform: scale(0.95) !important;
+        .theme-switch__sun-moon-container {
+            pointer-events: auto;
+            position: relative;
+            z-index: 2;
+            width: var(--sun-moon-diameter);
+            height: var(--sun-moon-diameter);
+            margin: auto;
+            border-radius: var(--container-radius);
+            background-color: var(--sun-bg);
+            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+            filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        .theme-toggle svg {
-            width: 22px !important;
-            height: 22px !important;
-            display: block !important;
-            position: relative !important;
-            z-index: 1 !important;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .theme-switch__moon {
+            transform: translateX(100%);
+            width: 100%;
+            height: 100%;
+            background-color: var(--moon-bg);
+            border-radius: inherit;
+            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .theme-toggle:hover svg {
-            transform: rotate(15deg) scale(1.1) !important;
+        .theme-switch__spot {
+            position: absolute;
+            top: 0.75em;
+            left: 0.312em;
+            width: 0.75em;
+            height: 0.75em;
+            border-radius: var(--container-radius);
+            background-color: var(--spot-color);
+            box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
         }
 
-        .sun-icon {
-            display: none !important;
-            animation: sunRise 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .theme-switch__spot:nth-of-type(2) {
+            width: 0.375em;
+            height: 0.375em;
+            top: 0.937em;
+            left: 1.375em;
         }
 
-        .moon-icon {
-            display: block !important;
-            animation: moonRise 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .theme-switch__spot:nth-last-of-type(3) {
+            width: 0.25em;
+            height: 0.25em;
+            top: 0.312em;
+            left: 0.812em;
         }
 
-        [data-theme="dark"] .theme-toggle {
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.2)) !important;
-            box-shadow: 0 2px 8px rgba(255, 193, 7, 0.2), inset 0 0 0 1px rgba(255, 193, 7, 0.15) !important;
+        .theme-switch__clouds {
+            width: 1.25em;
+            height: 1.25em;
+            background-color: var(--clouds-color);
+            border-radius: var(--container-radius);
+            position: absolute;
+            bottom: -0.625em;
+            left: 0.312em;
+            box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
+            transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
         }
 
-        [data-theme="dark"] .theme-toggle::before {
-            background: linear-gradient(135deg, rgba(255, 193, 7, 0.4), rgba(255, 152, 0, 0.6));
+        .theme-switch__stars-container {
+            position: absolute;
+            color: var(--stars-color);
+            top: -100%;
+            left: 0.312em;
+            width: 2.75em;
+            height: auto;
+            transition: var(--transition);
         }
 
-        [data-theme="dark"] .theme-toggle:hover {
-            box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3), inset 0 0 0 2px rgba(255, 193, 7, 0.4) !important;
+        .theme-switch__checkbox:checked + .theme-switch__container {
+            background-color: var(--container-night-bg);
         }
 
-        [data-theme="dark"] .sun-icon {
-            display: block !important;
-            color: #ffc107 !important;
+        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
         }
 
-        [data-theme="dark"] .moon-icon {
-            display: none !important;
+        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
+            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em);
+        }
+
+        .theme-switch__circle-container:hover {
+            left: calc(var(--circle-container-offset) + 0.187em);
+        }
+
+        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
+            transform: translate(0);
+        }
+
+        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
+            bottom: -4.062em;
+        }
+
+        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         /* Dark mode elevated surfaces - EFFET WOW */
@@ -532,27 +607,6 @@
             text-shadow: 0 2px 20px rgba(90, 80, 243, 0.2);
         }
 
-        @keyframes sunRise {
-            0% {
-                transform: rotate(-90deg) scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: rotate(0deg) scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes moonRise {
-            0% {
-                transform: rotate(90deg) scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: rotate(0deg) scale(1);
-                opacity: 1;
-            }
-        }
 
         /* Burger Menu */
         .burger-menu {
@@ -1607,10 +1661,26 @@
                     <li><a href="/articles">Articles</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
+                <label class="theme-switch">
+                    <input type="checkbox" class="theme-switch__checkbox" id="themeToggle">
+                    <div class="theme-switch__container">
+                        <div class="theme-switch__clouds"></div>
+                        <div class="theme-switch__stars-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 137.047 7.56303 137.145 8.72727C137.231 7.95722 137.607 7.25134 138.265 6.59129C138.923 5.93124 139.631 5.49828 140.387 5.29129C139.631 5.08431 138.923 4.65135 138.265 3.99129C137.607 3.33124 137.231 2.62536 137.145 1.85531C137.047 3.01955 136.607 4.02795 135.831 4.87134C135.055 5.71472 134.111 6.16392 133 6.21893C134.111 6.27393 135.055 6.72313 135.831 7.56652C136.607 8.4099 137.047 9.41831 137.145 10.5825C137.231 9.81249 137.607 9.10661 138.265 8.44656C138.923 7.78651 139.631 7.35355 140.387 7.14656C139.631 6.93957 138.923 6.50662 138.265 5.84656C137.607 5.18651 137.231 4.48063 137.145 3.71058C137.047 4.87482 136.607 5.88322 135.831 6.72661C135.055 7.56999 134.111 8.01919 133 8.07419C134.111 8.1292 135.055 8.57839 135.831 9.42178C136.607 10.2652 137.047 11.2736 137.145 12.4378C137.231 11.6678 137.607 10.9619 138.265 10.3018C138.923 9.64179 139.631 9.20882 140.387 9.00184C139.631 8.79485 138.923 8.36189 138.265 7.70184C137.607 7.04179 137.231 6.33591 137.145 5.56585C137.047 6.73009 136.607 7.73849 135.831 8.58188C135.055 9.42527 134.111 9.87446 133 9.92947C134.111 9.98447 135.055 10.4337 135.831 11.2771C136.607 12.1205 137.047 13.1289 137.145 14.2931C137.231 13.5231 137.607 12.8172 138.265 12.1572C138.923 11.4971 139.631 11.0641 140.387 10.8572C139.631 10.6502 138.923 10.2172 138.265 9.55716C137.607 8.89711 137.231 8.19123 137.145 7.42118C137.047 8.58542 136.607 9.59382 135.831 10.4372C135.055 11.2806 134.111 11.7298 133 11.7848C134.111 11.8398 135.055 12.289 135.831 13.1324C136.607 13.9758 137.047 14.9842 137.145 16.1484C137.231 15.3784 137.607 14.6725 138.265 14.0125C138.923 13.3524 139.631 12.9194 140.387 12.7125C139.631 12.5055 138.923 12.0725 138.265 11.4125C137.607 10.7524 137.231 10.0465 137.145 9.27645C137.047 10.4407 136.607 11.4491 135.831 12.2925C135.055 13.1359 134.111 13.5851 133 13.6401C134.111 13.6951 135.055 14.1443 135.831 14.9877C136.607 15.8311 137.047 16.8395 137.145 18.0037C137.231 17.2337 137.607 16.5278 138.265 15.8678C138.923 15.2077 139.631 14.7747 140.387 14.5678C139.631 14.3608 138.923 13.9278 138.265 13.2678C137.607 12.6077 137.231 11.9018 137.145 11.1318C137.047 12.296 136.607 13.3044 135.831 14.1478C135.055 14.9912 134.111 15.4404 133 15.4954C134.111 15.5504 135.055 15.9996 135.831 16.843C136.607 17.6864 137.047 18.6948 137.145 19.859C137.231 19.089 137.607 18.3831 138.265 17.7231C138.923 17.063 139.631 16.6301 140.387 16.4231C139.631 16.2161 138.923 15.7831 138.265 15.1231C137.607 14.463 137.231 13.7571 137.145 12.9871C137.047 14.1513 136.607 15.1597 135.831 16.0031C135.055 16.8465 134.111 17.2957 133 17.3507C134.111 17.4057 135.055 17.8549 135.831 18.6983C136.607 19.5417 137.047 20.5501 137.145 21.7143C137.231 20.9443 137.607 20.2384 138.265 19.5784C138.923 18.9183 139.631 18.4854 140.387 18.2784C139.631 18.0714 138.923 17.6384 138.265 16.9784C137.607 16.3183 137.231 15.6124 137.145 14.8424C137.047 16.0066 136.607 17.015 135.831 17.8584C135.055 18.7018 134.111 19.151 133 19.206C134.111 19.261 135.055 19.7102 135.831 20.5536C136.607 21.397 137.047 22.4054 137.145 23.5696C137.231 22.7996 137.607 22.0937 138.265 21.4337C138.923 20.7736 139.631 20.3407 140.387 20.1337C139.631 19.9267 138.923 19.4937 138.265 18.8337C137.607 18.1736 137.231 17.4677 137.145 16.6977C137.047 17.8619 136.607 18.8703 135.831 19.7137C135.055 20.5571 134.111 21.0063 133 21.0613C134.111 21.1163 135.055 21.5655 135.831 22.4089C136.607 23.2523 137.047 24.2607 137.145 25.4249C137.231 24.6549 137.607 23.949 138.265 23.289C138.923 22.6289 139.631 22.196 140.387 21.989C139.631 21.782 138.923 21.349 138.265 20.689C137.607 20.0289 137.231 19.323 137.145 18.553C137.047 19.7172 136.607 20.7256 135.831 21.569C135.055 22.4124 134.111 22.8616 133 22.9166C134.111 22.9716 135.055 23.4208 135.831 24.2642C136.607 25.1076 137.047 26.116 137.145 27.2802C137.231 26.5102 137.607 25.8043 138.265 25.1443C138.923 24.4842 139.631 24.0513 140.387 23.8443C139.631 23.6373 138.923 23.2043 138.265 22.5443C137.607 21.8842 137.231 21.1783 137.145 20.4083C137.047 21.5725 136.607 22.5809 135.831 23.4243C135.055 24.2677 134.111 24.7169 133 24.7719C134.111 24.8269 135.055 25.2761 135.831 26.1195C136.607 26.9629 137.047 27.9713 137.145 29.1355C137.231 28.3655 137.607 27.6596 138.265 26.9996C138.923 26.3395 139.631 25.9066 140.387 25.6996C139.631 25.4926 138.923 25.0596 138.265 24.3996C137.607 23.7395 137.231 23.0336 137.145 22.2636C137.047 23.4278 136.607 24.4362 135.831 25.2796C135.055 26.123 134.111 26.5722 133 26.6272C134.111 26.6822 135.055 27.1314 135.831 27.9748C136.607 28.8182 137.047 29.8266 137.145 30.9908C137.231 30.2208 137.607 29.5149 138.265 28.8549C138.923 28.1948 139.631 27.7619 140.387 27.5549C139.631 27.3479 138.923 26.9149 138.265 26.2549C137.607 25.5948 137.231 24.8889 137.145 24.1189C137.047 25.2831 136.607 26.2915 135.831 27.1349C135.055 27.9783 134.111 28.4275 133 28.4825C134.111 28.5375 135.055 28.9867 135.831 29.8301C136.607 30.6735 137.047 31.6819 137.145 32.8461C137.231 32.0761 137.607 31.3702 138.265 30.7102C138.923 30.0501 139.631 29.6172 140.387 29.4102C139.631 29.2032 138.923 28.7702 138.265 28.1102C137.607 27.4501 137.231 26.7442 137.145 25.9742C137.047 27.1384 136.607 28.1468 135.831 28.9902C135.055 29.8336 134.111 30.2828 133 30.3378C134.111 30.3928 135.055 30.842 135.831 31.6854C136.607 32.5288 137.047 33.5372 137.145 34.7014C137.231 33.9314 137.607 33.2255 138.265 32.5655C138.923 31.9054 139.631 31.4725 140.387 31.2655C139.631 31.0585 138.923 30.6255 138.265 29.9655C137.607 29.3054 137.231 28.5995 137.145 27.8295C137.047 28.9937 136.607 30.0021 135.831 30.8455C135.055 31.6889 134.111 32.1381 133 32.1931C134.111 32.2481 135.055 32.6973 135.831 33.5407C136.607 34.3841 137.047 35.3925 137.145 36.5567C137.231 35.7867 137.607 35.0808 138.265 34.4208C138.923 33.7607 139.631 33.3278 140.387 33.1208C139.631 32.9138 138.923 32.4808 138.265 31.8208C137.607 31.1607 137.231 30.4548 137.145 29.6848C137.047 30.849 136.607 31.8574 135.831 32.7008C135.055 33.5442 134.111 33.9934 133 34.0484C134.111 34.1034 135.055 34.5526 135.831 35.396C136.607 36.2394 137.047 37.2478 137.145 38.412C137.231 37.642 137.607 36.9361 138.265 36.2761C138.923 35.616 139.631 35.1831 140.387 34.9761C139.631 34.7691 138.923 34.3361 138.265 33.6761C137.607 33.016 137.231 32.3101 137.145 31.5401C137.047 32.7043 136.607 33.7127 135.831 34.5561C135.055 35.3995 134.111 35.8487 133 35.9037C134.111 35.9587 135.055 36.4079 135.831 37.2513C136.607 38.0947 137.047 39.1031 137.145 40.2673C137.231 39.4973 137.607 38.7914 138.265 38.1314C138.923 37.4713 139.631 37.0384 140.387 36.8314C139.631 36.6244 138.923 36.1914 138.265 35.5314C137.607 34.8713 137.231 34.1654 137.145 33.3954C137.047 34.5596 136.607 35.568 135.831 36.4114C135.055 37.2548 134.111 37.704 133 37.759C134.111 37.814 135.055 38.2632 135.831 39.1066C136.607 39.95 137.047 40.9584 137.145 42.1226C137.231 41.3526 137.607 40.6467 138.265 39.9867C138.923 39.3266 139.631 38.8937 140.387 38.6867C139.631 38.4797 138.923 38.0467 138.265 37.3867C137.607 36.7266 137.231 36.0207 137.145 35.2507C137.047 36.4149 136.607 37.4233 135.831 38.2667C135.055 39.1101 134.111 39.5593 133 39.6143C134.111 39.6693 135.055 40.1185 135.831 40.9619C136.607 41.8053 137.047 42.8137 137.145 43.9779C137.231 43.2079 137.607 42.502 138.265 41.842C138.923 41.1819 139.631 40.749 140.387 40.542C139.631 40.335 138.923 39.902 138.265 39.242C137.607 38.5819 137.231 37.876 137.145 37.106C137.047 38.2702 136.607 39.2786 135.831 40.122C135.055 40.9654 134.111 41.4146 133 41.4696C134.111 41.5246 135.055 41.9738 135.831 42.8172C136.607 43.6606 137.047 44.669 137.145 45.8332C137.231 45.0632 137.607 44.3573 138.265 43.6973C138.923 43.0372 139.631 42.6043 140.387 42.3973C139.631 42.1903 138.923 41.7573 138.265 41.0973C137.607 40.4372 137.231 39.7313 137.145 38.9613C137.047 40.1255 136.607 41.1339 135.831 41.9773C135.055 42.8207 134.111 43.2699 133 43.3249C134.111 43.3799 135.055 43.8291 135.831 44.6725C136.607 45.5159 137.047 46.5243 137.145 47.6885C137.231 46.9185 137.607 46.2126 138.265 45.5526C138.923 44.8925 139.631 44.4596 140.387 44.2526C139.631 44.0456 138.923 43.6126 138.265 42.9526C137.607 42.2925 137.231 41.5866 137.145 40.8166C137.047 41.9808 136.607 42.9892 135.831 43.8326C135.055 44.676 134.111 45.1252 133 45.1802C134.111 45.2352 135.055 45.6844 135.831 46.5278C136.607 47.3712 137.047 48.3796 137.145 49.5438C137.231 48.7738 137.607 48.0679 138.265 47.4079C138.923 46.7478 139.631 46.3149 140.387 46.1079C139.631 45.9009 138.923 45.4679 138.265 44.8079C137.607 44.1478 137.231 43.4419 137.145 42.6719C137.047 43.8361 136.607 44.8445 135.831 45.6879C135.055 46.5313 134.111 46.9805 133 47.0355C134.111 47.0905 135.055 47.5397 135.831 48.3831C136.607 49.2265 137.047 50.2349 137.145 51.3991C137.231 50.6291 137.607 49.9232 138.265 49.2632C138.923 48.6031 139.631 48.1702 140.387 47.9632C139.631 47.7562 138.923 47.3232 138.265 46.6632C137.607 46.0031 137.231 45.2972 137.145 44.5272C137.047 45.6914 136.607 46.6998 135.831 47.5432C135.055 48.3866 134.111 48.8358 133 48.8908C134.111 48.9458 135.055 49.395 135.831 50.2384C136.607 51.0818 137.047 52.0902 137.145 53.2544C137.231 52.4844 137.607 51.7785 138.265 51.1185C138.923 50.4584 139.631 50.0255 140.387 49.8185C139.631 49.6115 138.923 49.1785 138.265 48.5185C137.607 47.8584 137.231 47.1525 137.145 46.3825C137.047 47.5467 136.607 48.5551 135.831 49.3985C135.055 50.2419 134.111 50.6911 133 50.7461C134.111 50.8011 135.055 51.2503 135.831 52.0937C136.607 52.9371 137.047 53.9455 137.145 55.1097C137.231 54.3397 137.607 53.6338 138.265 52.9738C138.923 52.3137 139.631 51.8808 140.387 51.6738C139.631 51.4668 138.923 51.0338 138.265 50.3738C137.607 49.7137 137.231 49.0078 137.145 48.2378C137.047 49.402 136.607 50.4104 135.831 51.2538C135.055 52.0972 134.111 52.5464 133 52.6014C134.111 52.6564 135.055 53.1056 135.831 53.949C136.607 54.7924 137.047 55.8008 137.145 56.965C137.231 56.195 137.607 55.4891 138.265 54.8291C138.923 54.169 139.631 53.7361 140.387 53.5291C139.631 53.3221 138.923 52.8891 138.265 52.2291C137.607 51.569 137.231 50.8631 137.145 50.0931C137.047 51.2573 136.607 52.2657 135.831 53.1091C135.055 53.9525 134.111 54.4017 133 54.4567C134.111 54.5117 135.055 54.9609 135.831 55.8043C136.607 56.6477 137.047 57.6561 137.145 58.8203" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <div class="theme-switch__circle-container">
+                            <div class="theme-switch__sun-moon-container">
+                                <div class="theme-switch__moon">
+                                    <div class="theme-switch__spot"></div>
+                                    <div class="theme-switch__spot"></div>
+                                    <div class="theme-switch__spot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
                 <div class="burger-menu" id="burgerMenu">
                 <span></span>
                 <span></span>
@@ -1863,32 +1933,32 @@
     </div>
 
     <script>
-        // Dark mode toggle
+        // Dark mode toggle with beautiful sun/moon switch
         (function() {
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
             if (!themeToggle) {
-                console.error('Theme toggle button not found!');
+                console.error('Theme toggle checkbox not found!');
                 return;
             }
-
-            console.log('Theme toggle button found:', themeToggle);
 
             // Check for saved theme preference or default to system preference
             const savedTheme = localStorage.getItem('theme');
             const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            if (savedTheme) {
-                html.setAttribute('data-theme', savedTheme);
-            } else if (systemPrefersDark) {
+            // Set initial theme
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
                 html.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeToggle.checked = false;
             }
 
-            // Toggle theme
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            // Toggle theme on checkbox change
+            themeToggle.addEventListener('change', () => {
+                const newTheme = themeToggle.checked ? 'dark' : 'light';
 
                 html.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
@@ -1906,7 +1976,9 @@
             // Listen for system theme changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                 if (!localStorage.getItem('theme')) {
-                    html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                    const isDark = e.matches;
+                    html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                    themeToggle.checked = isDark;
                 }
             });
         })();
