@@ -245,7 +245,7 @@
 
         /* Theme Toggle - Beautiful Sun/Moon Switch from Uiverse.io */
         .theme-switch {
-            --toggle-size: 16px;
+            --toggle-size: 10px;
             --container-width: 5.625em;
             --container-height: 2.5em;
             --container-radius: 6.25em;
@@ -257,12 +257,13 @@
             --moon-bg: #C4C9D1;
             --spot-color: #959DB1;
             --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
-            --stars-color: #fff;
+            --stars-color: #ffffff;
             --clouds-color: #F3FDFF;
             --back-clouds-color: #AACADF;
             --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
             --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
-            margin-left: 16px;
+            margin-left: 20px;
+            margin-right: 8px;
             flex-shrink: 0;
         }
 
@@ -383,6 +384,11 @@
             width: 2.75em;
             height: auto;
             transition: var(--transition);
+            opacity: 0;
+        }
+
+        .theme-switch__stars-container svg {
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
         }
 
         .theme-switch__checkbox:checked + .theme-switch__container {
@@ -412,6 +418,7 @@
         .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
             top: 50%;
             transform: translateY(-50%);
+            opacity: 1;
         }
 
         /* Dark mode elevated surfaces - EFFET WOW */
