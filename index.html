@@ -497,13 +497,31 @@
         }
 
         .feature-icon {
-            font-size: 40px;
-            margin-bottom: 12px;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(90, 80, 243, 0.1), rgba(122, 112, 246, 0.1));
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #5a50f3;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .feature:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, rgba(90, 80, 243, 0.15), rgba(122, 112, 246, 0.15));
+            transform: translateY(-4px);
+        }
+
+        .feature:hover .feature-icon svg {
+            transform: scale(1.1);
         }
 
         .feature-title {
@@ -1298,31 +1316,41 @@
             </div>
 
             <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">📸</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                </div>
                 <h3 class="feature-title">Scanner intelligent</h3>
                 <p class="feature-description">Ajoutez vos cartes instantanément avec la reconnaissance visuelle. Scannez et Pikacheck identifie automatiquement chaque carte, sa version et sa valeur.</p>
             </div>
 
             <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">🔔</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                </div>
                 <h3 class="feature-title">Alertes personnalisées</h3>
                 <p class="feature-description">Recevez des notifications pour les nouvelles extensions, précommandes de boosters, displays, ETB, coffrets et événements spéciaux Pokémon.</p>
             </div>
 
             <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">🔍</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
                 <h3 class="feature-title">Recherche avancée</h3>
                 <p class="feature-description">Trouvez n'importe quelle carte par nom, numéro, extension, rareté, type ou illustrateur. Base de données complète avec 30 000+ cartes et plus de 1000 produits scellés référencés.</p>
             </div>
 
             <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">✨</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
                 <h3 class="feature-title">Valeur Near Mint</h3>
                 <p class="feature-description">Estimation précise en état Near Mint, la référence pour les collectionneurs. Valeur fiable et actualisée carte par carte et produit par produit.</p>
             </div>
 
             <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">📅</div>
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                </div>
                 <h3 class="feature-title">Calendrier des sorties</h3>
                 <p class="feature-description">Consultez toutes les dates de lancement des extensions et produits scellés à venir. Organisez votre budget collection avec des rappels personnalisés pour ne rien manquer.</p>
             </div>
@@ -1358,16 +1386,16 @@
                 <h3 class="plan-name">Gratuit</h3>
                 <div class="plan-price">0€<span>/mois</span></div>
                 <ul>
-                    <li>✅ 1 collection</li>
-                    <li>✅ Cartes illimitées</li>
-                    <li>✅ Produits scellés illimités</li>
-                    <li>✅ 50 scans au total</li>
-                    <li>✅ Suivi de prix en temps réel</li>
-                    <li>✅ Historique de valeur</li>
-                    <li>✅ Alertes de nouvelles sorties</li>
-                    <li>✅ Recherche avancée (30K+ cartes)</li>
-                    <li>✅ Indice d'opportunité d'achat</li>
-                    <li>📱 Publicités incluses</li>
+                    <li>✓ 1 collection</li>
+                    <li>✓ Cartes illimitées</li>
+                    <li>✓ Produits scellés illimités</li>
+                    <li>✓ 50 scans au total</li>
+                    <li>✓ Suivi de prix en temps réel</li>
+                    <li>✓ Historique de valeur</li>
+                    <li>✓ Alertes de nouvelles sorties</li>
+                    <li>✓ Recherche avancée (30K+ cartes)</li>
+                    <li>✓ Indice d'opportunité d'achat</li>
+                    <li style="opacity: 0.6;">Publicités incluses</li>
                 </ul>
                 <a href="#" class="btn btn-outline download-btn" style="width: 100%; text-align: center;" onclick="smartDownload(event, 'pricing_free')">Commencer gratuitement</a>
             </div>
@@ -1376,14 +1404,14 @@
                 <h3 class="plan-name">Premium</h3>
                 <div class="plan-price">3.99€<span>/mois</span></div>
                 <ul>
-                    <li>⭐ Tout du plan Gratuit</li>
+                    <li>✓ Tout du plan Gratuit</li>
                     <li class="separator">+</li>
-                    <li>🗂️ Jusqu'à 4 collections</li>
-                    <li>📸 Scanner illimité</li>
-                    <li>📊 Historique de population (PSA/CGC)</li>
-                    <li>🚫 Zéro publicité</li>
-                    <li>⚡ Support prioritaire</li>
-                    <li class="support-team">❤️ Soutient l'équipe</li>
+                    <li>✓ Jusqu'à 4 collections</li>
+                    <li>✓ Scanner illimité</li>
+                    <li>✓ Historique de population (PSA/CGC)</li>
+                    <li>✓ Zéro publicité</li>
+                    <li>✓ Support prioritaire</li>
+                    <li class="support-team" style="font-weight: 600; color: #5a50f3;">Soutient l'équipe</li>
                 </ul>
                 <a href="#" class="btn btn-blue download-btn" style="width: 100%; text-align: center;" onclick="smartDownload(event, 'pricing_premium')">Essayer Premium</a>
             </div>
