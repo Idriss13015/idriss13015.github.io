@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Comprendre les Raretés et l'État des Cartes Pokémon : Guide Complet 2026 | Pikacheck</title>
+    <meta name="description" content="Guide complet sur les symboles de rareté Pokémon (commune, peu commune, rare, ultra-rare, secret) et l'évaluation de l'état des cartes (Mint, Near Mint, Played). Apprenez à estimer la valeur de vos cartes.">
+    <meta name="keywords" content="rareté cartes pokémon, symboles rareté pokémon, état carte pokémon, Mint Near Mint, étoile rare pokémon, secret rare, ultra rare, grading pokémon">
+    <meta name="author" content="Pikacheck">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Comprendre les Raretés et l'État des Cartes Pokémon : Guide Complet">
+    <meta property="og:description" content="Symboles de rareté, évaluation de l'état des cartes et impact sur la valeur. Tout ce qu'il faut savoir pour estimer vos cartes Pokémon.">
+    <meta property="og:url" content="https://pikacheck.com/rarete-etat-cartes-pokemon.html">
+    <meta property="og:image" content="https://pikacheck.com/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Pikacheck">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comprendre les Raretés et l'État des Cartes Pokémon">
+    <meta name="twitter:description" content="Guide sur les symboles de rareté et l'évaluation de l'état des cartes Pokémon.">
+    <meta name="twitter:image" content="https://pikacheck.com/assets/images/og-image.jpg">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Comprendre les Raretés et l'État des Cartes Pokémon : Guide Complet 2026",
+        "description": "Guide complet sur les symboles de rareté et l'évaluation de l'état des cartes Pokémon",
+        "url": "https://pikacheck.com/rarete-etat-cartes-pokemon.html",
+        "datePublished": "2026-03-01",
+        "dateModified": "2026-03-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Pikacheck"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Pikacheck",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://pikacheck.com/Pikacheck-logo-alt-nobg.svg"
+            }
+        }
+    }
+    </script>
+
+    <link rel="canonical" href="https://pikacheck.com/rarete-etat-cartes-pokemon.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+
+    <!-- PWA / Mobile -->
+    <meta name="theme-color" content="#5a50f3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Pikacheck">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CEW27KGTHH', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+
+    <!-- Lenis Smooth Scroll - Deferred -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+    <style>
+        :root {
+            --primary-color: #5a50f3;
+            --primary-dark: #4a40d3;
+            --primary-light: #7a70ff;
+            --secondary-color: #ffd700;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        article {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-intro {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-left: 4px solid #f59e0b;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--surface);
+        }
+
+        .rarity-symbol {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .common {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .uncommon {
+            background: #d1d5db;
+            color: #1f2937;
+        }
+
+        .rare {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+        }
+
+        .ultra-rare {
+            background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+            color: #5b21b6;
+        }
+
+        .secret-rare {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            color: #9f1239;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .cta-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #d1f4e0;
+            border-left: 4px solid var(--success-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            article {
+                padding: 0 1.5rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="/Pikacheck-logo-alt-nobg.svg" alt="Pikacheck Logo">
+                <span>Pikacheck</span>
+            </a>
+            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" class="nav-cta">Télécharger l'App</a>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-header">
+            <span class="article-category">Évaluation</span>
+            <h1>Comprendre les Raretés et l'État des Cartes Pokémon : Guide Complet 2026</h1>
+            <div class="article-meta">
+                <span>📅 Mars 2026</span>
+                <span>⏱ 6 min de lecture</span>
+            </div>
+            <p class="article-intro">
+                Toutes les cartes Pokémon ne se valent pas ! La rareté et l'état d'une carte déterminent sa valeur.
+                Apprenez à lire les symboles de rareté et à évaluer précisément l'état de vos cartes pour connaître
+                leur vraie valeur sur le marché.
+            </p>
+        </div>
+
+        <h2>⭐ Les Symboles de Rareté</h2>
+
+        <p>Le <strong>symbole de rareté</strong> se trouve en bas à droite de chaque carte Pokémon (sauf les toutes premières éditions). Il indique la probabilité de trouver cette carte dans un booster.</p>
+
+        <h3>Cartes Européennes / Françaises</h3>
+
+        <div class="rarity-symbol common">
+            <span style="font-size: 1.5rem;">⚫</span>
+            <strong>Commune (Common)</strong>
+        </div>
+        <ul>
+            <li><strong>Symbole :</strong> Cercle noir</li>
+            <li><strong>Fréquence :</strong> Très courante (3-5 par booster)</li>
+            <li><strong>Valeur :</strong> 0,10€ - 0,50€ en moyenne</li>
+            <li><strong>Exemples :</strong> Pokémon de base, énergies, dresseurs basiques</li>
+        </ul>
+
+        <div class="rarity-symbol uncommon">
+            <span style="font-size: 1.5rem;">♦</span>
+            <strong>Peu Commune (Uncommon)</strong>
+        </div>
+        <ul>
+            <li><strong>Symbole :</strong> Losange noir</li>
+            <li><strong>Fréquence :</strong> Courante (2-3 par booster)</li>
+            <li><strong>Valeur :</strong> 0,20€ - 1€ en moyenne</li>
+            <li><strong>Exemples :</strong> Évolutions de niveau 1, dresseurs intermédiaires</li>
+        </ul>
+
+        <div class="rarity-symbol rare">
+            <span style="font-size: 1.5rem;">⭐</span>
+            <strong>Rare (Rare)</strong>
+        </div>
+        <ul>
+            <li><strong>Symbole :</strong> Étoile noire</li>
+            <li><strong>Fréquence :</strong> 1 par booster garanti minimum</li>
+            <li><strong>Valeur :</strong> 1€ - 5€ en moyenne</li>
+            <li><strong>Variantes :</strong> Rare normale, Rare Holo, Rare Reverse</li>
+        </ul>
+
+        <div class="rarity-symbol ultra-rare">
+            <span style="font-size: 1.5rem;">✨</span>
+            <strong>Ultra Rare</strong>
+        </div>
+        <ul>
+            <li><strong>Symbole :</strong> Étoile dorée, argentée ou noire selon le type</li>
+            <li><strong>Fréquence :</strong> Variable selon l'extension (1 toutes les 3-10 boosters)</li>
+            <li><strong>Valeur :</strong> 5€ - 100€+ selon la carte</li>
+            <li><strong>Types :</strong> EX, GX, V, VMAX, VSTAR, ex, Full Art, Rainbow Rare</li>
+        </ul>
+
+        <div class="rarity-symbol secret-rare">
+            <span style="font-size: 1.5rem;">🌟</span>
+            <strong>Secret Rare</strong>
+        </div>
+        <ul>
+            <li><strong>Symbole :</strong> Variable (souvent étoile spéciale)</li>
+            <li><strong>Numérotation :</strong> Au-delà du set (ex: 112/111)</li>
+            <li><strong>Fréquence :</strong> Très rare (1 toutes les 20-50 boosters)</li>
+            <li><strong>Valeur :</strong> 20€ - 300€+ selon la carte</li>
+            <li><strong>Types :</strong> Gold, Rainbow, Hyper Rare, Illustration Rare, Special Illustration Rare</li>
+        </ul>
+
+        <h3>Cartes Japonaises (Système Différent)</h3>
+
+        <p>Les cartes japonaises utilisent des <strong>lettres</strong> au lieu de symboles :</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Lettre</th>
+                    <th>Signification</th>
+                    <th>Équivalent Européen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>C</strong></td>
+                    <td>Common</td>
+                    <td>Commune (⚫)</td>
+                </tr>
+                <tr>
+                    <td><strong>U</strong></td>
+                    <td>Uncommon</td>
+                    <td>Peu Commune (♦)</td>
+                </tr>
+                <tr>
+                    <td><strong>R</strong></td>
+                    <td>Rare</td>
+                    <td>Rare (⭐)</td>
+                </tr>
+                <tr>
+                    <td><strong>RR</strong></td>
+                    <td>Double Rare</td>
+                    <td>Ultra Rare</td>
+                </tr>
+                <tr>
+                    <td><strong>RRR</strong></td>
+                    <td>Triple Rare</td>
+                    <td>Full Art / Special Art</td>
+                </tr>
+                <tr>
+                    <td><strong>SR</strong></td>
+                    <td>Secret Rare</td>
+                    <td>Secret Rare</td>
+                </tr>
+                <tr>
+                    <td><strong>HR</strong></td>
+                    <td>Hyper Rare</td>
+                    <td>Rainbow Rare</td>
+                </tr>
+                <tr>
+                    <td><strong>UR</strong></td>
+                    <td>Ultra Rare</td>
+                    <td>Gold Secret</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success-box">
+            <strong>💡 Bon à savoir :</strong> Les sets japonais ont généralement de <strong>meilleurs taux de drop</strong> pour les cartes rares. Les displays japonais garantissent un certain nombre de hits, ce qui n'est pas le cas en Europe.
+        </div>
+
+        <div class="cta-box">
+            <h3>📊 Identifiez Vos Cartes en 1 Seconde</h3>
+            <p>Pikacheck scanne automatiquement vos cartes et détecte leur rareté, leur valeur marchande et leurs variations. Plus besoin de chercher manuellement : prenez une photo et obtenez toutes les infos instantanément !</p>
+            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" class="cta-button">Télécharger l'App</a>
+        </div>
+
+        <h2>🎨 Types de Finitions</h2>
+
+        <h3>Holo (Holographique)</h3>
+        <p><strong>Caractéristique :</strong> Seule l'illustration du Pokémon brille avec un effet holographique.</p>
+        <ul>
+            <li>Toutes les cartes rares ne sont pas holos</li>
+            <li>Une carte holo vaut 2 à 5 fois plus que sa version normale</li>
+        </ul>
+
+        <h3>Reverse Holo</h3>
+        <p><strong>Caractéristique :</strong> Toute la carte brille SAUF l'illustration.</p>
+        <ul>
+            <li>Existe pour chaque carte d'un set (même communes)</li>
+            <li>Valeur légèrement supérieure à la version normale</li>
+        </ul>
+
+        <h3>Full Art</h3>
+        <p><strong>Caractéristique :</strong> Illustration qui couvre toute la carte, textures en relief.</p>
+        <ul>
+            <li>Réservé aux cartes ultra-rares (EX, GX, V, ex, Dresseurs)</li>
+            <li>Très prisées par les collectionneurs</li>
+        </ul>
+
+        <h3>Rainbow Rare (Hyper Rare)</h3>
+        <p><strong>Caractéristique :</strong> Carte entière avec effet arc-en-ciel holographique.</p>
+        <ul>
+            <li>Parmi les cartes les plus rares</li>
+            <li>Texture unique et très esthétique</li>
+        </ul>
+
+        <h3>Gold (Secret Rare Gold)</h3>
+        <p><strong>Caractéristique :</strong> Carte dorée brillante, souvent des objets ou énergies.</p>
+        <ul>
+            <li>Très rares et recherchées</li>
+            <li>Valeur élevée sur le marché secondaire</li>
+        </ul>
+
+        <h2>📏 L'État des Cartes : Système d'Évaluation</h2>
+
+        <p>L'<strong>état</strong> d'une carte impacte MASSIVEMENT sa valeur. Une carte Mint peut valoir 5 à 10 fois plus que la même carte en état Played.</p>
+
+        <h3>Système de Notation Standardisé</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>État</th>
+                    <th>Description</th>
+                    <th>Impact Valeur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mint (M)</strong></td>
+                    <td>Neuve, sortie de booster ou parfaitement conservée en sleeve + toploader. Aucun défaut visible.</td>
+                    <td>100% (valeur maximale)</td>
+                </tr>
+                <tr>
+                    <td><strong>Near Mint (NM)</strong></td>
+                    <td>Presque neuve. Micro-rayures invisibles sauf inspection minutieuse. Parfait pour collection.</td>
+                    <td>80-95%</td>
+                </tr>
+                <tr>
+                    <td><strong>Good (GD)</strong></td>
+                    <td>Bon état. Quelques micro-rayures visibles, 1-2 petits points blancs sur les bords possibles.</td>
+                    <td>50-70%</td>
+                </tr>
+                <tr>
+                    <td><strong>Played (PL)</strong></td>
+                    <td>Jouée. Rayures visibles, usure sur bords/coins, possible léger blanchiment des bords.</td>
+                    <td>30-50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Used (USED)</strong></td>
+                    <td>Usée. Nombreuses rayures, décoloration, surface ternie, pliures légères.</td>
+                    <td>10-30%</td>
+                </tr>
+                <tr>
+                    <td><strong>Poor (P)</strong></td>
+                    <td>Mauvais état. Fortement abîmée, pliures, taches, déchirures. Presque aucune valeur sauf cartes très rares.</td>
+                    <td>5-10%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Comment Évaluer l'État d'une Carte ?</h3>
+
+        <p><strong>Points à Inspecter :</strong></p>
+
+        <ol>
+            <li><strong>Les coins</strong> : Coins arrondis parfaits = Mint/NM. Coins blancs ou émoussés = réduction de valeur</li>
+            <li><strong>Les bords</strong> : Bords nets et propres = bon signe. Blanchiment des bords = état dégradé</li>
+            <li><strong>La surface</strong> : Inspectez sous lumière oblique pour détecter rayures et marques</li>
+            <li><strong>Le centrage</strong> : Carte bien centrée (marges égales) = meilleure valeur</li>
+            <li><strong>L'holographie</strong> : Surface holo sans rayures = état supérieur</li>
+        </ol>
+
+        <div class="warning-box">
+            <strong>⚠️ Soyez honnête !</strong> Lorsque vous vendez, indiquez toujours l'état réel de la carte. Survendre l'état mène à des litiges et à une mauvaise réputation. En cas de doute, sous-estimez plutôt que survendre.
+        </div>
+
+        <h2>💰 Impact de la Rareté et de l'État sur la Valeur</h2>
+
+        <p><strong>Exemple concret : Pikachu VMAX Rainbow Rare (EV Faille Paradoxe)</strong></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>État</th>
+                    <th>Prix Estimé</th>
+                    <th>Différence vs Mint</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mint</td>
+                    <td>80€</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Near Mint</td>
+                    <td>65-70€</td>
+                    <td>-15%</td>
+                </tr>
+                <tr>
+                    <td>Good</td>
+                    <td>40-50€</td>
+                    <td>-40%</td>
+                </tr>
+                <tr>
+                    <td>Played</td>
+                    <td>25-35€</td>
+                    <td>-60%</td>
+                </tr>
+                <tr>
+                    <td>Poor</td>
+                    <td>10-15€</td>
+                    <td>-85%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Conclusion :</strong> Protéger vos cartes dès le premier jour est CRUCIAL pour maintenir leur valeur !</p>
+
+        <h2>🏆 Le Grading Professionnel</h2>
+
+        <p>Pour les cartes de très haute valeur, le <strong>grading professionnel</strong> (PSA, BGS, CGC) certifie officiellement l'état de la carte sur une échelle de 1 à 10.</p>
+
+        <h3>Échelle PSA (la Plus Répandue)</h3>
+
+        <ul>
+            <li><strong>PSA 10 (Gem Mint)</strong> : Perfection absolue. Valeur maximale.</li>
+            <li><strong>PSA 9 (Mint)</strong> : Presque parfait, très légers défauts invisibles.</li>
+            <li><strong>PSA 8 (Near Mint)</strong> : Excellent état, défauts mineurs acceptés.</li>
+            <li><strong>PSA 7 (Near Mint - )</strong> : Bon état, quelques imperfections visibles.</li>
+            <li><strong>PSA 6 et moins</strong> : État dégradé, valeur réduite.</li>
+        </ul>
+
+        <p><strong>Coût du grading :</strong> 20-100€+ par carte selon le service et la vitesse.</p>
+
+        <p><strong>Quand grader ?</strong></p>
+        <ul>
+            <li>Cartes de valeur 100€+ en état Mint/Near Mint</li>
+            <li>Cartes vintage iconiques (Dracaufeu Base Set, etc.)</li>
+            <li>Cartes destinées à l'investissement long terme</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>💡 Impact du grading :</strong> Une carte PSA 10 peut valoir 2 à 10 fois plus que la même carte non-gradée en Near Mint. Pour les cartes très rares, le multiplicateur peut atteindre x50 ou plus !
+        </div>
+
+        <div class="cta-box">
+            <h3>📈 Suivez la Valeur de Vos Cartes en Temps Réel</h3>
+            <p>Avec Pikacheck, enregistrez l'état de chaque carte de votre collection (Mint, NM, Played) et suivez leur valeur marchande actualisée quotidiennement. Recevez des alertes quand une de vos cartes prend de la valeur !</p>
+            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" class="cta-button">Télécharger Pikacheck Gratuitement</a>
+        </div>
+
+        <h2>📋 Récapitulatif : Rareté vs État</h2>
+
+        <p><strong>Pour déterminer la valeur d'une carte, vous devez connaître :</strong></p>
+
+        <ol>
+            <li>✅ <strong>La rareté</strong> (symbole en bas à droite)</li>
+            <li>✅ <strong>Le type de carte</strong> (normale, holo, full art, rainbow, etc.)</li>
+            <li>✅ <strong>L'état</strong> (Mint, Near Mint, Good, Played, Poor)</li>
+            <li>✅ <strong>La demande</strong> (certaines cartes sont plus recherchées que d'autres)</li>
+        </ol>
+
+        <p><strong>Formule simplifiée :</strong></p>
+        <p style="text-align: center; font-size: 1.2rem; background: var(--surface); padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+            <strong>Valeur = Rareté × État × Demande</strong>
+        </p>
+
+        <p>Une carte ultra-rare en mauvais état peut valoir moins qu'une carte rare en Mint. Inversement, une carte commune vintage en PSA 10 peut atteindre des prix élevés !</p>
+
+        <h2>🎓 Conclusion</h2>
+
+        <p>Comprendre les raretés et savoir évaluer l'état des cartes sont des <strong>compétences essentielles</strong> pour tout collectionneur sérieux.</p>
+
+        <p><strong>Les points clés à retenir :</strong></p>
+
+        <ul>
+            <li>✅ Le symbole de rareté détermine la fréquence d'apparition de la carte</li>
+            <li>✅ Les cartes japonaises utilisent des lettres (C, U, R, RR, SR, etc.)</li>
+            <li>✅ L'état d'une carte impacte énormément sa valeur (jusqu'à x10 de différence)</li>
+            <li>✅ Protégez vos cartes dès le début pour maintenir l'état Mint/Near Mint</li>
+            <li>✅ Le grading professionnel valorise les cartes de haute valeur</li>
+            <li>✅ Soyez honnête sur l'état lors de ventes/échanges</li>
+        </ul>
+
+        <p>Maintenant que vous savez évaluer vos cartes, vous pouvez collectionner et trader en toute confiance ! 🎴✨</p>
+
+    </article>
+
+    <footer>
+        <p>© 2026 Pikacheck - <a href="/pages/privacy">Politique de confidentialité</a> - <a href="/pages/terms">Conditions d'utilisation</a></p>
+        <p>Pikacheck n'est pas affilié à Nintendo, The Pokémon Company ou Game Freak.</p>
+    </footer>
+
+    <script>
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+        }
+
+        if (!isMobileDevice() && typeof Lenis !== 'undefined') {
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+        }
+
+        let scrollTracked = {25: false, 50: false, 75: false, 100: false};
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+            Object.keys(scrollTracked).forEach(threshold => {
+                if (scrollPercent >= threshold && !scrollTracked[threshold]) {
+                    gtag('event', 'scroll', {
+                        'event_category': 'engagement',
+                        'event_label': `${threshold}% scrolled`,
+                        'value': threshold
+                    });
+                    scrollTracked[threshold] = true;
+                }
+            });
+        });
+
+        document.querySelectorAll('.cta-button, .nav-cta').forEach(button => {
+            button.addEventListener('click', () => {
+                gtag('event', 'click', {
+                    'event_category': 'CTA',
+                    'event_label': 'App Download from Article'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

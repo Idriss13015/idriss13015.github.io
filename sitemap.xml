@@ -86,18 +86,34 @@
         <priority>0.9</priority>
     </url>
 
-    <!-- Investir dans les Cartes Pokémon -->
+    <!-- Débuter sa Collection Pokémon 2026 -->
     <url>
-        <loc>https://pikacheck.com/investir-cartes-pokemon.html</loc>
+        <loc>https://pikacheck.com/debuter-collection-pokemon-2026.html</loc>
         <lastmod>2026-03-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Rareté et Grading des Cartes Pokémon -->
+    <!-- Protéger et Ranger ses Cartes Pokémon -->
     <url>
-        <loc>https://pikacheck.com/rarete-grading-cartes-pokemon.html</loc>
-        <lastmod>2026-03-02</lastmod>
+        <loc>https://pikacheck.com/proteger-ranger-cartes-pokemon.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Reconnaître les Fausses Cartes Pokémon -->
+    <url>
+        <loc>https://pikacheck.com/reconnaitre-fausses-cartes-pokemon.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Raretés et État des Cartes Pokémon -->
+    <url>
+        <loc>https://pikacheck.com/rarete-etat-cartes-pokemon.html</loc>
+        <lastmod>2026-03-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
