@@ -1,5 +1,5 @@
 # Robots.txt pour Pikacheck
-# https://pikacheck.com
+# https://app.pikacheck.com
 
 # Autoriser tous les bots à crawler le site
 User-agent: *
@@ -19,7 +19,7 @@ Disallow: /*.json$
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://pikacheck.com/sitemap.xml
+Sitemap: https://app.pikacheck.com/sitemap.xml
 
 # Règles spécifiques pour les principaux moteurs de recherche
 
