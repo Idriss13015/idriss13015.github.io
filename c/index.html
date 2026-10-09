@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une collection Pokémon sur Pikacheck</title>
+    <meta name="description" content="Découvre cette collection de cartes et produits Pokémon, avec leur cote du marché, sur Pikacheck.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Une collection Pokémon sur Pikacheck">
+    <meta property="og:description" content="Cartes, produits scellés et leur cote du marché. Et toi, ta collection vaut combien ?">
+    <meta property="og:image" content="https://app.pikacheck.com/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Pikacheck">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Une collection Pokémon sur Pikacheck">
+    <meta name="twitter:image" content="https://app.pikacheck.com/assets/images/og-image.jpg">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <meta name="theme-color" content="#5a50f3">
+    <!-- Bannière iOS « Ouvrir dans l'app » -->
+    <meta name="apple-itunes-app" content="app-id=6749660231">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CEW27KGTHH');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f8f8ff; --card: #ffffff; --text: #1a1a2e; --muted: #6b6b80; --line: #e8e8f2;
+            --brand: #5a50f3; --brand2: #7b3fe4; --soft: #f0efff;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root { --bg: #121220; --card: #1d1d30; --text: #f2f2f8; --muted: #a0a0b8; --line: #2c2c44; --soft: #24243a; }
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text);
+               font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+        a { color: inherit; }
+        .wrap { max-width: 980px; margin: 0 auto; padding: 16px; }
+        header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0 14px; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; text-decoration: none; }
+        .brand img { width: 34px; height: 34px; border-radius: 9px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer;
+               border-radius: 999px; padding: 11px 18px; font: inherit; font-weight: 700; font-size: 14px; text-decoration: none; }
+        .btn.primary { background: var(--brand); color: #fff; }
+        .btn.ghost { background: var(--soft); color: var(--brand); }
+        .hero { border-radius: 22px; padding: 22px; color: #fff;
+                background: linear-gradient(135deg, var(--brand), var(--brand2)); box-shadow: 0 18px 50px rgba(90,80,243,.3); }
+        .hero h1 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+        .hero .value { font-size: 40px; font-weight: 800; line-height: 1.1; margin: 4px 0; }
+        .hero .meta { opacity: .88; font-weight: 600; font-size: 14px; }
+        .hero .date { opacity: .7; font-size: 12px; margin-top: 4px; }
+        .tabs { display: flex; gap: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px; margin: 16px 0 10px; }
+        .tabs button { flex: 1; border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 700;
+                       padding: 10px; border-radius: 10px; cursor: pointer; }
+        .tabs button.on { background: var(--brand); color: #fff; }
+        .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+        .chip { white-space: nowrap; border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px;
+                padding: 7px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+        .chip.on { border-color: var(--brand); color: var(--brand); background: var(--soft); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
+        .tile { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+        .tile .img { aspect-ratio: .78; display: flex; align-items: center; justify-content: center; background: var(--soft); padding: 8px; }
+        .tile .img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .tile .info { padding: 9px 10px 11px; }
+        .tile .name { font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tile .sub { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tile .row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; font-size: 12px; color: var(--muted); }
+        .tile .price { color: var(--text); font-weight: 800; font-size: 14px; }
+        .cta { margin: 26px 0 10px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; text-align: center; }
+        .cta h2 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+        .cta p { margin: 0 0 16px; color: var(--muted); }
+        .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center; }
+        .badges img { height: 48px; }
+        .state { text-align: center; padding: 60px 16px; color: var(--muted); }
+        .state h2 { color: var(--text); }
+        .more { display: block; margin: 16px auto 0; }
+        .spinner { width: 36px; height: 36px; border-radius: 50%; border: 4px solid var(--soft); border-top-color: var(--brand);
+                   animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        [hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header class="top">
+        <a class="brand" href="/"><img src="/assets/favicons/apple-touch-icon.png" alt="">Pikacheck</a>
+        <a class="btn primary" id="open-app" href="#">Ouvrir dans l’app</a>
+    </header>
+
+    <div id="loading" class="state"><div class="spinner"></div></div>
+
+    <div id="missing" class="state" hidden>
+        <h2>Ce partage n’existe plus</h2>
+        <p>Son propriétaire a peut-être arrêté de partager sa collection.</p>
+    </div>
+
+    <div id="error" class="state" hidden>
+        <h2>Impossible de charger cette collection</h2>
+        <p>Vérifie ta connexion puis réessaie.</p>
+        <button class="btn primary" onclick="location.reload()">Réessayer</button>
+    </div>
+
+    <main id="content" hidden>
+        <section class="hero">
+            <h1 id="owner"></h1>
+            <div class="value" id="total" hidden></div>
+            <div class="meta" id="counts"></div>
+            <div class="date" id="date"></div>
+        </section>
+        <div class="tabs">
+            <button id="tab-cards" class="on">Cartes</button>
+            <button id="tab-products">Produits scellés</button>
+        </div>
+        <div class="chips" id="chips"></div>
+        <div class="grid" id="grid"></div>
+        <button class="btn ghost more" id="more" hidden>Voir plus</button>
+    </main>
+
+    <section class="cta">
+        <h2>Et toi, ta collection vaut combien ?</h2>
+        <p>Scanne tes cartes Pokémon et suis leur valeur chaque jour. Gratuit.</p>
+        <div class="badges">
+            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=share&utm_campaign=collection" target="_blank" rel="noopener"><img src="/assets/badges/app-store-badge-fr.svg" alt="Télécharger dans l’App Store"></a>
+            <a href="https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=share&utm_campaign=collection" target="_blank" rel="noopener"><img src="/assets/badges/google-play-badge.png" alt="Disponible sur Google Play"></a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var PAGE = 60;
+    var params = new URLSearchParams(location.search);
+    var id = params.get('s') || '';
+    var $ = function (x) { return document.getElementById(x); };
+    var show = function (x) { ['loading', 'missing', 'error', 'content'].forEach(function (k) { $(k).hidden = k !== x; }); };
+
+    $('open-app').href = 'pikacheck://c?s=' + encodeURIComponent(id);
+    if (!/^[A-Za-z0-9]{8,32}$/.test(id)) { show('missing'); return; }
+
+    var BASE = 'https://firestore.googleapis.com/v1/projects/pikacheck-app/databases/(default)/documents/shares/' + id;
+    var euro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
+    var euro0 = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+
+    function getPayload(url) {
+        return fetch(url).then(function (r) {
+            if (r.status === 404) return null;
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json().then(function (d) {
+                var f = d && d.fields && d.fields.payload;
+                return f && typeof f.stringValue === 'string' ? f.stringValue : null;
+            });
+        });
+    }
+    function el(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text != null) e.textContent = text; // jamais innerHTML : contenu fourni par l'utilisateur
+        return e;
+    }
+    function safeImg(u) { return typeof u === 'string' && /^https:\/\//.test(u) ? u : null; }
+    function plural(n, one, many) { return n + ' ' + (n > 1 ? many : one); }
+
+    getPayload(BASE).then(function (head) {
+        if (!head) { show('missing'); return; }
+        var h = JSON.parse(head);
+        var parts = Math.max(1, Math.min(10, (h.parts | 0) || 1));
+        var reqs = [];
+        for (var i = 1; i < parts; i++) reqs.push(getPayload(BASE + '/parts/' + i).catch(function () { return null; }));
+        return Promise.all(reqs).then(function (rest) {
+            var lines = (h.l || []).slice();
+            rest.forEach(function (p) { try { if (p) lines = lines.concat(JSON.parse(p).l || []); } catch (e) {} });
+            render(h, lines.filter(function (l) { return l && typeof l.n === 'string' && l.q > 0; }));
+        });
+    }).catch(function () { show('error'); });
+
+    function render(h, lines) {
+        var showValues = h.sv !== false;
+        var cols = Array.isArray(h.cols) ? h.cols : [];
+        var owner = (typeof h.o === 'string' && h.o.trim()) ? h.o.trim() : 'un collectionneur';
+        document.title = 'Collection de ' + owner + ' · Pikacheck';
+        $('owner').textContent = 'Collection de ' + owner;
+        var cards = 0, products = 0, total = 0;
+        lines.forEach(function (l) {
+            if (l.t === 'p') products += l.q; else cards += l.q;
+            if (typeof l.u === 'number') total += l.u * l.q;
+        });
+        if (showValues) { $('total').hidden = false; $('total').textContent = euro0.format(total); }
+        $('counts').textContent = plural(cards, 'carte', 'cartes') + ' · ' + plural(products, 'produit scellé', 'produits scellés');
+        if (h.at) $('date').textContent = 'Mise à jour le ' + new Date(h.at).toLocaleDateString('fr-FR');
+
+        var state = { tab: cards === 0 && products > 0 ? 'p' : 'c', col: -1, shown: PAGE };
+        function list() {
+            return lines.filter(function (l) { return (l.t === 'p' ? 'p' : 'c') === state.tab && (state.col < 0 || l.c === state.col); })
+                .sort(function (a, b) { return ((b.u || -1) * b.q) - ((a.u || -1) * a.q); });
+        }
+        function draw() {
+            $('tab-cards').className = state.tab === 'c' ? 'on' : '';
+            $('tab-products').className = state.tab === 'p' ? 'on' : '';
+            var chips = $('chips'); chips.textContent = '';
+            if (cols.length > 1) {
+                [-1].concat(cols.map(function (_, i) { return i; })).forEach(function (i) {
+                    var b = el('button', 'chip' + (state.col === i ? ' on' : ''), i < 0 ? 'Toutes' : String(cols[i]));
+                    b.onclick = function () { state.col = i; state.shown = PAGE; draw(); };
+                    chips.appendChild(b);
+                });
+            }
+            var items = list(), grid = $('grid'); grid.textContent = '';
+            if (!items.length) grid.appendChild(el('p', 'state', 'Rien ici pour l’instant.'));
+            items.slice(0, state.shown).forEach(function (l) {
+                var t = el('div', 'tile'), box = el('div', 'img'), src = safeImg(l.i);
+                if (src) { var im = el('img'); im.loading = 'lazy'; im.alt = ''; im.referrerPolicy = 'no-referrer'; im.src = src; box.appendChild(im); }
+                t.appendChild(box);
+                var info = el('div', 'info');
+                info.appendChild(el('div', 'name', l.n));
+                var sub = [l.x, l.no].filter(function (v) { return typeof v === 'string' && v; }).join(' · ');
+                if (sub) info.appendChild(el('div', 'sub', sub));
+                var row = el('div', 'row');
+                row.appendChild(el('span', '', '×' + l.q));
+                if (showValues && typeof l.u === 'number') row.appendChild(el('span', 'price', euro.format(l.u)));
+                info.appendChild(row);
+                t.appendChild(info);
+                grid.appendChild(t);
+            });
+            $('more').hidden = items.length <= state.shown;
+        }
+        $('tab-cards').onclick = function () { state.tab = 'c'; state.shown = PAGE; draw(); };
+        $('tab-products').onclick = function () { state.tab = 'p'; state.shown = PAGE; draw(); };
+        $('more').onclick = function () { state.shown += PAGE; draw(); };
+        draw();
+        show('content');
+        if (window.gtag) gtag('event', 'share_link_opened', { where: 'web', lines: lines.length });
+    }
+})();
+</script>
+</body>
+</html>

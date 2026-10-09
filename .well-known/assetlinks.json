@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pikacheck.app",
+      "sha256_cert_fingerprints": [
+        "C8:37:2D:84:DD:28:E1:F5:87:47:87:6D:90:78:DD:BF:A9:86:9A:AA:73:6C:9C:6A:BC:10:D1:36:B4:12:93:6C"
+      ]
+    }
+  }
+]

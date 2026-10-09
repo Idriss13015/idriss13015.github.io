@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8UCTZSGPSG.com.pikacheck.app",
+        "appIDs": ["8UCTZSGPSG.com.pikacheck.app"],
+        "paths": ["/c", "/c/*"],
+        "components": [
+          { "/": "/c", "comment": "Partage de collection" },
+          { "/": "/c/*", "comment": "Partage de collection" }
+        ]
+      }
+    ]
+  }
+}
