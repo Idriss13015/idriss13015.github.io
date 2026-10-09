@@ -30,6 +30,13 @@
     ],
     "rewrites": [
       {
+        "source": "/c/og.jpg",
+        "function": {
+          "functionId": "shareOg",
+          "region": "europe-west1"
+        }
+      },
+      {
         "source": "/c",
         "function": {
           "functionId": "shareMeta",
