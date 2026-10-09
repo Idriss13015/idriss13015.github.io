@@ -68,6 +68,8 @@
         .hero .value { font-size: 44px; font-weight: 800; line-height: 1.05; margin: 8px 0 4px; letter-spacing: -.02em; }
         .hero .meta { opacity: .9; font-weight: 600; font-size: 14px; }
         .hero .date { opacity: .7; font-size: 12px; margin-top: 4px; }
+        .hero .persona { display: inline-block; margin-top: 10px; background: rgba(255,255,255,.18); border-radius: 999px;
+                         padding: 5px 12px; font-size: 13px; font-weight: 800; }
 
         .showcase { margin-top: 16px; }
         .showcase h2, .section-title { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
@@ -164,6 +166,7 @@
             <h1 id="owner"></h1>
             <div class="value" id="total" hidden></div>
             <div class="meta" id="counts"></div>
+            <div class="persona" id="persona" hidden></div>
             <div class="date" id="date"></div>
         </section>
 
@@ -175,14 +178,14 @@
         <section class="invite">
             <div>
                 <div class="t">Et toi, ta collection vaut combien ?</div>
-                <div class="s">Scanne tes cartes, découvre leur valeur. Gratuit.</div>
+                <div class="s">Cartes et produits scellés : découvre leur valeur. Gratuit.</div>
             </div>
             <a class="btn primary store-link" data-where="invite" href="#">Essayer</a>
         </section>
 
         <div class="tabs">
-            <button id="tab-cards" class="on">Cartes</button>
             <button id="tab-products">Produits scellés</button>
+            <button id="tab-cards">Cartes</button>
         </div>
         <div class="chips" id="chips"></div>
         <div class="grid" id="grid"></div>
@@ -315,13 +318,15 @@
         var owner = (typeof h.o === 'string' && h.o.trim()) ? h.o.trim() : 'un collectionneur';
         document.title = 'Collection de ' + owner + ' · Pikacheck';
         $('owner').textContent = 'Collection de ' + owner;
-        var cards = 0, products = 0, total = 0;
+        var cards = 0, products = 0, total = 0, cardValue = 0, productValue = 0;
         lines.forEach(function (l) {
-            if (l.t === 'p') products += l.q; else cards += l.q;
-            if (typeof l.u === 'number' && l.u > 0) total += l.u * l.q;
+            var v = (typeof l.u === 'number' && l.u > 0) ? l.u * l.q : 0;
+            if (l.t === 'p') { products += l.q; productValue += v; } else { cards += l.q; cardValue += v; }
+            total += v;
         });
         if (showValues) { $('total').hidden = false; $('total').textContent = euro0.format(total); }
         $('counts').textContent = plural(cards, 'carte', 'cartes') + ' · ' + plural(products, 'produit scellé', 'produits scellés');
+        if (typeof h.pf === 'string' && h.pf.trim()) { $('persona').hidden = false; $('persona').textContent = '🏅 Profil : ' + h.pf.trim(); }
         if (h.at) $('date').textContent = 'Mise à jour le ' + new Date(h.at).toLocaleDateString('fr-FR');
 
         // Vitrine : les 3 plus chères (ou les 3 premières avec image si valeurs masquées).
@@ -340,7 +345,9 @@
             });
         }
 
-        var state = { tab: cards === 0 && products > 0 ? 'p' : 'c', col: -1, shown: PAGE };
+        // Produits scellés d'abord quand ils pèsent plus (valeur, sinon nombre).
+        var productsFirst = products > 0 && (productValue > cardValue || (productValue === cardValue && products >= cards));
+        var state = { tab: productsFirst ? 'p' : 'c', col: -1, shown: PAGE };
         function list() {
             return lines.filter(function (l) { return (l.t === 'p' ? 'p' : 'c') === state.tab && (state.col < 0 || l.c === state.col); })
                 .sort(function (a, b) { return ((b.u || -1) * b.q) - ((a.u || -1) * a.q); });
