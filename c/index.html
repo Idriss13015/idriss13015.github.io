@@ -115,8 +115,15 @@
         .sheet-bg { position: fixed; inset: 0; z-index: 20; background: rgba(10,10,25,.5); display: flex; align-items: flex-end; justify-content: center;
                     opacity: 0; transition: opacity .18s; }
         .sheet-bg.on { opacity: 1; }
-        .sheet { width: 100%; max-width: 520px; background: var(--card); border-radius: 26px 26px 0 0; padding: 10px 20px calc(20px + env(safe-area-inset-bottom));
-                 transform: translateY(30px); transition: transform .2s; max-height: 92vh; overflow-y: auto; }
+        .sheet { position: relative; width: 100%; max-width: 520px; background: var(--card); border-radius: 26px 26px 0 0;
+                 padding: 10px 20px calc(20px + env(safe-area-inset-bottom));
+                 transform: translateY(30px); transition: transform .2s; max-height: 92vh; overflow-y: auto;
+                 overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+        .sheet.drag { transition: none; }
+        .sheet .close { position: absolute; top: 12px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 0; cursor: pointer;
+                        background: var(--soft); color: var(--text); font-size: 20px; line-height: 36px; padding: 0; }
+        body.locked { position: fixed; left: 0; right: 0; overflow: hidden; }
+        .sheet-bg { overscroll-behavior: contain; touch-action: none; }
         .sheet-bg.on .sheet { transform: none; }
         @media (min-width: 700px) { .sheet-bg { align-items: center; } .sheet { border-radius: 26px; } }
         .sheet .grab { width: 40px; height: 5px; border-radius: 9px; background: var(--line); margin: 0 auto 12px; }
@@ -249,6 +256,7 @@
 <div class="sheet-bg" id="sheet" hidden>
     <div class="sheet" role="dialog" aria-modal="true">
         <div class="grab"></div>
+        <button class="close" id="sh-close" aria-label="Fermer">×</button>
         <div class="pic" id="sh-pic"></div>
         <h3 id="sh-name"></h3>
         <div class="sub" id="sh-sub"></div>
@@ -379,10 +387,51 @@
     function price(l) { return (typeof l.u === 'number' && l.u > 0) ? l.u : 0; }
 
     // Fiche d'une pièce : le moment où l'envie est la plus forte → l'app.
-    var sheet = $('sheet');
-    function closeSheet() { sheet.classList.remove('on'); setTimeout(function () { sheet.hidden = true; }, 180); }
-    sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheet.hidden) closeSheet(); });
+    var sheet = $('sheet'), panel = sheet.querySelector('.sheet'), lockedY = 0;
+    // Le fond ne défile plus tant que la fiche est ouverte (iOS compris).
+    function lock() {
+        lockedY = window.scrollY;
+        document.body.style.top = -lockedY + 'px';
+        document.body.classList.add('locked');
+    }
+    function unlock() {
+        document.body.classList.remove('locked');
+        document.body.style.top = '';
+        window.scrollTo(0, lockedY);
+    }
+    function closeSheet(how) {
+        if (sheet.hidden) return;
+        sheet.classList.remove('on');
+        panel.style.transform = '';
+        unlock();
+        setTimeout(function () { sheet.hidden = true; }, 180);
+        ev('share_item_close', { how: how || 'outside', platform: platform });
+    }
+    sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet('outside'); });
+    $('sh-close').addEventListener('click', function () { closeSheet('button'); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet('escape'); });
+    // Glisser la fiche vers le bas pour la fermer (quand elle est en haut).
+    var startY = null, dy = 0;
+    panel.addEventListener('touchstart', function (e) {
+        startY = panel.scrollTop <= 0 ? e.touches[0].clientY : null; dy = 0;
+    }, { passive: true });
+    panel.addEventListener('touchmove', function (e) {
+        if (startY === null) return;
+        dy = e.touches[0].clientY - startY;
+        if (dy > 0) {
+            e.preventDefault();
+            panel.classList.add('drag');
+            panel.style.transform = 'translateY(' + dy + 'px)';
+        }
+    }, { passive: false });
+    panel.addEventListener('touchend', function () {
+        if (startY === null) return;
+        panel.classList.remove('drag');
+        if (dy > 90) closeSheet('swipe'); else panel.style.transform = '';
+        startY = null;
+    });
+    // Toucher le fond sombre ne fait pas défiler la page.
+    sheet.addEventListener('touchmove', function (e) { if (!panel.contains(e.target)) e.preventDefault(); }, { passive: false });
     function openSheet(l, unit, view) {
         var pic = $('sh-pic'); pic.textContent = '';
         var im = img(l.i); if (im) { im.loading = 'eager'; pic.appendChild(im); }
@@ -391,13 +440,15 @@
         $('sh-price').hidden = !unit;
         if (unit) $('sh-price').textContent = euro.format(unit);
         sheet.hidden = false;
+        panel.scrollTop = 0;
+        lock();
         requestAnimationFrame(function () { sheet.classList.add('on'); });
         ev('share_item_open', { kind: l.t === 'p' ? 'product' : 'card', view: view, platform: platform });
     }
 
     function render(h, lines, wish) {
         var showValues = h.sv !== false;
-        var wishValues = showValues && h.wv === true;
+        var wishValues = showValues;
         var cols = Array.isArray(h.cols) ? h.cols : [];
         var owner = (typeof h.o === 'string' && h.o.trim()) ? h.o.trim() : 'un collectionneur';
         document.title = 'Collection de ' + owner + ' · Pikacheck';
