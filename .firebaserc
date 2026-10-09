@@ -5,7 +5,9 @@
   "targets": {
     "pikacheck-app": {
       "hosting": {
-        "site": ["pikacheck-web"]
+        "site": [
+          "pikacheck-web"
+        ]
       }
     }
   }
