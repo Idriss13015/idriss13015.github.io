@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Une collection Pokémon sur Pikacheck</title>
     <meta name="description" content="Découvre cette collection de cartes et produits Pokémon, avec leur cote du marché, sur Pikacheck.">
     <meta name="robots" content="noindex, nofollow">
@@ -21,7 +21,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <meta name="theme-color" content="#5a50f3">
-    <!-- Bannière iOS « Ouvrir dans l'app » -->
+    <!-- Bannière iOS : « Ouvrir » si l'app est installée, « Obtenir » sinon -->
     <meta name="apple-itunes-app" content="app-id=6749660231">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
@@ -38,40 +38,64 @@
 
     <style>
         :root {
-            --bg: #f8f8ff; --card: #ffffff; --text: #1a1a2e; --muted: #6b6b80; --line: #e8e8f2;
-            --brand: #5a50f3; --brand2: #7b3fe4; --soft: #f0efff;
+            --bg: #f6f6fc; --card: #ffffff; --text: #16162a; --muted: #6b6b80; --line: #e6e6f2;
+            --brand: #5a50f3; --brand2: #7b3fe4; --soft: #efeeff; --gold: #f5b82e; --green: #1fb37a;
         }
         @media (prefers-color-scheme: dark) {
-            :root { --bg: #121220; --card: #1d1d30; --text: #f2f2f8; --muted: #a0a0b8; --line: #2c2c44; --soft: #24243a; }
+            :root { --bg: #11111d; --card: #1c1c2e; --text: #f2f2f8; --muted: #a0a0b8; --line: #2b2b42; --soft: #23233a; }
         }
         * { box-sizing: border-box; }
-        body { margin: 0; background: var(--bg); color: var(--text);
-               font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+        html { -webkit-text-size-adjust: 100%; }
+        body { margin: 0; overflow-x: hidden; background: var(--bg); color: var(--text);
+               font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+               padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
         a { color: inherit; }
-        .wrap { max-width: 980px; margin: 0 auto; padding: 16px; }
-        header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0 14px; }
+        .wrap { max-width: 980px; margin: 0 auto; padding: 14px 16px; }
+        header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 0 14px; }
         .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; text-decoration: none; }
         .brand img { width: 34px; height: 34px; border-radius: 9px; }
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer;
                border-radius: 999px; padding: 11px 18px; font: inherit; font-weight: 700; font-size: 14px; text-decoration: none; }
-        .btn.primary { background: var(--brand); color: #fff; }
+        .btn.primary { background: var(--brand); color: #fff; box-shadow: 0 8px 22px rgba(90,80,243,.35); }
+        .btn.light { background: #fff; color: var(--brand); }
         .btn.ghost { background: var(--soft); color: var(--brand); }
-        .hero { border-radius: 22px; padding: 22px; color: #fff;
-                background: linear-gradient(135deg, var(--brand), var(--brand2)); box-shadow: 0 18px 50px rgba(90,80,243,.3); }
-        .hero h1 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
-        .hero .value { font-size: 40px; font-weight: 800; line-height: 1.1; margin: 4px 0; }
-        .hero .meta { opacity: .88; font-weight: 600; font-size: 14px; }
+
+        .hero { position: relative; overflow: hidden; border-radius: 24px; padding: 22px; color: #fff;
+                background: radial-gradient(120% 120% at 100% 0%, #8a5cff 0%, transparent 55%), linear-gradient(135deg, var(--brand), var(--brand2));
+                box-shadow: 0 18px 50px rgba(90,80,243,.3); }
+        .hero .kicker { font-size: 12px; font-weight: 800; letter-spacing: .12em; opacity: .8; text-transform: uppercase; }
+        .hero h1 { margin: 6px 0 2px; font-size: 22px; font-weight: 800; line-height: 1.2; }
+        .hero .value { font-size: 44px; font-weight: 800; line-height: 1.05; margin: 8px 0 4px; letter-spacing: -.02em; }
+        .hero .meta { opacity: .9; font-weight: 600; font-size: 14px; }
         .hero .date { opacity: .7; font-size: 12px; margin-top: 4px; }
-        .tabs { display: flex; gap: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px; margin: 16px 0 10px; }
+
+        .showcase { margin-top: 16px; }
+        .showcase h2, .section-title { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+        .top3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        .top3 .p { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 8px; position: relative; }
+        .top3 .p .img { aspect-ratio: .74; display: flex; align-items: center; justify-content: center; }
+        .top3 .p img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+        .top3 .p .n { font-size: 12px; font-weight: 700; margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .top3 .p .v { font-size: 13px; font-weight: 800; color: var(--brand); }
+        .top3 .rank { position: absolute; top: 6px; left: 6px; background: var(--gold); color: #3a2a00; font-size: 11px; font-weight: 800;
+                      border-radius: 999px; padding: 2px 7px; }
+
+        .invite { margin: 18px 0 4px; border-radius: 20px; padding: 18px; background: var(--card); border: 1px solid var(--line);
+                  display: flex; gap: 14px; align-items: center; }
+        .invite .t { font-weight: 800; font-size: 17px; line-height: 1.25; }
+        .invite .s { color: var(--muted); font-size: 13px; margin-top: 3px; }
+        .invite .btn { margin-left: auto; flex: none; }
+
+        .tabs { display: flex; gap: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px; margin: 18px 0 10px; }
         .tabs button { flex: 1; border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 700;
                        padding: 10px; border-radius: 10px; cursor: pointer; }
         .tabs button.on { background: var(--brand); color: #fff; }
-        .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+        .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
         .chip { white-space: nowrap; border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px;
                 padding: 7px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
         .chip.on { border-color: var(--brand); color: var(--brand); background: var(--soft); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
-        .tile { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: 12px; margin-top: 12px; }
+        .tile { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
         .tile .img { aspect-ratio: .78; display: flex; align-items: center; justify-content: center; background: var(--soft); padding: 8px; }
         .tile .img img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .tile .info { padding: 9px 10px 11px; }
@@ -79,11 +103,32 @@
         .tile .sub { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .tile .row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; font-size: 12px; color: var(--muted); }
         .tile .price { color: var(--text); font-weight: 800; font-size: 14px; }
-        .cta { margin: 26px 0 10px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; text-align: center; }
-        .cta h2 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
-        .cta p { margin: 0 0 16px; color: var(--muted); }
+        .promo { grid-column: 1 / -1; border-radius: 18px; padding: 18px; color: #fff; display: flex; gap: 14px; align-items: center;
+                 background: linear-gradient(135deg, var(--brand), var(--brand2)); }
+        .promo .t { font-weight: 800; font-size: 16px; }
+        .promo .s { opacity: .85; font-size: 13px; margin-top: 2px; }
+        .promo .btn { margin-left: auto; flex: none; }
+
+        .cta { margin: 26px 0 10px; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 24px; text-align: center; }
+        .cta h2 { margin: 0 0 6px; font-size: 23px; font-weight: 800; }
+        .cta p { margin: 0 0 14px; color: var(--muted); }
+        .proof { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin: 0 0 16px; font-weight: 700; font-size: 14px; }
+        .proof .star { color: var(--gold); }
+        .feats { list-style: none; padding: 0; margin: 0 auto 18px; max-width: 420px; text-align: left; color: var(--text); font-size: 14px; }
+        .feats li { padding: 6px 0 6px 30px; position: relative; }
+        .feats li::before { content: '✓'; position: absolute; left: 4px; color: var(--green); font-weight: 800; }
         .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center; }
         .badges img { height: 48px; }
+
+        .sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+                  background: color-mix(in srgb, var(--card) 92%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+                  border-top: 1px solid var(--line); display: flex; align-items: center; gap: 12px; }
+        .sticky img { width: 40px; height: 40px; border-radius: 10px; }
+        .sticky .t { font-weight: 800; font-size: 14px; }
+        .sticky .s { color: var(--muted); font-size: 12px; }
+        .sticky .btn { margin-left: auto; }
+        @media (min-width: 900px) { .sticky { display: none; } body { padding-bottom: 0; } }
+
         .state { text-align: center; padding: 60px 16px; color: var(--muted); }
         .state h2 { color: var(--text); }
         .more { display: block; margin: 16px auto 0; }
@@ -115,11 +160,26 @@
 
     <main id="content" hidden>
         <section class="hero">
+            <div class="kicker">Collection Pokémon</div>
             <h1 id="owner"></h1>
             <div class="value" id="total" hidden></div>
             <div class="meta" id="counts"></div>
             <div class="date" id="date"></div>
         </section>
+
+        <section class="showcase" id="showcase" hidden>
+            <h2>Les plus belles pièces</h2>
+            <div class="top3" id="top3"></div>
+        </section>
+
+        <section class="invite">
+            <div>
+                <div class="t">Et toi, ta collection vaut combien ?</div>
+                <div class="s">Scanne tes cartes, découvre leur valeur. Gratuit.</div>
+            </div>
+            <a class="btn primary store-link" data-where="invite" href="#">Essayer</a>
+        </section>
+
         <div class="tabs">
             <button id="tab-cards" class="on">Cartes</button>
             <button id="tab-products">Produits scellés</button>
@@ -130,26 +190,84 @@
     </main>
 
     <section class="cta">
-        <h2>Et toi, ta collection vaut combien ?</h2>
-        <p>Scanne tes cartes Pokémon et suis leur valeur chaque jour. Gratuit.</p>
+        <h2>Suis la valeur de ta collection</h2>
+        <p>L’app des collectionneurs Pokémon.</p>
+        <div class="proof"><span><span class="star">★</span> 4,8 sur l’App Store</span><span>Des milliers de collectionneurs</span></div>
+        <ul class="feats">
+            <li>Scanne une carte, découvre sa cote en 2 secondes</li>
+            <li>La valeur de ta collection mise à jour chaque jour</li>
+            <li>Produits scellés : ETB, displays, coffrets…</li>
+            <li>Partage ta collection comme celle-ci</li>
+        </ul>
         <div class="badges">
-            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=share&utm_campaign=collection" target="_blank" rel="noopener"><img src="/assets/badges/app-store-badge-fr.svg" alt="Télécharger dans l’App Store"></a>
-            <a href="https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=share&utm_campaign=collection" target="_blank" rel="noopener"><img src="/assets/badges/google-play-badge.png" alt="Disponible sur Google Play"></a>
+            <a class="store" data-store="ios" data-where="footer" href="#"><img src="/assets/badges/app-store-badge-fr.svg" alt="Télécharger dans l’App Store"></a>
+            <a class="store" data-store="android" data-where="footer" href="#"><img src="/assets/badges/google-play-badge.png" alt="Disponible sur Google Play"></a>
         </div>
     </section>
+</div>
+
+<div class="sticky" id="sticky">
+    <img src="/assets/favicons/apple-touch-icon.png" alt="">
+    <div><div class="t">Pikacheck</div><div class="s">Gratuit · ★ 4,8</div></div>
+    <a class="btn primary store-link" data-where="sticky" href="#">Télécharger</a>
 </div>
 
 <script>
 (function () {
     'use strict';
-    var PAGE = 60;
+    var PAGE = 60, PROMO_AFTER = 12;
     var params = new URLSearchParams(location.search);
     var id = params.get('s') || '';
     var $ = function (x) { return document.getElementById(x); };
     var show = function (x) { ['loading', 'missing', 'error', 'content'].forEach(function (k) { $(k).hidden = k !== x; }); };
+    var ev = function (name, p) { try { if (window.gtag) gtag('event', name, p || {}); } catch (e) {} };
 
-    $('open-app').href = 'pikacheck://c?s=' + encodeURIComponent(id);
-    if (!/^[A-Za-z0-9]{8,32}$/.test(id)) { show('missing'); return; }
+    // --- Plateforme et liens des stores (marqués « share » pour mesurer les installations)
+    var ua = navigator.userAgent || '';
+    var platform = /android/i.test(ua) ? 'android' : (/iphone|ipad|ipod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) ? 'ios' : 'desktop';
+    var IOS = 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?ct=share_collection&mt=8';
+    var ANDROID = 'https://play.google.com/store/apps/details?id=com.pikacheck.app&referrer=' +
+        encodeURIComponent('utm_source=share&utm_medium=web&utm_campaign=collection');
+    var STORE = platform === 'android' ? ANDROID : platform === 'ios' ? IOS : '/download/';
+    var validId = /^[A-Za-z0-9]{8,32}$/.test(id);
+
+    document.querySelectorAll('.store').forEach(function (a) {
+        a.href = a.getAttribute('data-store') === 'android' ? ANDROID : IOS;
+        a.target = '_blank'; a.rel = 'noopener';
+        a.addEventListener('click', function () { ev('share_store_click', { store: a.getAttribute('data-store'), where: a.getAttribute('data-where'), platform: platform }); });
+    });
+    document.querySelectorAll('.store-link').forEach(function (a) {
+        a.href = STORE;
+        a.addEventListener('click', function () { ev('share_store_click', { store: platform, where: a.getAttribute('data-where'), platform: platform }); });
+    });
+
+    // --- « Ouvrir dans l'app » : app si installée, sinon le store (jamais d'erreur affichée)
+    var open = $('open-app');
+    if (platform === 'desktop') {
+        open.textContent = 'Télécharger l’app';
+        open.href = '/download/';
+    } else if (platform === 'android') {
+        // Intent Android : ouvre l'app, ou le Play Store si elle n'est pas installée.
+        open.href = 'intent://c?s=' + encodeURIComponent(id) + '#Intent;scheme=pikacheck;package=com.pikacheck.app;S.browser_fallback_url=' +
+            encodeURIComponent(ANDROID) + ';end';
+    } else {
+        open.href = 'pikacheck://c?s=' + encodeURIComponent(id);
+        open.addEventListener('click', function (e) {
+            e.preventDefault();
+            var left = false;
+            var onHide = function () { if (document.hidden) left = true; };
+            document.addEventListener('visibilitychange', onHide);
+            window.location.href = open.href;
+            // L'app ne s'est pas ouverte : direction l'App Store.
+            setTimeout(function () {
+                document.removeEventListener('visibilitychange', onHide);
+                if (!left && !document.hidden) window.location.href = IOS;
+            }, 1600);
+        });
+    }
+    open.addEventListener('click', function () { ev('share_open_app_click', { platform: platform }); });
+
+    if (!validId) { show('missing'); ev('share_page_view', { found: 0, platform: platform }); return; }
 
     var BASE = 'https://firestore.googleapis.com/v1/projects/pikacheck-app/databases/(default)/documents/shares/' + id;
     var euro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
@@ -171,11 +289,15 @@
         if (text != null) e.textContent = text; // jamais innerHTML : contenu fourni par l'utilisateur
         return e;
     }
-    function safeImg(u) { return typeof u === 'string' && /^https:\/\//.test(u) ? u : null; }
-    function plural(n, one, many) { return n + ' ' + (n > 1 ? many : one); }
+    function img(src) {
+        if (typeof src !== 'string' || !/^https:\/\//.test(src)) return null;
+        var im = el('img'); im.loading = 'lazy'; im.alt = ''; im.referrerPolicy = 'no-referrer'; im.src = src;
+        return im;
+    }
+    function plural(n, one, many) { return n.toLocaleString('fr-FR') + ' ' + (n > 1 ? many : one); }
 
     getPayload(BASE).then(function (head) {
-        if (!head) { show('missing'); return; }
+        if (!head) { show('missing'); ev('share_page_view', { found: 0, platform: platform }); return; }
         var h = JSON.parse(head);
         var parts = Math.max(1, Math.min(10, (h.parts | 0) || 1));
         var reqs = [];
@@ -185,7 +307,7 @@
             rest.forEach(function (p) { try { if (p) lines = lines.concat(JSON.parse(p).l || []); } catch (e) {} });
             render(h, lines.filter(function (l) { return l && typeof l.n === 'string' && l.q > 0; }));
         });
-    }).catch(function () { show('error'); });
+    }).catch(function () { show('error'); ev('share_page_view', { found: -1, platform: platform }); });
 
     function render(h, lines) {
         var showValues = h.sv !== false;
@@ -196,16 +318,44 @@
         var cards = 0, products = 0, total = 0;
         lines.forEach(function (l) {
             if (l.t === 'p') products += l.q; else cards += l.q;
-            if (typeof l.u === 'number') total += l.u * l.q;
+            if (typeof l.u === 'number' && l.u > 0) total += l.u * l.q;
         });
         if (showValues) { $('total').hidden = false; $('total').textContent = euro0.format(total); }
         $('counts').textContent = plural(cards, 'carte', 'cartes') + ' · ' + plural(products, 'produit scellé', 'produits scellés');
         if (h.at) $('date').textContent = 'Mise à jour le ' + new Date(h.at).toLocaleDateString('fr-FR');
 
+        // Vitrine : les 3 plus chères (ou les 3 premières avec image si valeurs masquées).
+        var best = lines.filter(function (l) { return typeof l.i === 'string'; })
+            .sort(function (a, b) { return ((b.u || 0) * 1) - ((a.u || 0) * 1); }).slice(0, 3);
+        if (best.length) {
+            $('showcase').hidden = false;
+            best.forEach(function (l, i) {
+                var p = el('div', 'p'), box = el('div', 'img'), im = img(l.i);
+                if (im) box.appendChild(im);
+                p.appendChild(el('span', 'rank', '#' + (i + 1)));
+                p.appendChild(box);
+                p.appendChild(el('div', 'n', l.n));
+                if (showValues && typeof l.u === 'number' && l.u > 0) p.appendChild(el('div', 'v', euro0.format(l.u)));
+                $('top3').appendChild(p);
+            });
+        }
+
         var state = { tab: cards === 0 && products > 0 ? 'p' : 'c', col: -1, shown: PAGE };
         function list() {
             return lines.filter(function (l) { return (l.t === 'p' ? 'p' : 'c') === state.tab && (state.col < 0 || l.c === state.col); })
                 .sort(function (a, b) { return ((b.u || -1) * b.q) - ((a.u || -1) * a.q); });
+        }
+        function promo() {
+            var d = el('div', 'promo');
+            var txt = el('div');
+            txt.appendChild(el('div', 't', 'Ta collection vaut peut-être plus que tu crois'));
+            txt.appendChild(el('div', 's', 'Découvre-le gratuitement avec Pikacheck.'));
+            d.appendChild(txt);
+            var a = el('a', 'btn light', 'Télécharger');
+            a.href = STORE;
+            a.addEventListener('click', function () { ev('share_store_click', { store: platform, where: 'grid', platform: platform }); });
+            d.appendChild(a);
+            return d;
         }
         function draw() {
             $('tab-cards').className = state.tab === 'c' ? 'on' : '';
@@ -214,15 +364,16 @@
             if (cols.length > 1) {
                 [-1].concat(cols.map(function (_, i) { return i; })).forEach(function (i) {
                     var b = el('button', 'chip' + (state.col === i ? ' on' : ''), i < 0 ? 'Toutes' : String(cols[i]));
-                    b.onclick = function () { state.col = i; state.shown = PAGE; draw(); };
+                    b.onclick = function () { state.col = i; state.shown = PAGE; draw(); ev('share_filter', { kind: 'collection' }); };
                     chips.appendChild(b);
                 });
             }
             var items = list(), grid = $('grid'); grid.textContent = '';
             if (!items.length) grid.appendChild(el('p', 'state', 'Rien ici pour l’instant.'));
-            items.slice(0, state.shown).forEach(function (l) {
-                var t = el('div', 'tile'), box = el('div', 'img'), src = safeImg(l.i);
-                if (src) { var im = el('img'); im.loading = 'lazy'; im.alt = ''; im.referrerPolicy = 'no-referrer'; im.src = src; box.appendChild(im); }
+            items.slice(0, state.shown).forEach(function (l, idx) {
+                if (idx === PROMO_AFTER) grid.appendChild(promo());
+                var t = el('div', 'tile'), box = el('div', 'img'), im = img(l.i);
+                if (im) box.appendChild(im);
                 t.appendChild(box);
                 var info = el('div', 'info');
                 info.appendChild(el('div', 'name', l.n));
@@ -230,19 +381,19 @@
                 if (sub) info.appendChild(el('div', 'sub', sub));
                 var row = el('div', 'row');
                 row.appendChild(el('span', '', '×' + l.q));
-                if (showValues && typeof l.u === 'number') row.appendChild(el('span', 'price', euro.format(l.u)));
+                if (showValues && typeof l.u === 'number' && l.u > 0) row.appendChild(el('span', 'price', euro.format(l.u)));
                 info.appendChild(row);
                 t.appendChild(info);
                 grid.appendChild(t);
             });
             $('more').hidden = items.length <= state.shown;
         }
-        $('tab-cards').onclick = function () { state.tab = 'c'; state.shown = PAGE; draw(); };
-        $('tab-products').onclick = function () { state.tab = 'p'; state.shown = PAGE; draw(); };
-        $('more').onclick = function () { state.shown += PAGE; draw(); };
+        $('tab-cards').onclick = function () { state.tab = 'c'; state.shown = PAGE; draw(); ev('share_filter', { kind: 'cards' }); };
+        $('tab-products').onclick = function () { state.tab = 'p'; state.shown = PAGE; draw(); ev('share_filter', { kind: 'products' }); };
+        $('more').onclick = function () { state.shown += PAGE; draw(); ev('share_filter', { kind: 'more' }); };
         draw();
         show('content');
-        if (window.gtag) gtag('event', 'share_link_opened', { where: 'web', lines: lines.length });
+        ev('share_page_view', { found: 1, lines: lines.length, platform: platform, show_values: showValues ? 1 : 0 });
     }
 })();
 </script>
