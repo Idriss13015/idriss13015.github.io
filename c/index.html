@@ -89,9 +89,47 @@
         .invite .btn { margin-left: auto; flex: none; }
 
         .tabs { display: flex; gap: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px; margin: 18px 0 10px; }
-        .tabs button { flex: 1; border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 700;
-                       padding: 10px; border-radius: 10px; cursor: pointer; }
-        .tabs button.on { background: var(--brand); color: #fff; }
+        .tabs button { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 700;
+                       padding: 10px 6px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
+                       transition: background .14s, color .14s; }
+        .tabs button.on { background: var(--brand); color: #fff; box-shadow: 0 6px 16px rgba(90,80,243,.35); }
+        .tabs .n { font-size: 12px; font-weight: 800; padding: 1px 7px; border-radius: 999px; background: var(--soft); color: var(--brand); }
+        .tabs button.on .n { background: rgba(255,255,255,.22); color: #fff; }
+        .hchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .hchip { border: 0; cursor: pointer; font: inherit; font-size: 13px; font-weight: 800; color: #fff; background: rgba(255,255,255,.18);
+                 border-radius: 999px; padding: 6px 12px; }
+        .hchip:hover { background: rgba(255,255,255,.28); }
+        .intro { display: flex; gap: 12px; align-items: center; border-radius: 18px; padding: 14px; margin-top: 10px;
+                 border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); background: color-mix(in srgb, var(--accent) 10%, var(--card)); }
+        .intro .ic { flex: none; width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+                     background: var(--accent); color: #fff; font-size: 18px; }
+        .intro .t { font-weight: 800; font-size: 15px; }
+        .intro .s { color: var(--muted); font-size: 13px; margin-top: 2px; }
+        .intro .btn { margin-left: auto; flex: none; padding: 9px 14px; font-size: 13px; }
+        @media (max-width: 520px) { .intro { flex-wrap: wrap; } .intro .btn { margin: 2px 0 0 50px; } }
+        .tile { cursor: pointer; transition: transform .12s, box-shadow .12s; }
+        .tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,20,60,.12); }
+        .tile .img { position: relative; }
+        .badge { position: absolute; top: 8px; left: 8px; max-width: calc(100% - 16px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+                 color: #fff; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 3px 9px; }
+        .sheet-bg { position: fixed; inset: 0; z-index: 20; background: rgba(10,10,25,.5); display: flex; align-items: flex-end; justify-content: center;
+                    opacity: 0; transition: opacity .18s; }
+        .sheet-bg.on { opacity: 1; }
+        .sheet { width: 100%; max-width: 520px; background: var(--card); border-radius: 26px 26px 0 0; padding: 10px 20px calc(20px + env(safe-area-inset-bottom));
+                 transform: translateY(30px); transition: transform .2s; max-height: 92vh; overflow-y: auto; }
+        .sheet-bg.on .sheet { transform: none; }
+        @media (min-width: 700px) { .sheet-bg { align-items: center; } .sheet { border-radius: 26px; } }
+        .sheet .grab { width: 40px; height: 5px; border-radius: 9px; background: var(--line); margin: 0 auto 12px; }
+        .sheet .pic { height: 240px; display: flex; align-items: center; justify-content: center; background: var(--soft); border-radius: 18px; padding: 14px; }
+        .sheet .pic img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .sheet h3 { margin: 14px 0 2px; font-size: 20px; font-weight: 800; }
+        .sheet .sub { color: var(--muted); font-size: 13px; }
+        .sheet .price { font-size: 26px; font-weight: 800; margin-top: 8px; }
+        .sheet .perks { list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 8px; font-size: 14px; }
+        .sheet .perks li { display: flex; gap: 10px; align-items: center; }
+        .sheet .perks span { width: 30px; height: 30px; flex: none; border-radius: 9px; background: var(--soft); display: flex; align-items: center; justify-content: center; }
+        .sheet .btn { width: 100%; padding: 14px; font-size: 15px; margin-top: 8px; }
+        .sheet .note { text-align: center; color: var(--muted); font-size: 12px; margin-top: 10px; }
         .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
         .chip { white-space: nowrap; border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px;
                 padding: 7px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
@@ -167,6 +205,7 @@
             <div class="value" id="total" hidden></div>
             <div class="meta" id="counts"></div>
             <div class="persona" id="persona" hidden></div>
+            <div class="hchips" id="hchips" hidden></div>
             <div class="date" id="date"></div>
         </section>
 
@@ -183,11 +222,9 @@
             <a class="btn primary store-link" data-where="invite" href="#">Essayer</a>
         </section>
 
-        <div class="tabs">
-            <button id="tab-products">Produits scellés</button>
-            <button id="tab-cards">Cartes</button>
-        </div>
-        <div class="chips" id="chips"></div>
+        <div class="tabs" id="vtabs" hidden></div>
+        <div id="intro"></div>
+        <div class="chips" id="chips" style="margin-top:12px"></div>
         <div class="grid" id="grid"></div>
         <button class="btn ghost more" id="more" hidden>Voir plus</button>
     </main>
@@ -207,6 +244,23 @@
             <a class="store" data-store="android" data-where="footer" href="#"><img src="/assets/badges/google-play-badge.png" alt="Disponible sur Google Play"></a>
         </div>
     </section>
+</div>
+
+<div class="sheet-bg" id="sheet" hidden>
+    <div class="sheet" role="dialog" aria-modal="true">
+        <div class="grab"></div>
+        <div class="pic" id="sh-pic"></div>
+        <h3 id="sh-name"></h3>
+        <div class="sub" id="sh-sub"></div>
+        <div class="price" id="sh-price" hidden></div>
+        <ul class="perks">
+            <li><span>📈</span>Prix du jour et historique complet</li>
+            <li><span>♥</span>Ajoute-la à ta wishlist et suis l’évolution de son prix</li>
+            <li><span>📷</span>Scanne tes cartes, découvre leur cote en 2 secondes</li>
+        </ul>
+        <a class="btn primary" id="sh-open" href="#">Voir dans Pikacheck</a>
+        <div class="note">Gratuit · iPhone et Android</div>
+    </div>
 </div>
 
 <div class="sticky" id="sticky">
@@ -231,7 +285,8 @@
     var platform = /android/i.test(ua) ? 'android' : (/iphone|ipad|ipod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) ? 'ios' : 'desktop';
     var IOS = 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?ct=share_collection&mt=8';
     var ANDROID = 'https://play.google.com/store/apps/details?id=com.pikacheck.app&referrer=' +
-        encodeURIComponent('utm_source=share&utm_medium=web&utm_campaign=collection');
+        encodeURIComponent('utm_source=share&utm_medium=web&utm_campaign=collection&utm_content=' +
+            (((new URLSearchParams(location.search).get('s') || '').match(/^[A-Za-z0-9]{8,32}/) || [''])[0]));
     var STORE = platform === 'android' ? ANDROID : platform === 'ios' ? IOS : '/download/';
     var validId = /^[A-Za-z0-9]{8,32}$/.test(id);
 
@@ -246,30 +301,34 @@
     });
 
     // --- « Ouvrir dans l'app » : app si installée, sinon le store (jamais d'erreur affichée)
-    var open = $('open-app');
-    if (platform === 'desktop') {
-        open.textContent = 'Télécharger l’app';
-        open.href = '/download/';
-    } else if (platform === 'android') {
-        // Intent Android : ouvre l'app, ou le Play Store si elle n'est pas installée.
-        open.href = 'intent://c?s=' + encodeURIComponent(id) + '#Intent;scheme=pikacheck;package=com.pikacheck.app;S.browser_fallback_url=' +
-            encodeURIComponent(ANDROID) + ';end';
-    } else {
-        open.href = 'pikacheck://c?s=' + encodeURIComponent(id);
-        open.addEventListener('click', function (e) {
-            e.preventDefault();
-            var left = false;
-            var onHide = function () { if (document.hidden) left = true; };
-            document.addEventListener('visibilitychange', onHide);
-            window.location.href = open.href;
-            // L'app ne s'est pas ouverte : direction l'App Store.
-            setTimeout(function () {
-                document.removeEventListener('visibilitychange', onHide);
-                if (!left && !document.hidden) window.location.href = IOS;
-            }, 1600);
-        });
+    function smartOpen(a, where) {
+        if (platform === 'desktop') {
+            a.href = '/download/';
+        } else if (platform === 'android') {
+            // Intent Android : ouvre l'app, ou le Play Store si elle n'est pas installée.
+            a.href = 'intent://c?s=' + encodeURIComponent(id) + '#Intent;scheme=pikacheck;package=com.pikacheck.app;S.browser_fallback_url=' +
+                encodeURIComponent(ANDROID) + ';end';
+        } else {
+            a.href = 'pikacheck://c?s=' + encodeURIComponent(id);
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                var left = false;
+                var onHide = function () { if (document.hidden) left = true; };
+                document.addEventListener('visibilitychange', onHide);
+                window.location.href = a.href;
+                // L'app ne s'est pas ouverte : direction l'App Store.
+                setTimeout(function () {
+                    document.removeEventListener('visibilitychange', onHide);
+                    if (!left && !document.hidden) window.location.href = IOS;
+                }, 1600);
+            });
+        }
+        a.addEventListener('click', function () { ev('share_open_app_click', { platform: platform, where: where }); });
     }
-    open.addEventListener('click', function () { ev('share_open_app_click', { platform: platform }); });
+    var open = $('open-app');
+    if (platform === 'desktop') open.textContent = 'Télécharger l’app';
+    smartOpen(open, 'header');
+    smartOpen($('sh-open'), 'item_sheet');
 
     if (!validId) { show('missing'); ev('share_page_view', { found: 0, platform: platform }); return; }
 
@@ -309,12 +368,36 @@
         return Promise.all(reqs).then(function (rest) {
             var lines = (h.l || []).slice();
             rest.forEach(function (p) { try { if (p) lines = lines.concat(JSON.parse(p).l || []); } catch (e) {} });
-            render(h, lines.filter(function (l) { return l && typeof l.n === 'string' && l.q > 0; }));
+            var ok = function (l) { return l && typeof l.n === 'string' && l.q > 0; };
+            render(h, lines.filter(ok), (Array.isArray(h.w) ? h.w : []).filter(ok));
         });
     }).catch(function () { show('error'); ev('share_page_view', { found: -1, platform: platform }); });
 
-    function render(h, lines) {
+    function key(l) {
+        return l.t === 'p' ? 'p|' + (l.pi || l.n + '|' + (l.x || '')) : 'c|' + (l.ci || l.n + '|' + (l.x || '') + '|' + (l.no || '')) + '|' + (l.vi || l.ve || '');
+    }
+    function price(l) { return (typeof l.u === 'number' && l.u > 0) ? l.u : 0; }
+
+    // Fiche d'une pièce : le moment où l'envie est la plus forte → l'app.
+    var sheet = $('sheet');
+    function closeSheet() { sheet.classList.remove('on'); setTimeout(function () { sheet.hidden = true; }, 180); }
+    sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheet.hidden) closeSheet(); });
+    function openSheet(l, unit, view) {
+        var pic = $('sh-pic'); pic.textContent = '';
+        var im = img(l.i); if (im) { im.loading = 'eager'; pic.appendChild(im); }
+        $('sh-name').textContent = l.n;
+        $('sh-sub').textContent = [l.x, l.no].filter(function (v) { return typeof v === 'string' && v; }).join(' · ');
+        $('sh-price').hidden = !unit;
+        if (unit) $('sh-price').textContent = euro.format(unit);
+        sheet.hidden = false;
+        requestAnimationFrame(function () { sheet.classList.add('on'); });
+        ev('share_item_open', { kind: l.t === 'p' ? 'product' : 'card', view: view, platform: platform });
+    }
+
+    function render(h, lines, wish) {
         var showValues = h.sv !== false;
+        var wishValues = showValues && h.wv === true;
         var cols = Array.isArray(h.cols) ? h.cols : [];
         var owner = (typeof h.o === 'string' && h.o.trim()) ? h.o.trim() : 'un collectionneur';
         document.title = 'Collection de ' + owner + ' · Pikacheck';
@@ -330,9 +413,27 @@
         if (typeof h.pf === 'string' && h.pf.trim()) { $('persona').hidden = false; $('persona').textContent = '🏅 Profil : ' + h.pf.trim(); }
         if (h.at) $('date').textContent = 'Mise à jour le ' + new Date(h.at).toLocaleDateString('fr-FR');
 
+        // Doubles : même pièce, toutes collections confondues.
+        var doubles = [];
+        if (h.sd !== false) {
+            var byKey = {};
+            lines.forEach(function (l) {
+                var k = key(l);
+                if (!byKey[k]) { byKey[k] = { l: l, total: 0 }; doubles.push(byKey[k]); }
+                byKey[k].total += l.q;
+            });
+            doubles = doubles.filter(function (d) { return d.total > 1; })
+                .sort(function (a, b) { return price(b.l) - price(a.l); });
+        }
+        var spare = {};
+        doubles.forEach(function (d) { spare[key(d.l)] = d.total - 1; });
+
         // Vitrine : les 3 plus chères (ou les 3 premières avec image si valeurs masquées).
+        // (une même pièce rangée dans deux collections n'apparaît qu'une fois)
+        var seenTop = {};
         var best = lines.filter(function (l) { return typeof l.i === 'string'; })
-            .sort(function (a, b) { return ((b.u || 0) * 1) - ((a.u || 0) * 1); }).slice(0, 3);
+            .sort(function (a, b) { return ((b.u || 0) * 1) - ((a.u || 0) * 1); })
+            .filter(function (l) { var k = key(l); if (seenTop[k]) return false; seenTop[k] = 1; return true; }).slice(0, 3);
         if (best.length) {
             $('showcase').hidden = false;
             best.forEach(function (l, i) {
@@ -348,60 +449,144 @@
 
         // Produits scellés d'abord quand ils pèsent plus (valeur, sinon nombre).
         var productsFirst = products > 0 && (productValue > cardValue || (productValue === cardValue && products >= cards));
-        var state = { tab: productsFirst ? 'p' : 'c', col: -1, shown: PAGE };
-        function list() {
-            return lines.filter(function (l) { return (l.t === 'p' ? 'p' : 'c') === state.tab && (state.col < 0 || l.c === state.col); })
-                .sort(function (a, b) { return ((b.u || -1) * b.q) - ((a.u || -1) * a.q); });
+        var state = { view: 'col', type: productsFirst ? 'p' : 'c', col: -1, shown: PAGE };
+        var VIEWS = [{ id: 'col', label: 'Collection' }];
+        if (doubles.length) VIEWS.push({ id: 'dbl', label: 'Doubles', n: doubles.length });
+        if (wish.length) VIEWS.push({ id: 'wish', label: 'Wishlist', n: wish.length });
+
+        function all() {
+            return state.view === 'dbl' ? doubles.map(function (d) { return d.l; }) : state.view === 'wish' ? wish : lines;
+        }
+        function unitOf(l) {
+            if (state.view === 'wish') return wishValues ? price(l) : 0;
+            return showValues ? price(l) : 0;
+        }
+        function list(items) {
+            return items.filter(function (l) { return (l.t === 'p' ? 'p' : 'c') === state.type && (state.view !== 'col' || state.col < 0 || l.c === state.col); })
+                .sort(function (a, b) {
+                    var qa = state.view === 'col' ? a.q : 1, qb = state.view === 'col' ? b.q : 1;
+                    return ((unitOf(b) || -1) * qb) - ((unitOf(a) || -1) * qa);
+                });
+        }
+        function setView(v, from) {
+            if (v === state.view) return;
+            state.view = v; state.col = -1; state.shown = PAGE;
+            var items = all(), hasP = items.some(function (l) { return l.t === 'p'; }), hasC = items.some(function (l) { return l.t !== 'p'; });
+            if (state.type === 'p' && !hasP && hasC) state.type = 'c';
+            if (state.type === 'c' && !hasC && hasP) state.type = 'p';
+            draw();
+            ev('share_view_tab', { tab: v, from: from, platform: platform });
+        }
+        function storeBtn(label, where, cls) {
+            var a = el('a', 'btn ' + (cls || 'primary'), label);
+            a.href = STORE;
+            a.addEventListener('click', function (e) { e.stopPropagation(); ev('share_store_click', { store: platform, where: where, platform: platform }); });
+            return a;
         }
         function promo() {
             var d = el('div', 'promo');
             var txt = el('div');
-            txt.appendChild(el('div', 't', 'Ta collection vaut peut-être plus que tu crois'));
-            txt.appendChild(el('div', 's', 'Découvre-le gratuitement avec Pikacheck.'));
+            var copy = state.view === 'wish'
+                ? ['Tu as une de ces pièces ?', 'Ajoute ta collection sur Pikacheck et vois ce que vous avez en commun.']
+                : state.view === 'dbl'
+                    ? ['Une pièce te fait envie ?', 'Crée ta wishlist sur Pikacheck et suis son prix au quotidien.']
+                    : ['Ta collection vaut peut-être plus que tu crois', 'Découvre-le gratuitement avec Pikacheck.'];
+            txt.appendChild(el('div', 't', copy[0]));
+            txt.appendChild(el('div', 's', copy[1]));
             d.appendChild(txt);
-            var a = el('a', 'btn light', 'Télécharger');
-            a.href = STORE;
-            a.addEventListener('click', function () { ev('share_store_click', { store: platform, where: 'grid', platform: platform }); });
-            d.appendChild(a);
+            d.appendChild(storeBtn('Télécharger', 'grid_' + state.view, 'light'));
             return d;
         }
+        function intro() {
+            var box = $('intro'); box.textContent = '';
+            if (state.view === 'col') return;
+            var dbl = state.view === 'dbl';
+            var d = el('div', 'intro');
+            d.style.setProperty('--accent', dbl ? '#3b9bf5' : '#f0507a');
+            d.appendChild(el('div', 'ic', dbl ? '⇄' : '♥'));
+            var txt = el('div');
+            txt.appendChild(el('div', 't', dbl ? 'Les pièces que ' + owner + ' a en double' : 'Les pièces que ' + owner + ' recherche'));
+            txt.appendChild(el('div', 's', dbl
+                ? 'Idéal pour un échange. Avec Pikacheck, vois en un coup d’œil celles qui sont dans ta wishlist.'
+                : 'Tu en as une ? Avec Pikacheck, vois tout de suite ce que tu as de sa wishlist.'));
+            d.appendChild(txt);
+            d.appendChild(storeBtn('Essayer', 'intro_' + state.view));
+            box.appendChild(d);
+        }
         function draw() {
-            $('tab-cards').className = state.tab === 'c' ? 'on' : '';
-            $('tab-products').className = state.tab === 'p' ? 'on' : '';
+            var tabs = $('vtabs'); tabs.textContent = '';
+            tabs.hidden = VIEWS.length < 2;
+            VIEWS.forEach(function (v) {
+                var b = el('button', state.view === v.id ? 'on' : '');
+                b.appendChild(el('span', '', v.label));
+                if (v.n) b.appendChild(el('span', 'n', String(v.n)));
+                b.onclick = function () { setView(v.id, 'tabs'); };
+                tabs.appendChild(b);
+            });
+            intro();
+            var items = all();
+            var nP = items.filter(function (l) { return l.t === 'p'; }).length, nC = items.length - nP;
             var chips = $('chips'); chips.textContent = '';
-            if (cols.length > 1) {
+            if (nP && nC) {
+                [['p', 'Produits'], ['c', 'Cartes']].forEach(function (t) {
+                    var b = el('button', 'chip' + (state.type === t[0] ? ' on' : ''), t[1] + ' · ' + (t[0] === 'p' ? nP : nC));
+                    b.onclick = function () { state.type = t[0]; state.shown = PAGE; draw(); ev('share_filter', { kind: t[0] === 'p' ? 'products' : 'cards' }); };
+                    chips.appendChild(b);
+                });
+            }
+            if (state.view === 'col' && cols.length > 1) {
                 [-1].concat(cols.map(function (_, i) { return i; })).forEach(function (i) {
                     var b = el('button', 'chip' + (state.col === i ? ' on' : ''), i < 0 ? 'Toutes' : String(cols[i]));
                     b.onclick = function () { state.col = i; state.shown = PAGE; draw(); ev('share_filter', { kind: 'collection' }); };
                     chips.appendChild(b);
                 });
             }
-            var items = list(), grid = $('grid'); grid.textContent = '';
-            if (!items.length) grid.appendChild(el('p', 'state', 'Rien ici pour l’instant.'));
-            items.slice(0, state.shown).forEach(function (l, idx) {
+            chips.hidden = !chips.childNodes.length;
+            var shown = list(items), grid = $('grid'); grid.textContent = '';
+            if (!shown.length) grid.appendChild(el('p', 'state', 'Rien ici pour l’instant.'));
+            shown.slice(0, state.shown).forEach(function (l, idx) {
                 if (idx === PROMO_AFTER) grid.appendChild(promo());
+                var unit = unitOf(l);
                 var t = el('div', 'tile'), box = el('div', 'img'), im = img(l.i);
                 if (im) box.appendChild(im);
+                if (state.view === 'dbl') {
+                    var bd = el('span', 'badge', '+' + (spare[key(l)] || 1)); bd.style.background = '#3b9bf5'; box.appendChild(bd);
+                } else if (state.view === 'wish') {
+                    var bw = el('span', 'badge', '♥ Recherchée'); bw.style.background = '#f0507a'; box.appendChild(bw);
+                }
                 t.appendChild(box);
                 var info = el('div', 'info');
                 info.appendChild(el('div', 'name', l.n));
                 var sub = [l.x, l.no].filter(function (v) { return typeof v === 'string' && v; }).join(' · ');
                 if (sub) info.appendChild(el('div', 'sub', sub));
                 var row = el('div', 'row');
-                row.appendChild(el('span', '', '×' + l.q));
-                if (showValues && typeof l.u === 'number' && l.u > 0) row.appendChild(el('span', 'price', euro.format(l.u)));
+                row.appendChild(el('span', '', state.view === 'dbl' ? (spare[key(l)] || 1) + ' en double' : state.view === 'wish' ? 'Recherchée' : '×' + l.q));
+                if (unit) row.appendChild(el('span', 'price', euro.format(unit)));
                 info.appendChild(row);
                 t.appendChild(info);
+                t.addEventListener('click', function () { openSheet(l, unit, state.view); });
                 grid.appendChild(t);
             });
-            $('more').hidden = items.length <= state.shown;
+            $('more').hidden = shown.length <= state.shown;
         }
-        $('tab-cards').onclick = function () { state.tab = 'c'; state.shown = PAGE; draw(); ev('share_filter', { kind: 'cards' }); };
-        $('tab-products').onclick = function () { state.tab = 'p'; state.shown = PAGE; draw(); ev('share_filter', { kind: 'products' }); };
+
+        // Pastilles de l'en-tête : raccourcis vers les onglets.
+        var hc = $('hchips');
+        if (doubles.length || wish.length) {
+            hc.hidden = false;
+            [['dbl', '⇄ ' + doubles.length + ' en double', doubles.length], ['wish', '♥ ' + wish.length + ' recherchée' + (wish.length > 1 ? 's' : ''), wish.length]]
+                .forEach(function (x) {
+                    if (!x[2]) return;
+                    var b = el('button', 'hchip', x[1] + ' ›');
+                    b.onclick = function () { setView(x[0], 'hero'); $('vtabs').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+                    hc.appendChild(b);
+                });
+        }
         $('more').onclick = function () { state.shown += PAGE; draw(); ev('share_filter', { kind: 'more' }); };
         draw();
         show('content');
-        ev('share_page_view', { found: 1, lines: lines.length, platform: platform, show_values: showValues ? 1 : 0 });
+        ev('share_page_view', { found: 1, lines: lines.length, platform: platform, show_values: showValues ? 1 : 0,
+            doubles: doubles.length, wishlist: wish.length });
     }
 })();
 </script>
