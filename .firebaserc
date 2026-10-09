@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "pikacheck-app"
+  },
+  "targets": {
+    "pikacheck-app": {
+      "hosting": {
+        "site": ["pikacheck-web"]
+      }
+    }
+  }
+}
