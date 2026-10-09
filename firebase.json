@@ -1,0 +1,91 @@
+{
+  "hosting": {
+    "target": "site",
+    "public": "_site",
+    "predeploy": [
+      "sh build.sh"
+    ],
+    "ignore": [
+      "**/.DS_Store"
+    ],
+    "headers": [
+      {
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/c/og.jpg",
+        "function": {
+          "functionId": "shareOg",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/c",
+        "function": {
+          "functionId": "shareMeta",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/c/",
+        "function": {
+          "functionId": "shareMeta",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/articles",
+        "destination": "/articles.html"
+      },
+      {
+        "source": "/comparateur-prix-pokemon",
+        "destination": "/comparateur-prix-pokemon.html"
+      },
+      {
+        "source": "/debuter-collection-pokemon-2026",
+        "destination": "/debuter-collection-pokemon-2026.html"
+      },
+      {
+        "source": "/proteger-ranger-cartes-pokemon",
+        "destination": "/proteger-ranger-cartes-pokemon.html"
+      },
+      {
+        "source": "/rarete-etat-cartes-pokemon",
+        "destination": "/rarete-etat-cartes-pokemon.html"
+      },
+      {
+        "source": "/reconnaitre-fausses-cartes-pokemon",
+        "destination": "/reconnaitre-fausses-cartes-pokemon.html"
+      },
+      {
+        "source": "/scanner-cartes-pokemon",
+        "destination": "/scanner-cartes-pokemon.html"
+      },
+      {
+        "source": "/pages/privacy",
+        "destination": "/pages/privacy.html"
+      },
+      {
+        "source": "/pages/terms",
+        "destination": "/pages/terms.html"
+      }
+    ]
+  }
+}

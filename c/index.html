@@ -220,7 +220,8 @@
     'use strict';
     var PAGE = 60, PROMO_AFTER = 12;
     var params = new URLSearchParams(location.search);
-    var id = params.get('s') || '';
+    // Tolérant aux ajouts collés à la suite (« ?s=ID?id=10 ») : début alphanumérique.
+    var id = ((params.get('s') || '').match(/^[A-Za-z0-9]{8,32}/) || [''])[0];
     var $ = function (x) { return document.getElementById(x); };
     var show = function (x) { ['loading', 'missing', 'error', 'content'].forEach(function (k) { $(k).hidden = k !== x; }); };
     var ev = function (name, p) { try { if (window.gtag) gtag('event', name, p || {}); } catch (e) {} };
