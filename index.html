@@ -114,6 +114,23 @@
     .btn.ghost { background: rgba(255,255,255,.06); box-shadow: none; border: 1px solid var(--line); }
     @media (max-width: 860px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
 
+
+    /* ---------- Menu mobile ---------- */
+    .burger { display: none; width: 42px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.05); cursor: pointer; position: relative; flex: 0 0 auto; }
+    .burger span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--text); transition: transform .25s, top .25s; }
+    .burger span:first-child { top: 15px; } .burger span:last-child { top: 23px; }
+    .nav.open .burger span:first-child { top: 19px; transform: rotate(45deg); }
+    .nav.open .burger span:last-child { top: 19px; transform: rotate(-45deg); }
+    .menu { display: none; }
+    @media (max-width: 860px) {
+      .burger { display: block; }
+      .nav .btn { margin-left: auto; }
+      .menu { display: grid; max-height: 0; overflow: hidden; transition: max-height .3s ease; padding: 0 20px; background: rgba(30,36,49,.97); }
+      .nav.open { background: rgba(30,36,49,.97); border-color: var(--line); }
+      .nav.open .menu { max-height: 480px; padding-bottom: 14px; }
+      .menu a { padding: 14px 4px; font-weight: 700; font-size: 17px; border-top: 1px solid var(--line); }
+    }
+
     /* ---------- Hero ---------- */
     .hero { position: relative; padding: 128px 0 40px; overflow: hidden; }
     .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr 1fr; gap: 40px; align-items: center; }
@@ -184,7 +201,7 @@
     @media (max-width: 760px) { .strip .wrap { grid-template-columns: 1fr 1fr; } .stat b { font-size: 24px; } }
 
     /* ---------- Sections ---------- */
-    section { position: relative; }
+    section { position: relative; scroll-margin-top: 76px; }
     .section { padding: 110px 0 0; }
     .eyebrow { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: #9d9aff; margin-bottom: 14px; }
     h2 { font-size: clamp(32px, 4.4vw, 48px); line-height: 1.08; letter-spacing: -1.4px; font-weight: 800; }
@@ -357,10 +374,21 @@
         <a href="#bons-plans">Bons plans</a>
         <a href="#premium">Premium</a>
         <a href="#faq">FAQ</a>
-        <a href="/articles">Guides</a>
+        <a href="/articles">Articles</a>
       </nav>
       <a class="btn sm" href="/download" data-dl="nav">Télécharger</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     </div>
+    <nav class="menu" id="menu" aria-label="Menu">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#partage">Partage</a>
+      <a href="#bons-plans">Bons plans</a>
+      <a href="#premium">Premium</a>
+      <a href="#faq">FAQ</a>
+      <a href="/articles">Articles</a>
+      <a href="https://pikacheck.com/?utm_source=website&utm_medium=menu" rel="noopener">Boutique</a>
+      <a href="mailto:support@pikacheck.com">Contact</a>
+    </nav>
   </header>
 
   <main>
@@ -764,7 +792,7 @@
         <a href="#fonctionnalites">Fonctionnalités</a>
         <a href="#premium">Premium</a>
         <a href="#faq">FAQ</a>
-        <a href="/articles">Guides</a>
+        <a href="/articles">Articles</a>
         <a href="https://pikacheck.com/?utm_source=website&utm_medium=footer" rel="noopener">Boutique</a>
         <a href="https://x.com/pikacheck" rel="noopener">X (Twitter)</a>
         <a href="mailto:support@pikacheck.com">Contact</a>
@@ -781,6 +809,13 @@
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+
+    // Menu mobile.
+    const burger = document.getElementById('burger');
+    const setMenu = (open) => { nav.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu'); };
+    burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    document.querySelectorAll('#menu a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 
     // Apparition des blocs au défilement.
     const io = 'IntersectionObserver' in window
