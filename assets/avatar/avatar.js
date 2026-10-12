@@ -90,7 +90,8 @@
       (r.bgAnim ? '<div class="pk-l pk-fx-' + r.bgAnim + '"></div>' : '') +
       cfg.mons.map((m, i) => m.behind ? mon(m, i) : '').join('') +
       '<div class="pk-l pk-char"><div class="pk-l pk-open">' + r.char + '</div><div class="pk-l pk-closed">' + closed + '</div></div>' +
-      cfg.mons.map((m, i) => m.behind ? '' : mon(m, i)).join('') + '</div>';
+      cfg.mons.map((m, i) => m.behind ? '' : mon(m, i)).join('') + '</div>' +
+      (av.p ? '<div class="pk-pro">PRO</div>' : '');
   }
 
   root.PikaAvatar = {decode, render, mount, KEYS, CAT, shade};
