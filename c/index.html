@@ -71,6 +71,44 @@
         .hero .persona { display: inline-block; margin-top: 10px; background: rgba(255,255,255,.18); border-radius: 999px;
                          padding: 5px 12px; font-size: 13px; font-weight: 800; }
 
+        /* Avatar du propriétaire (même dessin que l'app : assets/avatar). */
+        .hero-top { display: flex; align-items: center; gap: 14px; }
+        .hero-top h1 { flex: 1; min-width: 0; }
+        .pk-avatar { width: 76px; height: 76px; flex: none; position: relative; border-radius: 30%; }
+        .pk-avatar .pk-in { position: absolute; inset: 0; border-radius: 30%; overflow: hidden; }
+        .pk-avatar[class*="pk-frame-"] .pk-in { inset: 3.5px; border-radius: 28%; }
+        .pk-frame-holo .pk-in, .pk-frame-gold .pk-in, .pk-frame-neon .pk-in { inset: 5px; }
+        .pk-l { position: absolute; inset: 0; }
+        .pk-l svg { width: 100%; height: 100%; display: block; }
+        .pk-mon { position: absolute; object-fit: contain; transform-origin: 50% 100%; animation: pk-hop 3s ease-in-out infinite; }
+        .pk-flip { scale: -1 1; }
+        .pk-char { animation: pk-breathe 3s ease-in-out infinite; }
+        .pk-closed { opacity: 0; animation: pk-blink 6s linear infinite; }
+        .pk-open { animation: pk-unblink 6s linear infinite; }
+        .pk-frame-simple { background: #eceaea; }
+        .pk-frame-double { background: linear-gradient(135deg, #eceaea, #8c89ff); }
+        .pk-frame-holo { background: conic-gradient(from var(--pk-a), #ff9ccf, #ffd98a, #8ef0c0, #8fd3ff, #a99cff, #ff9ccf); animation: pk-spin 6s linear infinite; }
+        .pk-frame-gold { background: linear-gradient(135deg, #fff1b8, #ffd166 35%, #c6912f 70%, #ffe08a); }
+        .pk-frame-neon { background: #8c89ff; box-shadow: 0 0 14px rgba(140,137,255,.85); animation: pk-pulse 3s ease-in-out infinite; }
+        .pk-frame-holo, .pk-frame-gold { box-shadow: 0 0 16px rgba(255,209,102,.75); }
+        .pk-frame-gold::after, .pk-frame-holo::after { content: ''; position: absolute; inset: 0; border-radius: 30%; pointer-events: none;
+            background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.85) 50%, transparent 58%); background-size: 260% 100%;
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+            padding: 4px; animation: pk-shine 3.2s linear infinite; }
+        .pk-pro { position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%); padding: 2px 8px; border-radius: 999px;
+            font-size: 10px; font-weight: 900; letter-spacing: .04em; color: #5a3a00; border: 1.5px solid #fff;
+            background: linear-gradient(135deg, #fff0b0, #ffc93d, #e39b17); box-shadow: 0 0 10px rgba(255,176,32,.6); }
+        @keyframes pk-pulse { 50% { box-shadow: 0 0 24px rgba(140,137,255,1); } }
+        .pk-fx-shine { background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.35) 50%, transparent 60%); background-size: 250% 100%; animation: pk-shine 4s linear infinite; }
+        @property --pk-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+        @keyframes pk-spin { to { --pk-a: 360deg; } }
+        @keyframes pk-shine { from { background-position: 150% 0; } to { background-position: -100% 0; } }
+        @keyframes pk-breathe { 50% { transform: translateY(1px); } }
+        @keyframes pk-hop { 0%, 86%, 100% { transform: translateY(0); } 93% { transform: translateY(-8%); } }
+        @keyframes pk-blink { 0%, 30% { opacity: 0; } 30.1%, 32% { opacity: 1; } 32.1%, 100% { opacity: 0; } }
+        @keyframes pk-unblink { 0%, 30% { opacity: 1; } 30.1%, 32% { opacity: 0; } 32.1%, 100% { opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { .pk-avatar, .pk-avatar * { animation: none !important; } }
+
         .showcase { margin-top: 16px; }
         .showcase h2, .section-title { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
         .top3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
@@ -208,7 +246,10 @@
     <main id="content" hidden>
         <section class="hero">
             <div class="kicker">Collection Pokémon</div>
-            <h1 id="owner"></h1>
+            <div class="hero-top">
+                <div id="avatar" hidden></div>
+                <h1 id="owner"></h1>
+            </div>
             <div class="value" id="total" hidden></div>
             <div class="meta" id="counts"></div>
             <div class="persona" id="persona" hidden></div>
@@ -277,6 +318,7 @@
     <a class="btn primary store-link" data-where="sticky" href="#">Télécharger</a>
 </div>
 
+<script src="/assets/avatar/avatar.js"></script>
 <script>
 (function () {
     'use strict';
@@ -453,6 +495,14 @@
         var owner = (typeof h.o === 'string' && h.o.trim()) ? h.o.trim() : 'un collectionneur';
         document.title = 'Collection de ' + owner + ' · Pikacheck';
         $('owner').textContent = 'Collection de ' + owner;
+        // Avatar : les pièces ne sont chargées que si le propriétaire en montre un.
+        if (h.av && typeof h.av.c === 'string' && window.PikaAvatar) {
+            fetch('/assets/avatar/parts.json').then(function (r) { return r.json(); }).then(function (parts) {
+                var el = $('avatar');
+                PikaAvatar.mount(el, parts, h.av);
+                el.hidden = false;
+            }).catch(function () {});
+        }
         var cards = 0, products = 0, total = 0, cardValue = 0, productValue = 0;
         lines.forEach(function (l) {
             var v = (typeof l.u === 'number' && l.u > 0) ? l.u * l.q : 0;
