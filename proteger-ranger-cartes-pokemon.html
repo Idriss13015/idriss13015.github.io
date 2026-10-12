@@ -28,28 +28,29 @@
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Comment Protéger et Ranger ses Cartes Pokémon : Guide Complet 2026",
-        "description": "Guide expert pour protéger et organiser votre collection de cartes Pokémon avec les bons produits",
-        "url": "https://app.pikacheck.com/proteger-ranger-cartes-pokemon.html",
-        "datePublished": "2026-03-01",
-        "dateModified": "2026-03-01",
-        "author": {
-            "@type": "Organization",
-            "name": "Pikacheck"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Pikacheck",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://app.pikacheck.com/assets/images/Pikacheck-logo-alt-nobg.svg"
-            }
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Comment Protéger et Ranger ses Cartes Pokémon : Guide Complet 2026",
+  "description": "Guide expert pour protéger et organiser votre collection de cartes Pokémon avec les bons produits",
+  "url": "https://app.pikacheck.com/proteger-ranger-cartes-pokemon.html",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01",
+  "author": {
+    "@type": "Organization",
+    "name": "Pikacheck"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pikacheck",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://app.pikacheck.com/assets/images/Pikacheck-logo-alt-nobg.svg"
     }
-    </script>
+  },
+  "image": "https://app.pikacheck.com/assets/images/og-image.jpg"
+}
+</script>
 
     <link rel="canonical" href="https://app.pikacheck.com/proteger-ranger-cartes-pokemon.html">
 
@@ -58,7 +59,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
 
     <!-- PWA / Mobile -->
-    <meta name="theme-color" content="#5a50f3">
+    <meta name="theme-color" content="#1e2431">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Pikacheck">
 
@@ -75,520 +76,48 @@
     </script>
 
     <!-- Lenis Smooth Scroll - Deferred -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-
-    <style>
-        :root {
-            --primary-color: #5a50f3;
-            --primary-dark: #4a40d3;
-            --primary-light: #7a70ff;
-            --secondary-color: #ffd700;
-            --success-color: #10b981;
-            --danger-color: #ef4444;
-            --background: #ffffff;
-            --surface: #f9fafb;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --border-color: #e5e7eb;
-        }
-
-        [data-theme="dark"] {
-            --background: #121212;
-            --surface: #1e1e1e;
-            --text-primary: #e4e4e7;
-            --text-secondary: #a1a1aa;
-            --border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-        }
-
-        header {
-            background: var(--background);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-        }
-
-        .nav-cta {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-        }
-
-        article {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .article-header {
-            margin-bottom: 3rem;
-        }
-
-        .article-category {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--success-color), #34d399);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .article-meta {
-            display: flex;
-            gap: 1.5rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .article-intro {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--surface);
-            border-left: 4px solid var(--success-color);
-            border-radius: 4px;
-        }
-
-        h2 {
-            font-size: 1.875rem;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        ul, ol {
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-        }
-
-        strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            font-size: 0.95rem;
-        }
-
-        thead {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border: 1px solid var(--border-color);
-        }
-
-        tbody tr:nth-child(even) {
-            background: var(--surface);
-        }
-
-        .comparison-table {
-            overflow-x: auto;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
-            border: 2px solid var(--primary-light);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2.5rem 0;
-            color: #1f2937;
-        }
-
-        .cta-box h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: transform 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-        }
-
-        .warning-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-            color: #1f2937;
-        }
-
-        .success-box {
-            background: #d1f4e0;
-            border-left: 4px solid var(--success-color);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-            color: #1f2937;
-        }
-
-        .danger-box {
-            background: #fee;
-            border-left: 4px solid var(--danger-color);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-            color: #1f2937;
-        }
-
-        .product-rating {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: #1f2937;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        footer {
-            background: #1f2937;
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 5rem;
-        }
-
-        footer a {
-            color: var(--primary-light);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            article {
-                padding: 0 1.5rem;
-            }
-
-            nav {
-                padding: 1rem;
-            }
-
-            table {
-                font-size: 0.85rem;
-            }
-
-            th, td {
-                padding: 0.75rem 0.5rem;
-            }
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* From Uiverse.io by Galahhad */
-        .theme-switch {
-            --toggle-size: 10px;
-            --container-width: 5.625em;
-            --container-height: 2.5em;
-            --container-radius: 6.25em;
-            --container-light-bg: #3D7EAE;
-            --container-night-bg: #1D1F2C;
-            --circle-container-diameter: 3.375em;
-            --sun-moon-diameter: 2.125em;
-            --sun-bg: #ECCA2F;
-            --moon-bg: #C4C9D1;
-            --spot-color: #959DB1;
-            --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
-            --stars-color: #fff;
-            --clouds-color: #F3FDFF;
-            --back-clouds-color: #AACADF;
-            --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
-            --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
-            flex-shrink: 0;
-        }
-
-        .theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-size: var(--toggle-size);
-        }
-
-        .theme-switch__container {
-            width: var(--container-width);
-            height: var(--container-height);
-            background-color: var(--container-light-bg);
-            border-radius: var(--container-radius);
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .theme-switch__container::before {
-            content: "";
-            position: absolute;
-            z-index: 1;
-            inset: 0;
-            box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
-            border-radius: var(--container-radius)
-        }
-
-        .theme-switch__checkbox {
-            display: none;
-        }
-
-        .theme-switch__circle-container {
-            width: var(--circle-container-diameter);
-            height: var(--circle-container-diameter);
-            background-color: rgba(255, 255, 255, 0.1);
-            position: absolute;
-            left: var(--circle-container-offset);
-            top: var(--circle-container-offset);
-            border-radius: var(--container-radius);
-            box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
-            display: flex;
-            transition: var(--circle-transition);
-            pointer-events: none;
-        }
-
-        .theme-switch__sun-moon-container {
-            pointer-events: auto;
-            position: relative;
-            z-index: 2;
-            width: var(--sun-moon-diameter);
-            height: var(--sun-moon-diameter);
-            margin: auto;
-            border-radius: var(--container-radius);
-            background-color: var(--sun-bg);
-            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
-            filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .theme-switch__moon {
-            transform: translateX(100%);
-            width: 100%;
-            height: 100%;
-            background-color: var(--moon-bg);
-            border-radius: inherit;
-            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .theme-switch__spot {
-            position: absolute;
-            top: 0.75em;
-            left: 0.312em;
-            width: 0.75em;
-            height: 0.75em;
-            border-radius: var(--container-radius);
-            background-color: var(--spot-color);
-            box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
-        }
-
-        .theme-switch__spot:nth-of-type(2) {
-            width: 0.375em;
-            height: 0.375em;
-            top: 0.937em;
-            left: 1.375em;
-        }
-
-        .theme-switch__spot:nth-last-of-type(3) {
-            width: 0.25em;
-            height: 0.25em;
-            top: 0.312em;
-            left: 0.812em;
-        }
-
-        .theme-switch__clouds {
-            width: 1.25em;
-            height: 1.25em;
-            background-color: var(--clouds-color);
-            border-radius: var(--container-radius);
-            position: absolute;
-            bottom: -0.625em;
-            left: 0.312em;
-            box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
-            transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-        }
-
-        .theme-switch__stars-container {
-            position: absolute;
-            color: var(--stars-color);
-            top: -100%;
-            left: 0.312em;
-            width: 2.75em;
-            height: auto;
-            transition: var(--transition);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container {
-            background-color: var(--container-night-bg);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
-            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
-            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)
-        }
-
-        .theme-switch__circle-container:hover {
-            left: calc(var(--circle-container-offset) + 0.187em);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
-            transform: translate(0);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
-            bottom: -4.062em;
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <meta name="color-scheme" content="dark">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/" class="logo">
-                <img src="/assets/images/Pikacheck-logo-alt-nobg.svg" alt="Pikacheck Logo">
-                <span>Pikacheck</span>
-            </a>
-            <div class="nav-right">
-                <label class="theme-switch">
-                    <input type="checkbox" class="theme-switch__checkbox" id="themeToggle">
-                    <div class="theme-switch__container">
-                        <div class="theme-switch__clouds"></div>
-                        <div class="theme-switch__stars-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 22.9903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <div class="theme-switch__circle-container">
-                            <div class="theme-switch__sun-moon-container">
-                                <div class="theme-switch__moon">
-                                    <div class="theme-switch__spot"></div>
-                                    <div class="theme-switch__spot"></div>
-                                    <div class="theme-switch__spot"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </label>
-                <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" class="nav-cta">Télécharger l'App</a>
-            </div>
-        </nav>
-    </header>
-
-    <article>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Pikacheck, accueil"><img src="/assets/app/icon.png" alt="" width="34" height="34">Pikacheck</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="/#fonctionnalites">Fonctionnalités</a>
+        <a href="/#partage">Partage</a>
+        <a href="/#bons-plans">Bons plans</a>
+        <a href="/#premium">Premium</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/articles" class="on">Articles</a>
+      </nav>
+      <a class="btn sm" href="/download" data-dl="nav">Télécharger</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+    <nav class="menu" id="menu" aria-label="Menu">
+      <a href="/">Accueil</a>
+      <a href="/#fonctionnalites">Fonctionnalités</a>
+      <a href="/#premium">Premium</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/a-propos">À propos</a>
+      <a href="/articles">Articles</a>
+      <a href="https://pikacheck.com/?utm_source=website&amp;utm_medium=menu" rel="noopener">Boutique</a>
+      <a href="mailto:support@pikacheck.com">Contact</a>
+    </nav>
+  </header>
+  <main class="page">
+    <div class="article-container"><p class="crumbs"><a href="/">Accueil</a> › <a href="/articles">Articles</a></p></div>
+<article>
         <div class="article-header">
             <span class="article-category">Protection & Organisation</span>
             <h1>Comment Protéger et Ranger ses Cartes Pokémon : Guide Complet 2026</h1>
             <div class="article-meta">
-                <span>📅 Mars 2026</span>
-                <span>⏱ 6 min de lecture</span>
+                <span>Mars 2026</span>
+                <span>6 min de lecture</span>
             </div>
             <p class="article-intro">
                 Une collection bien protégée est une collection qui prend de la valeur. Sleeves, classeurs, toploaders :
@@ -803,8 +332,8 @@
 
         <div class="cta-box">
             <h3>📱 Organisez Votre Collection Numériquement</h3>
-            <p>Pikacheck vous permet de cataloguer toutes vos cartes, de les organiser par série, rareté ou Pokémon, et de suivre la valeur totale de votre collection en temps réel. Sauvegarde cloud automatique.</p>
-            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" class="cta-button">Télécharger l'App</a>
+            <p>Pikacheck vous permet de cataloguer toutes vos cartes, de les organiser par série, rareté ou Pokémon, et de suivre la valeur totale de votre collection jour après jour. Sauvegarde cloud automatique.</p>
+            <a href="/download" class="cta-button" data-dl="article">Télécharger l'App</a>
         </div>
 
         <h2>❌ Les Erreurs à Éviter</h2>
@@ -894,8 +423,8 @@
 
         <div class="cta-box">
             <h3>🚀 Protégez et Suivez Votre Collection</h3>
-            <p>Avec Pikacheck, scannez vos cartes en 1 seconde, enregistrez leur état (Mint, Near Mint, etc.), suivez leur valeur en temps réel et recevez des alertes si le prix d'une de vos cartes explose. Protection physique + suivi numérique = collection parfaite !</p>
-            <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231" class="cta-button">Télécharger Pikacheck Gratuitement</a>
+            <p>Avec Pikacheck, scannez vos cartes en 2 secondes, enregistrez leur état (Mint, Near Mint, etc.), suivez leur valeur jour après jour et repérez celles qui prennent le plus de valeur. Protection physique + suivi numérique = collection parfaite !</p>
+            <a href="/download" class="cta-button" data-dl="article">Télécharger Pikacheck Gratuitement</a>
         </div>
 
         <h2>📝 Conclusion</h2>
@@ -917,94 +446,33 @@
 
     </article>
 
-    <footer>
-        <p>© 2026 Pikacheck - <a href="/pages/privacy">Politique de confidentialité</a> - <a href="/pages/terms">Conditions d'utilisation</a></p>
-        <p>Pikacheck n'est pas affilié à Nintendo, The Pokémon Company ou Game Freak.</p>
-    </footer>
-
-    <script>
-        function isMobileDevice() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
-        }
-
-        if (!isMobileDevice() && typeof Lenis !== 'undefined') {
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                smooth: true
-            });
-
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-
-            requestAnimationFrame(raf);
-        }
-
-        let scrollTracked = {25: false, 50: false, 75: false, 100: false};
-        window.addEventListener('scroll', () => {
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-
-            Object.keys(scrollTracked).forEach(threshold => {
-                if (scrollPercent >= threshold && !scrollTracked[threshold]) {
-                    gtag('event', 'scroll', {
-                        'event_category': 'engagement',
-                        'event_label': `${threshold}% scrolled`,
-                        'value': threshold
-                    });
-                    scrollTracked[threshold] = true;
-                }
-            });
-        });
-
-        document.querySelectorAll('.cta-button, .nav-cta').forEach(button => {
-            button.addEventListener('click', () => {
-                gtag('event', 'click', {
-                    'event_category': 'CTA',
-                    'event_label': 'App Download from Article'
-                });
-            });
-        });
-    </script>
-
-    <script>
-        // Dark mode toggle with beautiful sun/moon switch
-        (function() {
-            const themeToggle = document.getElementById('themeToggle');
-            const html = document.documentElement;
-
-            if (!themeToggle) return;
-
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                html.setAttribute('data-theme', 'dark');
-                themeToggle.checked = true;
-            } else {
-                html.setAttribute('data-theme', 'light');
-                themeToggle.checked = false;
-            }
-
-            themeToggle.addEventListener('change', () => {
-                const newTheme = themeToggle.checked ? 'dark' : 'light';
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'theme_change', { 'theme': newTheme });
-                }
-            });
-
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (!localStorage.getItem('theme')) {
-                    const isDark = e.matches;
-                    html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-                    themeToggle.checked = isDark;
-                }
-            });
-        })();
-    </script>
+    
+    <section class="wrap">
+      <div class="endcta">
+        <h2>Scannez vos cartes. Suivez votre scellé.</h2>
+        <p>Rejoignez plus de 15 000 collectionneurs sur Pikacheck. Gratuit sur iPhone, iPad et Android.</p>
+        <a class="btn" href="/download" data-dl="endcta">Télécharger gratuitement</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/app/icon.png" alt="" width="34" height="34">Pikacheck</a>
+      <nav aria-label="Liens">
+        <a href="/#fonctionnalites">Fonctionnalités</a>
+        <a href="/#premium">Premium</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/articles">Articles</a>
+        <a href="https://pikacheck.com/?utm_source=website&amp;utm_medium=footer" rel="noopener">Boutique</a>
+        <a href="https://x.com/pikacheck" rel="noopener">X (Twitter)</a>
+        <a href="mailto:support@pikacheck.com">Contact</a>
+        <a href="/pages/privacy">Confidentialité</a>
+        <a href="/pages/terms">Conditions</a>
+      </nav>
+      <p class="legal-note">© <span id="y">2026</span> Pikacheck. Pokémon et les noms associés sont des marques de Nintendo, Creatures Inc. et GAME FREAK inc. Pikacheck n'est ni affilié ni approuvé par ces sociétés.</p>
+    </div>
+  </footer>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>

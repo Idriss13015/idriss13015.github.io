@@ -1,1999 +1,754 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- SEO Meta Tags -->
-    <title>Pikacheck - Application N°1 pour Gérer votre Collection Pokémon (Cartes & Produits Scellés)</title>
-    <meta name="description" content="Pikacheck est l'application gratuite indispensable pour les collectionneurs Pokémon. Suivez la valeur de vos cartes et produits scellés en temps réel, recevez des alertes personnalisées sur les nouvelles sorties et gérez votre collection avec précision. Disponible sur iPhone et Android.">
-    <meta name="keywords" content="Pikacheck, Pokémon, collection, cartes Pokémon, produits scellés, TCG, valeur cartes, application collection, tracker Pokémon, alertes Pokémon, boosters, display, ETB, coffrets">
-    <meta name="author" content="Pikacheck">
-    <meta name="robots" content="index, follow">
+  <title>Pikacheck – Cote des cartes et produits scellés Pokémon (ETB, displays, coffrets)</title>
+  <meta name="description" content="Pikacheck, l'app des collectionneurs Pokémon : scanne tes cartes et suis la cote de tes produits scellés (ETB, displays, coffrets, boosters) chaque jour, partage ta collection et repère les bons plans (enchères eBay, restocks Amazon). Gratuit sur iPhone, iPad et Android.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://app.pikacheck.com/">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Pikacheck - L'Application Incontournable pour Collectionneurs Pokémon">
-    <meta property="og:description" content="Suivez la valeur de vos cartes et produits scellés Pokémon en temps réel. Alertes personnalisées, scanner intelligent, et bien plus. Gratuit sur iPhone et Android.">
-    <meta property="og:url" content="https://app.pikacheck.com">
-    <meta property="og:image" content="https://app.pikacheck.com/assets/images/og-image.jpg">
-    <meta property="og:image:alt" content="Application Pikacheck - Gestion de collection Pokémon">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Pikacheck">
-    <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pikacheck">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://app.pikacheck.com/">
+  <meta property="og:title" content="Pikacheck – Tes cartes et ton scellé Pokémon, cotés chaque jour">
+  <meta property="og:description" content="Scanne tes cartes, suis la cote de tes ETB, displays et coffrets chaque jour, partage ta collection et repère les bons plans. Gratuit sur iPhone et Android.">
+  <meta property="og:image" content="https://app.pikacheck.com/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="L'application Pikacheck sur iPhone">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@pikacheck">
+  <meta name="twitter:title" content="Pikacheck – Ta collection Pokémon, à sa vraie valeur">
+  <meta name="twitter:description" content="Scanne, suis la cote et partage ta collection Pokémon. Gratuit sur iPhone et Android.">
+  <meta name="twitter:image" content="https://app.pikacheck.com/assets/images/og-image.jpg">
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pikacheck - Gérez votre Collection Pokémon">
-    <meta name="twitter:description" content="L'app #1 pour suivre la valeur de vos cartes et produits scellés Pokémon. Gratuit sur iPhone et Android.">
-    <meta name="twitter:image" content="https://app.pikacheck.com/assets/images/og-image.jpg">
-    <meta name="twitter:image:alt" content="Application Pikacheck - Gestion de collection Pokémon">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Pikacheck",
+    "operatingSystem": "iOS, iPadOS, Android",
+    "applicationCategory": "LifestyleApplication",
+    "inLanguage": "fr",
+    "url": "https://app.pikacheck.com/",
+    "image": "https://app.pikacheck.com/assets/images/og-image.jpg",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "124", "bestRating": "5" },
+    "description": "Scanner de cartes Pokémon, suivi de la valeur des cartes et produits scellés, partage de collection, wishlist, analyse du marché et alertes bons plans."
+  }
+  </script>
 
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "Pikacheck",
-        "operatingSystem": ["iOS", "Android"],
-        "applicationCategory": "LifestyleApplication",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "110"
-        },
-        "description": "Application pour gérer votre collection de cartes et produits scellés Pokémon avec suivi des prix en temps réel et alertes personnalisées."
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <meta name="theme-color" content="#1e2431">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-itunes-app" content="app-id=6749660231">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CEW27KGTHH', { anonymize_ip: true, cookie_flags: 'SameSite=None;Secure' });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/device/screen_scan.webp">
+  <link rel="preload" as="image" href="/assets/device/frame.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #1e2431;
+      --bg-2: #191e29;
+      --card: #252a37;
+      --line: #313641;
+      --text: #eceaea;
+      --muted: #a4a8b8;
+      --violet: #514df0;
+      --purple: #6c68f5;
+      --soft: #9d9aff;
+      --green: #6ad097;
+      --yellow: #ffd166;
+      --max: 1180px;
     }
-    </script>
-
-    <link rel="canonical" href="https://app.pikacheck.com">
-
-    <!-- Favicons et icônes -->
-    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/android-chrome-512x512.png">
-
-    <!-- PWA / Mobile -->
-    <meta name="theme-color" content="#5a50f3">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Pikacheck">
-
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEW27KGTHH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-CEW27KGTHH', {
-        'anonymize_ip': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
-    </script>
-
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://unpkg.com">
-
-    <!-- Google Fonts - Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Lenis Smooth Scroll - Deferred -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-
-    <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --text-primary: #1d1d1f;
-            --text-secondary: #6e6e73;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
-            --gradient-start: #667eea;
-            --gradient-end: #764ba2;
-            --card-bg: #ffffff;
-            --feature-bg: rgba(255, 255, 255, 0.8);
-            --feature-border: rgba(90, 80, 243, 0.2);
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #121212;
-            --bg-secondary: #1e1e1e;
-            --text-primary: #e4e4e7;
-            --text-secondary: #a1a1aa;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.5);
-            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.6);
-            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.7);
-            --card-bg: #1a1a1a;
-            --elevated-bg: #2a2a2a;
-            --gradient-start: #5a50f3;
-            --gradient-end: #7a70f6;
-            --card-bg: #1a1a1a;
-            --feature-bg: rgba(26, 26, 26, 0.8);
-            --feature-border: rgba(90, 80, 243, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        body {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Pas d'effet de fond - fond blanc propre */
-
-        /* Particules désactivées */
-
-        /* Container pour le smooth scroll */
-        #smooth-scroll-wrapper {
-            width: 100%;
-        }
-
-        /* Parallax léger pour certains éléments */
-        .parallax-slow {
-            will-change: transform;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background: var(--bg-primary);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 9999;
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 12px 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .logo span {
-            font-size: 26px;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: 0;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 33px;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 12px;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 1;
-        }
-
-        /* From Uiverse.io by Galahhad */
-        .theme-switch {
-            --toggle-size: 10px;
-            --container-width: 5.625em;
-            --container-height: 2.5em;
-            --container-radius: 6.25em;
-            --container-light-bg: #3D7EAE;
-            --container-night-bg: #1D1F2C;
-            --circle-container-diameter: 3.375em;
-            --sun-moon-diameter: 2.125em;
-            --sun-bg: #ECCA2F;
-            --moon-bg: #C4C9D1;
-            --spot-color: #959DB1;
-            --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
-            --stars-color: #fff;
-            --clouds-color: #F3FDFF;
-            --back-clouds-color: #AACADF;
-            --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
-            --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
-            flex-shrink: 0;
-        }
-
-        .theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-size: var(--toggle-size);
-        }
-
-        .theme-switch__container {
-            width: var(--container-width);
-            height: var(--container-height);
-            background-color: var(--container-light-bg);
-            border-radius: var(--container-radius);
-            overflow: hidden;
-            cursor: pointer;
-            -webkit-box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
-            box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
-            -webkit-transition: var(--transition);
-            -o-transition: var(--transition);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .theme-switch__container::before {
-            content: "";
-            position: absolute;
-            z-index: 1;
-            inset: 0;
-            -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
-            box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
-            border-radius: var(--container-radius)
-        }
-
-        .theme-switch__checkbox {
-            display: none;
-        }
-
-        .theme-switch__circle-container {
-            width: var(--circle-container-diameter);
-            height: var(--circle-container-diameter);
-            background-color: rgba(255, 255, 255, 0.1);
-            position: absolute;
-            left: var(--circle-container-offset);
-            top: var(--circle-container-offset);
-            border-radius: var(--container-radius);
-            -webkit-box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-transition: var(--circle-transition);
-            -o-transition: var(--circle-transition);
-            transition: var(--circle-transition);
-            pointer-events: none;
-        }
-
-        .theme-switch__sun-moon-container {
-            pointer-events: auto;
-            position: relative;
-            z-index: 2;
-            width: var(--sun-moon-diameter);
-            height: var(--sun-moon-diameter);
-            margin: auto;
-            border-radius: var(--container-radius);
-            background-color: var(--sun-bg);
-            -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
-            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
-            -webkit-filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
-            filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
-            overflow: hidden;
-            -webkit-transition: var(--transition);
-            -o-transition: var(--transition);
-            transition: var(--transition);
-        }
-
-        .theme-switch__moon {
-            -webkit-transform: translateX(100%);
-            -ms-transform: translateX(100%);
-            transform: translateX(100%);
-            width: 100%;
-            height: 100%;
-            background-color: var(--moon-bg);
-            border-radius: inherit;
-            -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
-            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
-            -webkit-transition: var(--transition);
-            -o-transition: var(--transition);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .theme-switch__spot {
-            position: absolute;
-            top: 0.75em;
-            left: 0.312em;
-            width: 0.75em;
-            height: 0.75em;
-            border-radius: var(--container-radius);
-            background-color: var(--spot-color);
-            -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
-            box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
-        }
-
-        .theme-switch__spot:nth-of-type(2) {
-            width: 0.375em;
-            height: 0.375em;
-            top: 0.937em;
-            left: 1.375em;
-        }
-
-        .theme-switch__spot:nth-last-of-type(3) {
-            width: 0.25em;
-            height: 0.25em;
-            top: 0.312em;
-            left: 0.812em;
-        }
-
-        .theme-switch__clouds {
-            width: 1.25em;
-            height: 1.25em;
-            background-color: var(--clouds-color);
-            border-radius: var(--container-radius);
-            position: absolute;
-            bottom: -0.625em;
-            left: 0.312em;
-            -webkit-box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
-            box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
-            -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-            -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-            transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-        }
-
-        .theme-switch__stars-container {
-            position: absolute;
-            color: var(--stars-color);
-            top: -100%;
-            left: 0.312em;
-            width: 2.75em;
-            height: auto;
-            -webkit-transition: var(--transition);
-            -o-transition: var(--transition);
-            transition: var(--transition);
-        }
-
-        /* actions */
-        .theme-switch__checkbox:checked + .theme-switch__container {
-            background-color: var(--container-night-bg);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
-            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
-            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)
-        }
-
-        .theme-switch__circle-container:hover {
-            left: calc(var(--circle-container-offset) + 0.187em);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
-            -webkit-transform: translate(0);
-            -ms-transform: translate(0);
-            transform: translate(0);
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
-            bottom: -4.062em;
-        }
-
-        .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        /* Dark mode elevated surfaces - EFFET WOW */
-        [data-theme="dark"] .feature {
-            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
-            border: 2px solid rgba(90, 80, 243, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6),
-                        0 0 0 1px rgba(90, 80, 243, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        [data-theme="dark"] .feature::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(90, 80, 243, 0.15) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        [data-theme="dark"] .feature:hover::before {
-            opacity: 1;
-        }
-
-        [data-theme="dark"] .feature:hover {
-            background: linear-gradient(135deg, #252525 0%, #2d2d2d 100%);
-            border: 2px solid rgba(90, 80, 243, 0.6);
-            box-shadow: 0 20px 60px rgba(90, 80, 243, 0.4),
-                        0 0 0 1px rgba(90, 80, 243, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                        0 0 80px rgba(90, 80, 243, 0.2);
-            transform: translateY(-12px) scale(1.02);
-        }
-
-        [data-theme="dark"] .feature-icon {
-            background: linear-gradient(135deg, rgba(90, 80, 243, 0.3), rgba(122, 112, 246, 0.3));
-            box-shadow: 0 4px 16px rgba(90, 80, 243, 0.3),
-                        inset 0 0 20px rgba(90, 80, 243, 0.2);
-        }
-
-        [data-theme="dark"] .feature:hover .feature-icon {
-            background: linear-gradient(135deg, rgba(90, 80, 243, 0.5), rgba(122, 112, 246, 0.5));
-            box-shadow: 0 8px 24px rgba(90, 80, 243, 0.6),
-                        inset 0 0 30px rgba(90, 80, 243, 0.4);
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        [data-theme="dark"] .plan {
-            background: linear-gradient(135deg, #1a1a1a 0%, #232323 100%);
-            border: 2px solid rgba(90, 80, 243, 0.25);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7),
-                        0 0 0 1px rgba(90, 80, 243, 0.15),
-                        inset 0 2px 0 rgba(255, 255, 255, 0.03);
-        }
-
-        [data-theme="dark"] .plan:hover {
-            background: linear-gradient(135deg, #232323 0%, #2b2b2b 100%);
-            border: 2px solid rgba(90, 80, 243, 0.7);
-            box-shadow: 0 24px 80px rgba(90, 80, 243, 0.5),
-                        0 0 0 2px rgba(90, 80, 243, 0.4),
-                        inset 0 2px 0 rgba(255, 255, 255, 0.08),
-                        0 0 100px rgba(90, 80, 243, 0.3);
-            transform: translateY(-8px) scale(1.03);
-        }
-
-        [data-theme="dark"] .btn-blue {
-            background: linear-gradient(135deg, #5a50f3, #7a70f6);
-            box-shadow: 0 8px 24px rgba(90, 80, 243, 0.6),
-                        0 0 40px rgba(90, 80, 243, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        [data-theme="dark"] .btn-blue::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s;
-        }
-
-        [data-theme="dark"] .btn-blue:hover::after {
-            left: 100%;
-        }
-
-        [data-theme="dark"] .btn-blue:hover {
-            background: linear-gradient(135deg, #6a60ff, #8a80ff);
-            box-shadow: 0 12px 32px rgba(90, 80, 243, 0.8),
-                        0 0 60px rgba(90, 80, 243, 0.5),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            transform: translateY(-4px) scale(1.05);
-        }
-
-        [data-theme="dark"] .btn-outline {
-            border: 2px solid rgba(90, 80, 243, 0.4);
-            color: var(--text-primary);
-            background: rgba(90, 80, 243, 0.05);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
-                        inset 0 0 20px rgba(90, 80, 243, 0.1);
-        }
-
-        [data-theme="dark"] .btn-outline:hover {
-            background: rgba(90, 80, 243, 0.2);
-            border-color: rgba(90, 80, 243, 0.8);
-            box-shadow: 0 8px 24px rgba(90, 80, 243, 0.4),
-                        inset 0 0 40px rgba(90, 80, 243, 0.2);
-            transform: translateY(-2px);
-        }
-
-        [data-theme="dark"] nav {
-            background: rgba(18, 18, 18, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(90, 80, 243, 0.15);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        [data-theme="dark"] .mobile-menu {
-            background: rgba(18, 18, 18, 0.98);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(90, 80, 243, 0.2);
-            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
-        }
-
-        [data-theme="dark"] .screenshot {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
-                        0 0 40px rgba(90, 80, 243, 0.2);
-        }
-
-        [data-theme="dark"] .screenshot:hover {
-            box-shadow: 0 30px 80px rgba(90, 80, 243, 0.4),
-                        0 0 80px rgba(90, 80, 243, 0.3);
-        }
-
-        /* Effet Aurora Borealis pour le mode sombre */
-        [data-theme="dark"] body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(90, 80, 243, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(122, 112, 246, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(90, 80, 243, 0.04) 0%, transparent 70%);
-            animation: aurora 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        [data-theme="dark"] #smooth-scroll-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes aurora {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 1;
-            }
-            25% {
-                transform: translate(10%, 5%) rotate(5deg);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translate(-5%, 10%) rotate(-3deg);
-                opacity: 1;
-            }
-            75% {
-                transform: translate(5%, -5%) rotate(3deg);
-                opacity: 0.9;
-            }
-        }
-
-        /* Glow sur le texte géant en dark mode */
-        [data-theme="dark"] .giant-text {
-            text-shadow: 0 0 40px rgba(90, 80, 243, 0.3),
-                         0 0 80px rgba(90, 80, 243, 0.2);
-        }
-
-        /* Amélioration des titres en dark mode */
-        [data-theme="dark"] .section-heading {
-            text-shadow: 0 2px 20px rgba(90, 80, 243, 0.2);
-        }
-
-
-        /* Burger Menu */
-        .burger-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 999;
-        }
-
-        .burger-menu span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s;
-            border-radius: 2px;
-        }
-
-        .burger-menu.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .burger-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .burger-menu.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: saturate(180%) blur(20px);
-            padding: 20px;
-            border-bottom: 1px solid #d2d2d7;
-            z-index: 9998;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .mobile-menu ul li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f5f5f7;
-        }
-
-        .mobile-menu ul li:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-menu ul li a {
-            font-size: 17px;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: block;
-            opacity: 1;
-        }
-
-        /* Hero */
-        .hero-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 22px;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .hero-content {
-            text-align: left;
-        }
-
-        .hero {
-            text-align: left;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            line-height: 1.07143;
-            font-weight: 600;
-            letter-spacing: -0.005em;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-
-        .hero .subtitle {
-            font-size: 28px;
-            line-height: 1.14286;
-            font-weight: 400;
-            letter-spacing: 0.007em;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 14px;
-            justify-content: flex-start;
-            margin-top: 18px;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 350px;
-            height: auto;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        }
-
-        .btn {
-            text-decoration: none;
-            padding: 12px 22px;
-            border-radius: 980px;
-            font-size: 17px;
-            line-height: 1.17648;
-            font-weight: 400;
-            display: inline-block;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-blue {
-            background: linear-gradient(135deg, #5a50f3 0%, #7b72f6 100%);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(90, 80, 243, 0.3);
-        }
-
-        .btn-blue::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-blue:hover::before {
-            left: 100%;
-        }
-
-        .btn-blue:hover {
-            background: linear-gradient(135deg, #6b62f4 0%, #8c83f7 100%);
-            box-shadow: 0 8px 25px rgba(90, 80, 243, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .btn-blue:active {
-            transform: translateY(0);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #5a50f3;
-            border: 1px solid #5a50f3;
-        }
-
-        .btn-outline:hover {
-            background: #5a50f3;
-            color: #fff;
-        }
-
-        /* Store badges */
-        .store-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s;
-        }
-
-        .store-badge:hover {
-            opacity: 0.8;
-        }
-
-        .store-badge img {
-            height: 44px;
-            width: auto;
-            display: block;
-        }
-
-        /* Stats */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: nowrap;
-            text-align: center;
-            max-width: 1100px;
-            margin: 80px auto;
-            padding: 0 22px;
-            overflow-x: auto;
-        }
-
-        .stat-item {
-            flex: 0 0 auto;
-            min-width: 100px;
-        }
-
-        .stat-value {
-            font-size: 48px;
-            line-height: 48px;
-            font-weight: 600;
-            letter-spacing: -0.005em;
-            color: var(--text-primary);
-            white-space: nowrap;
-        }
-
-        .stat-star {
-            color: #5a50f3;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            line-height: 1.47059;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            white-space: nowrap;
-        }
-
-        /* Section */
-        section {
-            max-width: 980px;
-            margin: 80px auto;
-            padding: 0 22px;
-            transition: opacity 0.3s ease-out;
-        }
-
-        .section-heading {
-            font-size: 48px;
-            line-height: 1.08349;
-            font-weight: 600;
-            letter-spacing: -0.003em;
-            text-align: center;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .section-subheading {
-            font-size: 21px;
-            line-height: 1.381;
-            font-weight: 400;
-            letter-spacing: 0.011em;
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 60px;
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px 40px;
-            margin-top: 60px;
-        }
-
-        .feature {
-            text-align: left;
-            padding: 28px;
-            border-radius: 20px;
-            background: var(--feature-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .feature:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(90, 80, 243, 0.15);
-            background: rgba(255,255,255,0.8);
-            border: 1px solid rgba(90, 80, 243, 0.2);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(90, 80, 243, 0.1), rgba(122, 112, 246, 0.1));
-            border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .feature-icon svg {
-            width: 24px;
-            height: 24px;
-            color: #5a50f3;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .feature:hover .feature-icon {
-            background: linear-gradient(135deg, rgba(90, 80, 243, 0.15), rgba(122, 112, 246, 0.15));
-            transform: translateY(-4px);
-        }
-
-        .feature:hover .feature-icon svg {
-            transform: scale(1.1);
-        }
-
-        .feature-title {
-            font-size: 24px;
-            line-height: 1.16667;
-            font-weight: 600;
-            letter-spacing: 0.009em;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .feature-description {
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            color: var(--text-secondary);
-        }
-
-        /* Screenshots */
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            margin: 60px 0;
-        }
-
-        .screenshot {
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 2px 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .screenshot:hover {
-            transform: translateY(-4px);
-        }
-
-        .screenshot img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-        }
-
-        /* Pricing */
-        .pricing {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 800px;
-            margin: 60px auto 0;
-        }
-
-        .plan {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 48px 40px;
-            text-align: left;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .plan::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #5a50f3, #ff4560, #1db9ff);
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.4s;
-            z-index: -1;
-        }
-
-        .plan:hover {
-            box-shadow: 0 30px 60px rgba(90, 80, 243, 0.2);
-            transform: translateY(-10px) scale(1.02);
-        }
-
-        .plan:hover::before {
-            opacity: 0.1;
-        }
-
-        .plan-name {
-            font-size: 28px;
-            line-height: 1.14286;
-            font-weight: 600;
-            letter-spacing: 0.007em;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .plan-price {
-            font-size: 48px;
-            line-height: 1.08349;
-            font-weight: 600;
-            letter-spacing: -0.003em;
-            color: var(--text-primary);
-            margin: 16px 0 24px;
-        }
-
-        .plan-price span {
-            font-size: 21px;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .plan ul {
-            list-style: none;
-            margin: 24px 0;
-        }
-
-        .plan li {
-            font-size: 17px;
-            line-height: 1.47059;
-            color: var(--text-primary);
-            padding: 3px 0;
-            padding-left: 24px;
-            position: relative;
-        }
-
-        .plan li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #5a50f3;
-            font-weight: 600;
-        }
-
-        .plan li.separator {
-            padding: 0;
-            margin: 0;
-            height: 0;
-            line-height: 0;
-            font-size: 0;
-            visibility: hidden;
-        }
-
-        .plan li.separator::before {
-            content: "";
-        }
-
-        .plan .heart {
-            color: #5a50f3;
-        }
-
-        .plan .btn {
-            margin-top: auto;
-        }
-
-        /* FAQ */
-        .faq {
-            max-width: 692px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border-color);
-            padding: 24px 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-question {
-            font-size: 21px;
-            line-height: 1.381;
-            font-weight: 600;
-            letter-spacing: 0.011em;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .faq-answer {
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            color: var(--text-secondary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            margin-top: 120px;
-            padding: 60px 22px 40px;
-        }
-
-        .footer-content {
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            font-size: 12px;
-            line-height: 1.33337;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .footer-section a {
-            display: block;
-            font-size: 12px;
-            line-height: 1.33337;
-            font-weight: 400;
-            letter-spacing: -0.01em;
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-bottom: 8px;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--text-primary);
-        }
-
-        .footer-section p {
-            font-size: 12px;
-            line-height: 1.33337;
-            color: var(--text-secondary);
-        }
-
-        .copyright {
-            text-align: center;
-            font-size: 12px;
-            line-height: 1.33337;
-            color: var(--text-secondary);
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-right ul {
-                display: none;
-            }
-
-            .nav-right {
-                gap: 12px;
-            }
-
-            .burger-menu {
-                display: flex;
-            }
-
-            .theme-toggle {
-                margin-left: 0 !important;
-            }
-
-            .hero-section {
-                grid-template-columns: 1fr;
-                padding: 30px 20px;
-                gap: 30px;
-            }
-
-            .hero-content {
-                text-align: center;
-                order: 1;
-            }
-
-            .hero {
-                text-align: center;
-                padding: 0;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-                line-height: 1.1;
-                letter-spacing: -0.02em;
-                margin-bottom: 12px;
-            }
-
-            .hero .subtitle {
-                font-size: 19px;
-                line-height: 1.4;
-                margin-bottom: 20px;
-            }
-
-            .cta-group {
-                flex-direction: row;
-                justify-content: center;
-                gap: 10px;
-                flex-wrap: wrap;
-            }
-
-            .btn {
-                flex: 1;
-                min-width: 140px;
-                max-width: 200px;
-                text-align: center;
-                font-size: 15px;
-                padding: 10px 18px;
-            }
-
-            .store-badge img {
-                height: 40px;
-            }
-
-            .hero-image {
-                order: 2;
-                margin-top: 20px;
-            }
-
-            .hero-image img {
-                max-width: 260px;
-            }
-
-            section {
-                margin: 60px auto;
-                padding: 0 16px;
-            }
-
-            .section-heading {
-                font-size: 32px;
-                line-height: 1.125;
-            }
-
-            .section-subheading {
-                font-size: 19px;
-                margin-bottom: 40px;
-            }
-
-            .stats {
-                display: grid !important;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px 12px;
-                margin: 30px 0 0 0 !important;
-                justify-content: center !important;
-                padding: 0 !important;
-            }
-
-            .stat-item {
-                min-width: auto;
-            }
-
-            .stat-value {
-                font-size: 28px;
-                line-height: 28px;
-            }
-
-            .stat-label {
-                font-size: 11px;
-                margin-top: 2px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .screenshots {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        html.lenis {
-            height: auto;
-        }
-
-        .lenis.lenis-smooth {
-            scroll-behavior: auto;
-        }
-
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-
-        .lenis.lenis-stopped {
-            overflow: hidden;
-        }
-
-        .lenis.lenis-scrolling iframe {
-            pointer-events: none;
-        }
-
-        ::selection {
-            background: #b3d4fc;
-            color: #1d1d1f;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 1;
-        }
-
-        /* Animations désactivées - tout est visible immédiatement */
-        .animate-on-scroll.fade-in-up {
-            /* animation: fadeInUp 0.8s ease-out forwards; */
-        }
-
-        .animate-on-scroll.fade-in {
-            /* animation: fadeIn 0.6s ease-out forwards; */
-        }
-
-        .animate-on-scroll.scale-in {
-            /* animation: scaleIn 0.7s ease-out forwards; */
-        }
-
-        /* Stagger delay pour les éléments multiples */
-        .animate-on-scroll:nth-child(1) { animation-delay: 0s; }
-        .animate-on-scroll:nth-child(2) { animation-delay: 0.1s; }
-        .animate-on-scroll:nth-child(3) { animation-delay: 0.2s; }
-        .animate-on-scroll:nth-child(4) { animation-delay: 0.3s; }
-        .animate-on-scroll:nth-child(5) { animation-delay: 0.4s; }
-        .animate-on-scroll:nth-child(6) { animation-delay: 0.5s; }
-
-        /* Smooth transitions pour les hover */
-        .feature, .screenshot, .plan, .faq-item, .stat-item {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Pikacheck géant */
-        .pikacheck-giant {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .giant-text {
-            font-size: 18vw;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 0.9;
-            color: var(--text-primary);
-            text-align: center;
-            margin: 0;
-            padding: 0 20px;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .giant-text {
-                font-size: 13vw;
-                padding: 0 10px;
-            }
-        }
-
-    </style>
-    <script>
-        function isMobileDevice() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
-        }
-
-        // Smart download function - detects platform and redirects accordingly
-        function smartDownload(event, buttonLocation) {
-            event.preventDefault();
-
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            let platform = 'desktop';
-            let redirectUrl = '/download/';
-
-            // Detect iOS
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                platform = 'iOS';
-                redirectUrl = 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=' + buttonLocation + '&utm_campaign=download';
-            }
-            // Detect Android
-            else if (/android/i.test(userAgent)) {
-                platform = 'Android';
-                redirectUrl = 'https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=' + buttonLocation + '&utm_campaign=download';
-            }
-
-            // Track conversion
-            trackConversion(buttonLocation, platform);
-
-            // Redirect
-            window.location.href = redirectUrl;
-        }
-
-        function trackConversion(buttonLocation, platform) {
-            // Google Analytics 4
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'download_click', {
-                    'event_category': 'engagement',
-                    'event_label': buttonLocation,
-                    'platform': platform,
-                    'value': 1
-                });
-            }
-
-            // Google Tag Manager
-            if (typeof dataLayer !== 'undefined') {
-                dataLayer.push({
-                    'event': 'download_click',
-                    'buttonLocation': buttonLocation,
-                    'platform': platform
-                });
-            }
-        }
-
-        // Initialiser l'app au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser Lenis pour un smooth scroll avec inertie (seulement sur desktop)
-            if (!isMobileDevice()) {
-                window.lenis = new Lenis({
-                    duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                    direction: 'vertical',
-                    gestureDirection: 'vertical',
-                    smooth: true,
-                    smoothTouch: false,
-                    touchMultiplier: 2
-                });
-
-                // Boucle d'animation pour Lenis
-                function raf(time) {
-                    window.lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-            }
-
-            // Burger menu toggle
-            const burgerMenu = document.getElementById('burgerMenu');
-            const mobileMenu = document.getElementById('mobileMenu');
-
-            burgerMenu.addEventListener('click', function() {
-                burgerMenu.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-
-            // Fermer le menu quand on clique sur un lien
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    burgerMenu.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
-
-            // Animation au scroll désactivée - tout est visible immédiatement
-            // const observerOptions = {
-            //     threshold: 0.1,
-            //     rootMargin: '0px 0px -50px 0px'
-            // };
-
-            // const observer = new IntersectionObserver(function(entries) {
-            //     entries.forEach(entry => {
-            //         if (entry.isIntersecting) {
-            //             entry.target.classList.add(entry.target.dataset.animation || 'fade-in-up');
-            //             observer.unobserve(entry.target);
-            //         }
-            //     });
-            // }, observerOptions);
-
-            // // Observer tous les éléments à animer
-            // document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            //     observer.observe(element);
-            // });
-
-            // Scroll smooth pour les ancres (fonctionne avec ou sans Lenis)
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href !== '#' && href !== '') {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
-                        if (target) {
-                            if (window.lenis) {
-                                // Si Lenis est disponible (desktop), utiliser le smooth scroll
-                                window.lenis.scrollTo(target, {
-                                    offset: -80,
-                                    duration: 1.5
-                                });
-                            } else {
-                                // Sinon (mobile), utiliser le scroll natif
-                                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
-                                window.scrollTo({
-                                    top: targetPosition,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        }
-                    }
-                });
-            });
-
-            // Effet parallaxe léger sur les images avec Lenis (seulement desktop)
-            if (window.lenis) {
-                window.lenis.on('scroll', ({ scroll }) => {
-                    const parallaxElements = document.querySelectorAll('.parallax-slow');
-
-                    parallaxElements.forEach((element) => {
-                        const rect = element.getBoundingClientRect();
-                        const elementTop = rect.top + scroll;
-                        const viewportHeight = window.innerHeight;
-
-                        if (rect.top < viewportHeight && rect.bottom > 0) {
-                            const speed = 0.08;
-                            const yPos = (scroll - elementTop) * speed;
-                            element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-                        }
-                    });
-                });
-            }
-
-            // Animation du compteur désactivée
-            // function animateCounter(element) {
-            //     const text = element.textContent;
-            //     const hasPlus = text.includes('+');
-            //     const hasStar = text.includes('★');
-            //     const hasEuro = text.includes('€');
-
-            //     // Extraire le nombre
-            //     let target = parseFloat(text.replace(/[^\d.]/g, ''));
-            //     if (text.includes('K')) target *= 1000;
-            //     if (text.includes('M')) target *= 1000000;
-
-            //     let current = 0;
-            //     const increment = target / 60; // 60 frames pour l'animation
-            //     const duration = 1500; // 1.5 secondes
-            //     const frameTime = duration / 60;
-
-            //     const timer = setInterval(() => {
-            //         current += increment;
-            //         if (current >= target) {
-            //             current = target;
-            //             clearInterval(timer);
-            //         }
-
-            //         let displayValue;
-            //         if (text.includes('M')) {
-            //             displayValue = (current / 1000000).toFixed(0) + 'M';
-            //         } else if (text.includes('K')) {
-            //             displayValue = Math.round(current / 1000) + 'K';
-            //         } else if (text.includes('.')) {
-            //             displayValue = current.toFixed(1);
-            //         } else {
-            //             displayValue = Math.round(current);
-            //         }
-
-            //         element.textContent = (hasPlus ? '+' : '') + displayValue + (hasEuro ? '€' : '');
-            //         if (hasStar) element.innerHTML += ' <span class="stat-star">★</span>';
-            //     }, frameTime);
-            // }
-
-            // // Observer pour déclencher l'animation uniquement pour la valeur de collection (9M€)
-            // const statsObserver = new IntersectionObserver((entries) => {
-            //     entries.forEach(entry => {
-            //         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-            //             entry.target.classList.add('counted');
-            //             // Animer uniquement si c'est la stat avec €
-            //             if (entry.target.textContent.includes('€')) {
-            //                 animateCounter(entry.target);
-            //             }
-            //         }
-            //     });
-            // }, { threshold: 0.5 });
-
-            // document.querySelectorAll('.stat-value').forEach(stat => {
-            //     statsObserver.observe(stat);
-            // });
-
-            // Particules désactivées
-        });
-    </script>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html, body { overflow-x: hidden; }
+    body { font-family: 'Manrope', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+    .ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+
+    /* ---------- Barre du haut ---------- */
+    .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .25s, border-color .25s; border-bottom: 1px solid transparent; }
+    .nav.scrolled, .nav.open { background: rgba(30,36,49,.82); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); border-color: var(--line); }
+    .nav .wrap { display: flex; align-items: center; height: 64px; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -.2px; }
+    .brand img { width: 32px; height: 32px; border-radius: 9px; }
+    .nav-links { display: flex; gap: 26px; margin-left: auto; font-weight: 600; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 999px; font-weight: 800; font-size: 15px; background: var(--violet); color: #fff; border: 0; cursor: pointer; transition: transform .15s, background .15s; }
+    .btn:hover { background: #5f5bf5; transform: translateY(-1px); }
+    .btn.sm { height: 38px; padding: 0 18px; font-size: 14px; }
+    .btn.ghost { background: rgba(255,255,255,.07); border: 1px solid var(--line); }
+    .btn.white { background: #fff; color: #1e2431; }
+    .link { color: var(--soft); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+    .link:hover { color: #b9b7ff; }
+    .burger { display: none; width: 42px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.05); cursor: pointer; position: relative; flex: 0 0 auto; }
+    .burger span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--text); transition: transform .25s, top .25s; }
+    .burger span:first-child { top: 15px; } .burger span:last-child { top: 23px; }
+    .nav.open .burger span:first-child { top: 19px; transform: rotate(45deg); }
+    .nav.open .burger span:last-child { top: 19px; transform: rotate(-45deg); }
+    .menu { display: none; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav .btn { margin-left: auto; }
+      .burger { display: block; }
+      .menu { display: grid; max-height: 0; overflow: hidden; transition: max-height .3s ease; padding: 0 22px; }
+      .nav.open .menu { max-height: 560px; padding-bottom: 14px; }
+      .menu a { padding: 14px 4px; font-weight: 700; font-size: 17px; border-top: 1px solid var(--line); }
+    }
+
+    /* ---------- Typographie ---------- */
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--soft); margin-bottom: 18px; }
+    .eyebrow .ic { width: 18px; height: 18px; }
+    h1 { font-size: clamp(46px, 8.4vw, 96px); line-height: 1; letter-spacing: -3.4px; font-weight: 800; }
+    h2 { font-size: clamp(38px, 6.4vw, 72px); line-height: 1.03; letter-spacing: -2.4px; font-weight: 800; }
+    .muted { color: #6f7486; }
+    .lead { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); line-height: 1.5; max-width: 640px; margin: 22px auto 0; }
+    .center { text-align: center; }
+    .tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .4px; vertical-align: middle; }
+    .tag.new { background: var(--yellow); color: #1e2431; }
+    .tag.pro { background: rgba(255,209,102,.16); color: var(--yellow); }
+
+    /* ---------- Téléphones ---------- */
+    .device { width: 300px; aspect-ratio: 720 / 1520; flex: 0 0 auto; filter: drop-shadow(0 40px 60px rgba(0,0,0,.55)); }
+    .device img { width: 100%; height: 100%; }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; padding: 140px 0 0; overflow: hidden; text-align: center; }
+    .hero::before { content: ""; position: absolute; left: 50%; top: 380px; width: 1100px; height: 900px; margin-left: -550px; border-radius: 50%; background: radial-gradient(closest-side, rgba(81,77,240,.45), transparent); pointer-events: none; }
+    .hero .wrap { position: relative; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--line); font-size: 13.5px; font-weight: 700; color: var(--muted); margin-bottom: 26px; }
+    .pill b { background: var(--yellow); color: #1e2431; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; letter-spacing: .4px; }
+    .grad { background: linear-gradient(100deg, #b4b2ff, #7c78f7 55%, var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+    .store { display: flex; align-items: center; gap: 10px; height: 56px; padding: 0 22px 0 16px; border-radius: 16px; background: #fff; color: #1e2431; font-weight: 800; transition: transform .15s; }
+    .store:hover { transform: translateY(-2px); }
+    .store svg { width: 26px; height: 26px; flex: 0 0 auto; }
+    .store small { display: block; font-size: 11px; font-weight: 600; opacity: .7; line-height: 1; margin-bottom: 3px; text-align: left; }
+    .store span { line-height: 1.05; font-size: 17px; }
+    .store.dark { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid var(--line); }
+    .rating { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .stars { color: var(--yellow); letter-spacing: 2px; font-size: 15px; }
+
+    .stage { position: relative; height: 720px; margin-top: 70px; display: flex; justify-content: center; }
+    .stage .side { position: absolute; top: 90px; width: 270px; opacity: .55; }
+    .stage .side.l { left: 50%; margin-left: -470px; transform: rotate(-7deg); }
+    .stage .side.r { left: 50%; margin-left: 200px; transform: rotate(7deg); }
+    .live { position: relative; width: 330px; aspect-ratio: 720 / 1520; z-index: 2; filter: drop-shadow(0 50px 70px rgba(0,0,0,.6)); }
+    .live .screens { position: absolute; left: 3.556%; top: 2.158%; width: 92.89%; height: 95.68%; border-radius: 14.1% / 6.49%; overflow: hidden; background: #1e2431; }
+    .live .screens img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: show 12s infinite; }
+    .live .screens img:nth-child(1) { animation-delay: 0s; }
+    .live .screens img:nth-child(2) { animation-delay: 4s; }
+    .live .screens img:nth-child(3) { animation-delay: 8s; }
+    .live .frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .live .lock { position: absolute; left: 18%; top: 24%; width: 64%; height: 40%; border-radius: 6%; border: 3px solid #8f63ff; box-shadow: 0 0 30px rgba(143,99,255,.8); opacity: 0; animation: lock 12s infinite; }
+    @keyframes show { 0% { opacity: 0; } 3% { opacity: 1; } 31% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
+    @keyframes lock { 0%, 4% { opacity: 0; transform: scale(1.18); } 10% { opacity: 1; transform: scale(1); } 26% { opacity: 1; } 31%, 100% { opacity: 0; transform: scale(1); } }
+    .chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; border-radius: 18px; text-align: left; background: rgba(37,42,55,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 50px -16px rgba(0,0,0,.7); font-size: 14px; font-weight: 700; opacity: 0; animation: chip 12s infinite; white-space: nowrap; }
+    .chip .ico { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; }
+    .chip small { display: block; color: var(--muted); font-weight: 600; font-size: 12px; }
+    .chip b { font-size: 17px; }
+    .chip.c1 { left: 50%; margin-left: 150px; top: 330px; animation-delay: 0s; }
+    .chip.c2 { left: 50%; margin-left: -420px; top: 250px; animation-delay: 4s; }
+    .chip.c3 { left: 50%; margin-left: 150px; top: 200px; animation-delay: 8s; }
+    @keyframes chip { 0%, 9% { opacity: 0; transform: translateY(14px); } 13% { opacity: 1; transform: none; } 30% { opacity: 1; } 34%, 100% { opacity: 0; } }
+    .up { color: var(--green); }
+    @media (max-width: 900px) {
+      .hero { padding-top: 112px; }
+      .stage { height: 560px; margin-top: 50px; }
+      .live { width: 250px; }
+      .stage .side { width: 200px; top: 70px; }
+      .stage .side.l { margin-left: -330px; } .stage .side.r { margin-left: 130px; }
+      .chip { font-size: 12.5px; padding: 9px 13px 9px 9px; }
+      .chip b { font-size: 15px; } .chip .ico { width: 32px; height: 32px; }
+      .chip.c1 { margin-left: 30px; top: 380px; } .chip.c2 { margin-left: -200px; top: 120px; } .chip.c3 { margin-left: 10px; top: 120px; }
+    }
+    @media (max-width: 480px) {
+      .stage { height: 500px; }
+      .live { width: 228px; }
+      .stage .side { width: 170px; } .stage .side.l { margin-left: -250px; } .stage .side.r { margin-left: 80px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .live .screens img, .chip, .live .lock { animation: none; }
+      .live .screens img:first-child, .chip.c1 { opacity: 1; }
+    }
+
+    /* ---------- Chiffres ---------- */
+    .numbers { padding: 40px 0 0; }
+    .numbers .grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .num { padding: 34px 10px; text-align: center; }
+    .num + .num { border-left: 1px solid var(--line); }
+    .num b { display: block; font-size: clamp(34px, 4.6vw, 52px); font-weight: 800; letter-spacing: -1.6px; line-height: 1; }
+    .num span { display: block; color: var(--muted); font-weight: 600; margin-top: 8px; font-size: 15px; }
+    .numbers .src { text-align: center; color: #6f7486; font-size: 12.5px; margin-top: 12px; font-weight: 600; }
+    @media (max-width: 760px) { .numbers .grid { grid-template-columns: 1fr 1fr; } .num:nth-child(3) { border-left: 0; } .num:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+    /* ---------- Sections produit ---------- */
+    .chapter { padding: 150px 0 0; text-align: center; position: relative; overflow: hidden; padding-bottom: 40px; margin-bottom: -40px; }
+    .chapter .glow { position: absolute; left: 50%; width: 900px; height: 700px; margin-left: -450px; border-radius: 50%; pointer-events: none; z-index: 0; }
+    .chapter > .wrap { position: relative; z-index: 1; }
+    .show { display: flex; justify-content: center; align-items: flex-end; gap: 0; margin-top: 64px; }
+    .show .device { width: 320px; }
+    .show.two .device:first-child { transform: translateX(30px) rotate(-4deg); }
+    .show.two .device:last-child { transform: translate(-30px, 30px) rotate(4deg); z-index: 1; }
+    .show.three .device { width: 270px; }
+    .show.three .device:nth-child(1) { transform: translateX(60px) rotate(-6deg) scale(.92); }
+    .show.three .device:nth-child(2) { z-index: 2; }
+    .show.three .device:nth-child(3) { transform: translateX(-60px) rotate(6deg) scale(.92); }
+    .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; max-width: 980px; margin: 70px auto 0; text-align: left; }
+    .point .badge { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: rgba(81,77,240,.18); color: var(--soft); margin-bottom: 16px; }
+    .point h3 { font-size: 19px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 6px; }
+    .point p { color: var(--muted); font-size: 15.5px; }
+    .sources { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+    .sources span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-weight: 700; font-size: 14px; }
+    .sources span.soon { color: var(--muted); }
+    @media (max-width: 900px) {
+      .chapter { padding-top: 110px; }
+      .show { margin-top: 44px; }
+      .show .device { width: 240px; }
+      .show.three .device { width: 190px; }
+      .show.three .device:nth-child(1) { transform: translateX(56px) rotate(-6deg) scale(.88); }
+      .show.three .device:nth-child(3) { transform: translateX(-56px) rotate(6deg) scale(.88); }
+      .points { grid-template-columns: 1fr; gap: 24px; max-width: 520px; margin-top: 48px; }
+    }
+    @media (max-width: 480px) {
+      .show .device { width: 200px; }
+      .show.two .device { width: 175px; }
+      .show.three .device { width: 150px; }
+      .show.three .device:nth-child(1) { transform: translateX(46px) rotate(-6deg) scale(.86); }
+      .show.three .device:nth-child(3) { transform: translateX(-46px) rotate(6deg) scale(.86); }
+    }
+
+    /* ---------- Et aussi ---------- */
+    .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 56px; text-align: left; }
+    .feat { padding: 28px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); }
+    .feat .badge { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; }
+    .feat h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; letter-spacing: -.3px; }
+    .feat p { color: var(--muted); font-size: 15px; }
+    @media (max-width: 900px) { .grid6 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .grid6 { grid-template-columns: 1fr; } }
+
+    /* ---------- Avis ---------- */
+    .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 56px; text-align: left; }
+    .review { padding: 26px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+    .review p { font-size: 16.5px; line-height: 1.5; flex: 1; }
+    .review footer { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 13.5px; font-weight: 700; padding: 0; }
+    @media (max-width: 900px) { .reviews { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .reviews { grid-template-columns: 1fr; } }
+
+    /* ---------- Vision ---------- */
+    .vision { margin-top: 150px; padding: 90px 0; background: linear-gradient(180deg, var(--bg-2), var(--bg)); border-top: 1px solid var(--line); }
+    .road { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 56px; text-align: left; }
+    .step { padding: 22px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
+    .step .badge { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,209,102,.14); color: var(--yellow); margin-bottom: 14px; }
+    .step h3 { font-size: 16.5px; font-weight: 800; margin-bottom: 4px; }
+    .step p { color: var(--muted); font-size: 14px; }
+    @media (max-width: 1000px) { .road { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .road { grid-template-columns: 1fr; } }
+
+    /* ---------- Premium ---------- */
+    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 56px auto 0; max-width: 960px; text-align: left; }
+    .plan { position: relative; padding: 34px; border-radius: 28px; background: var(--card); border: 1px solid var(--line); }
+    .plan h3 { font-size: 22px; font-weight: 800; }
+    .plan .price { margin: 10px 0 24px; color: var(--muted); font-weight: 600; }
+    .plan .price b { color: var(--text); font-size: 34px; letter-spacing: -1px; }
+    .plan ul { list-style: none; display: grid; gap: 12px; }
+    .plan li { display: flex; gap: 12px; font-weight: 600; font-size: 15.5px; align-items: flex-start; }
+    .plan li .ic { width: 20px; height: 20px; color: var(--green); margin-top: 1px; }
+    .plan.pro { background: linear-gradient(170deg, rgba(81,77,240,.34), rgba(81,77,240,.08) 45%, var(--card)); border-color: rgba(81,77,240,.6); }
+    .plan.pro li .ic { color: var(--soft); }
+    .plan .btn { width: 100%; margin-top: 28px; }
+    .note { text-align: center; color: #6f7486; font-size: 13px; margin-top: 16px; }
+    @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } .plan { padding: 26px; } }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 780px; margin: 50px auto 0; text-align: left; }
+    details { border-bottom: 1px solid var(--line); }
+    summary { list-style: none; cursor: pointer; padding: 22px 0; font-weight: 800; font-size: 18px; display: flex; justify-content: space-between; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 24px; line-height: 1; color: var(--muted); transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { color: var(--muted); padding-bottom: 22px; font-size: 16px; }
+
+    /* ---------- Appel final + pied ---------- */
+    .final { margin: 140px auto 0; padding: 80px 24px; border-radius: 40px; text-align: center; background: radial-gradient(120% 120% at 50% 0%, #6c68f5, #514df0 45%, #3b37c9); position: relative; overflow: hidden; }
+    .final h2 { color: #fff; }
+    .final p { color: rgba(255,255,255,.88); font-size: 19px; margin: 16px auto 32px; max-width: 520px; }
+    .final .store.dark { background: rgba(0,0,0,.22); border-color: rgba(255,255,255,.25); color: #fff; }
+    .site-footer { padding: 70px 0 50px; color: var(--muted); font-size: 14px; }
+    .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 24px 40px; justify-content: space-between; align-items: flex-start; }
+    .site-footer nav { display: flex; flex-wrap: wrap; gap: 10px 22px; font-weight: 600; }
+    .site-footer nav a:hover { color: var(--text); }
+    .site-footer .legal-note { width: 100%; font-size: 12.5px; opacity: .7; }
+
+    /* ---------- Barre mobile ---------- */
+    .sticky { display: none; }
+    @media (max-width: 760px) {
+      .sticky { display: flex; align-items: center; gap: 12px; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 60; padding: 10px 10px 10px 12px; border-radius: 22px; background: rgba(37,42,55,.94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--line); box-shadow: 0 20px 40px -10px rgba(0,0,0,.7); transform: translateY(150%); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+      .sticky.on { transform: none; }
+      .sticky img { border-radius: 11px; }
+      .sticky div { flex: 1; line-height: 1.2; }
+      .sticky b { display: block; font-size: 15px; }
+      .sticky span { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+      .site-footer { padding-bottom: 110px; }
+    }
+
+
+    /* ---------- Mobile : version compacte ---------- */
+    @media (max-width: 600px) {
+      .chip.c1, .chip.c2, .chip.c3 { left: 12px; right: 12px; margin: 0 auto; width: max-content; max-width: calc(100% - 24px); top: auto; bottom: 18px; }
+      .stores { gap: 8px; }
+      .store { height: 52px; padding: 0 14px 0 12px; gap: 8px; }
+      .store span { font-size: 15px; } .store svg { width: 22px; height: 22px; }
+      .points { gap: 18px; }
+      .point { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; }
+      .point .badge { grid-row: span 2; margin: 0; }
+      .point h3 { font-size: 17px; margin: 0 0 2px; align-self: end; }
+      .feat, .step { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; padding: 18px; border-radius: 20px; }
+      .feat .badge, .step .badge { grid-row: span 2; margin: 0; }
+      .feat h3, .step h3 { font-size: 16.5px; margin: 0 0 2px; align-self: end; }
+      .feat p, .step p { font-size: 14px; }
+      .grid6, .road, .reviews { gap: 10px; margin-top: 36px; }
+      .chapter { padding-top: 96px; }
+      .vision { margin-top: 110px; padding: 70px 0; }
+      .review { padding: 20px; }
+    }
+
+    /* ---------- Apparition ---------- */
+    section { position: relative; scroll-margin-top: 70px; }
+    .js .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s ease, transform .9s cubic-bezier(.16,.8,.24,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-    <div id="smooth-scroll-wrapper">
-    <nav>
-        <div class="nav-content">
-            <a href="#" class="logo">
-                <img src="assets/images/Pikacheck-logo-alt-nobg.svg" alt="Pikacheck">
-                <span>Pikacheck</span>
-            </a>
-            <div class="nav-right">
-                <ul>
-                    <li><a href="#features">Fonctionnalités</a></li>
-                    <li><a href="#screenshots">Aperçu</a></li>
-                    <li><a href="#pricing">Tarifs</a></li>
-                    <li><a href="/articles">Articles</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-                <!-- From Uiverse.io by Galahhad -->
-                <label class="theme-switch">
-                    <input type="checkbox" class="theme-switch__checkbox" id="themeToggle">
-                    <div class="theme-switch__container">
-                        <div class="theme-switch__clouds"></div>
-                        <div class="theme-switch__stars-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <div class="theme-switch__circle-container">
-                            <div class="theme-switch__sun-moon-container">
-                                <div class="theme-switch__moon">
-                                    <div class="theme-switch__spot"></div>
-                                    <div class="theme-switch__spot"></div>
-                                    <div class="theme-switch__spot"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </label>
-                <div class="burger-menu" id="burgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            </div>
-        </div>
+  <!-- Icônes (traits arrondis, même style partout) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><rect x="7" y="7" width="10" height="10" rx="1.5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12M7.5 4.27l9 5.15"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+    <symbol id="i-devices" viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="16" rx="2"/><rect x="15" y="9" width="7" height="12" rx="1.5"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M18 17V9M13 17V5M8 17v-3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9 4.5 4h15L21 9M4 9v11h16V9M3 9h18M9 20v-5h6v5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.2z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </svg>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Pikacheck, accueil"><img src="/assets/app/icon.png" alt="" width="32" height="32">Pikacheck</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#partage">Partage</a>
+        <a href="#bons-plans">Bons plans</a>
+        <a href="#premium">Premium</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/articles">Articles</a>
+      </nav>
+      <a class="btn sm" href="/download" data-dl="nav">Télécharger</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+    <nav class="menu" id="menu" aria-label="Menu">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#partage">Partage</a>
+      <a href="#bons-plans">Bons plans</a>
+      <a href="#premium">Premium</a>
+      <a href="#faq">FAQ</a>
+      <a href="/a-propos">À propos</a>
+      <a href="/articles">Articles</a>
+      <a href="https://pikacheck.com/?utm_source=website&amp;utm_medium=menu" rel="noopener">Boutique</a>
     </nav>
+  </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul>
-            <li><a href="#features">Fonctionnalités</a></li>
-            <li><a href="#screenshots">Aperçu</a></li>
-            <li><a href="#pricing">Tarifs</a></li>
-            <li><a href="/articles">Articles</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-    </div>
-
-    <div class="hero-section">
-        <div class="hero-content animate-on-scroll" data-animation="fade-in-up">
-            <div class="hero">
-                <h1>Gérez votre collection Pokémon</h1>
-                <p class="subtitle">L'app qui transforme vos cartes et produits scellés en portefeuille intelligent</p>
-                <div class="cta-group">
-                    <a href="#" class="btn btn-blue download-btn" onclick="smartDownload(event, 'hero')">Télécharger gratuitement</a>
-                </div>
-            </div>
-
-            <div class="stats" style="margin: 60px 0 0 0; padding: 0; justify-content: flex-start;">
-        <div class="stat-item animate-on-scroll" data-animation="fade-in">
-            <div class="stat-value">30K+</div>
-            <div class="stat-label">Cartes</div>
-        </div>
-        <div class="stat-item animate-on-scroll" data-animation="fade-in">
-            <div class="stat-value">1000+</div>
-            <div class="stat-label">Produits scellés</div>
-        </div>
-        <div class="stat-item animate-on-scroll" data-animation="fade-in">
-            <div class="stat-value">+9M€</div>
-            <div class="stat-label">Valeur suivie</div>
-        </div>
-        <div class="stat-item animate-on-scroll" data-animation="fade-in">
-            <div class="stat-value">4.8 <span class="stat-star">★</span></div>
-            <div class="stat-label">Note</div>
-        </div>
-        <div class="stat-item animate-on-scroll" data-animation="fade-in">
-            <div class="stat-value">1 an+</div>
-            <div class="stat-label">Historique des prix</div>
-        </div>
-            </div>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="pill"><b>GRATUIT</b> iPhone, iPad et Android</span>
+          <h1>Scanne tes cartes.<br><span class="grad">Suis ton scellé.</span></h1>
+          <p class="lead">Cartes reconnues et chiffrées en 2 secondes. ETB, displays, coffrets et boosters cotés chaque jour. Toute ta collection, à sa vraie valeur.</p>
+          <div class="stores">
+            <a class="store" href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=download" data-store="ios" data-loc="hero">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.28 1.86-3.38 1.95-3.43-1.06-1.55-2.71-1.77-3.3-1.79-1.4-.14-2.74.83-3.45.83-.71 0-1.8-.81-2.97-.79-1.53.02-2.94.89-3.72 2.25-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.66 2.33 2.84 2.28 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.21.87-1.27 1.22-2.5 1.24-2.57-.03-.01-2.38-.91-2.4-3.62zM14.1 5.9c.63-.76 1.05-1.82.93-2.88-.9.04-2 .6-2.65 1.36-.58.67-1.09 1.75-.95 2.79 1.01.08 2.04-.51 2.67-1.27z"/></svg>
+              <div><small>Télécharger dans</small><span>l'App Store</span></div>
+            </a>
+            <a class="store dark" href="https://play.google.com/store/apps/details?id=com.pikacheck.app&amp;utm_source=website&amp;utm_medium=hero&amp;utm_campaign=download" data-store="android" data-loc="hero">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#6ad097" d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7z"/><path fill="#514df0" d="M16.3 15.2 13.1 12 3.6 21.7c.4.4 1 .4 1.7 0z"/><path fill="#ffd166" d="M20.2 10.6 16.3 8.4 13.1 12l3.2 3.2 3.9-2.2c1.1-.6 1.1-1.8 0-2.4z"/><path fill="#f0607a" d="M5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.5 9.7 3.2-3.6z"/></svg>
+              <div><small>Disponible sur</small><span>Google Play</span></div>
+            </a>
+          </div>
+          <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span> 4,8 · 15K+ collectionneurs</div>
         </div>
 
-        <div class="hero-image animate-on-scroll parallax-slow" data-animation="scale-in">
-            <img src="assets/images/01.png" alt="Application Pikacheck - Interface de gestion de collection Pokémon" loading="lazy" width="1290" height="2796">
+        <!-- Démonstration animée : scan d'une carte → fiche d'un ETB → valeur de la collection -->
+        <div class="stage reveal" aria-label="Démonstration de l'application Pikacheck">
+          <div class="device side l" aria-hidden="true"><img src="/assets/device/grid.webp" alt="" width="720" height="1520"></div>
+          <div class="device side r" aria-hidden="true"><img src="/assets/device/card.webp" alt="" width="720" height="1520"></div>
+          <div class="live">
+            <div class="screens">
+              <img src="/assets/device/screen_scan.webp" alt="Scan d'une carte Pokémon" width="669" height="1454">
+              <img src="/assets/device/screen_item.webp" alt="Fiche d'un ETB avec sa cote" width="669" height="1454">
+              <img src="/assets/device/screen_scelle.webp" alt="Valeur de la collection" width="669" height="1454">
+            </div>
+            <div class="lock" aria-hidden="true"></div>
+            <img class="frame" src="/assets/device/frame.webp" alt="" width="720" height="1520">
+          </div>
+          <div class="chip c1" aria-hidden="true"><span class="ico" style="background:rgba(81,77,240,.25);color:var(--soft)"><svg class="ic"><use href="#i-scan"/></svg></span><div><small>Reconnue en 2 s</small><b>Mélofée ex · 4,68 €</b></div></div>
+          <div class="chip c2" aria-hidden="true"><span class="ico" style="background:rgba(255,209,102,.16);color:var(--yellow)"><svg class="ic"><use href="#i-box"/></svg></span><div><small>ETB 30e Anniversaire</small><b>160,95 € <span class="up">+192 %</span></b></div></div>
+          <div class="chip c3" aria-hidden="true"><span class="ico" style="background:rgba(106,208,151,.16);color:var(--green)"><svg class="ic"><use href="#i-up"/></svg></span><div><small>Valeur de ta collection</small><b>4 072 € <span class="up">+1 846 €</span></b></div></div>
         </div>
-    </div>
-
-    <section id="features">
-        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Tout ce dont vous avez besoin</h2>
-        <p class="section-subheading animate-on-scroll" data-animation="fade-in">Des fonctionnalités pensées pour les collectionneurs</p>
-
-        <div class="features">
-            <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">📈</div>
-                <h3 class="feature-title">Suivi en temps réel</h3>
-                <p class="feature-description">Suivez la valeur de votre collection de cartes et produits scellés (Boosters, Display, ETB, Coffrets) grâce aux prix Cardmarket et eBay actualisés en continu.</p>
-            </div>
-
-            <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-                </div>
-                <h3 class="feature-title">Scanner intelligent</h3>
-                <p class="feature-description">Ajoutez vos cartes instantanément avec la reconnaissance visuelle. Scannez et Pikacheck identifie automatiquement chaque carte, sa version et sa valeur.</p>
-            </div>
-
-            <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                </div>
-                <h3 class="feature-title">Alertes personnalisées</h3>
-                <p class="feature-description">Recevez des notifications pour les nouvelles extensions, précommandes de boosters, displays, ETB, coffrets et événements spéciaux Pokémon.</p>
-            </div>
-
-            <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                </div>
-                <h3 class="feature-title">Recherche avancée</h3>
-                <p class="feature-description">Trouvez n'importe quelle carte par nom, numéro, extension, rareté, type ou illustrateur. Base de données complète avec 30 000+ cartes et plus de 1000 produits scellés référencés.</p>
-            </div>
-
-            <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                </div>
-                <h3 class="feature-title">Valeur Near Mint</h3>
-                <p class="feature-description">Estimation précise en état Near Mint, la référence pour les collectionneurs. Valeur fiable et actualisée carte par carte et produit par produit.</p>
-            </div>
-
-            <div class="feature animate-on-scroll" data-animation="fade-in-up">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                </div>
-                <h3 class="feature-title">Calendrier des sorties</h3>
-                <p class="feature-description">Consultez toutes les dates de lancement des extensions et produits scellés à venir. Organisez votre budget collection avec des rappels personnalisés pour ne rien manquer.</p>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <section id="screenshots">
-        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Découvrez l'application</h2>
-        <p class="section-subheading animate-on-scroll" data-animation="fade-in">Interface intuitive pour gérer votre collection</p>
-
-        <div class="screenshots">
-            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
-                <img src="assets/images/02.png" alt="Catalogue des extensions et séries Pokémon disponibles" loading="lazy" width="1290" height="2796">
-            </div>
-            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
-                <img src="assets/images/03.png" alt="Fiche détaillée d'un produit scellé avec historique de prix" loading="lazy" width="1290" height="2796">
-            </div>
-            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
-                <img src="assets/images/04.png" alt="Liste des cartes Pokémon avec valeur en temps réel" loading="lazy" width="1290" height="2796">
-            </div>
-            <div class="screenshot animate-on-scroll parallax-slow" data-animation="scale-in">
-                <img src="assets/images/05.png" alt="Calendrier des sorties Pokémon et système d'alertes personnalisées" loading="lazy" width="1290" height="2796">
-            </div>
+    <!-- Chiffres -->
+    <section class="numbers">
+      <div class="wrap">
+        <div class="grid reveal">
+          <div class="num"><b>15K+</b><span>Collectionneurs</span></div>
+          <div class="num"><b>20M€+</b><span>Valeur suivie</span></div>
+          <div class="num"><b>30K+</b><span>Cartes référencées</span></div>
+          <div class="num"><b>4,8 ★</b><span>Sur l'App Store</span></div>
         </div>
+        <p class="src">Chiffres d'octobre 2026</p>
+      </div>
     </section>
 
-    <section id="pricing">
-        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Choisissez votre formule</h2>
-        <p class="section-subheading animate-on-scroll" data-animation="fade-in">Commencez gratuitement</p>
-
-        <div class="pricing">
-            <div class="plan animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="plan-name">Gratuit</h3>
-                <div class="plan-price">0€<span>/mois</span></div>
-                <ul>
-                    <li>✓ 1 collection</li>
-                    <li>✓ Cartes illimitées</li>
-                    <li>✓ Produits scellés illimités</li>
-                    <li>✓ 50 scans au total</li>
-                    <li>✓ Suivi de prix en temps réel</li>
-                    <li>✓ Historique de valeur</li>
-                    <li>✓ Alertes de nouvelles sorties</li>
-                    <li>✓ Recherche avancée (30K+ cartes)</li>
-                    <li>✓ Indice d'opportunité d'achat</li>
-                    <li style="opacity: 0.6;">Publicités incluses</li>
-                </ul>
-                <a href="#" class="btn btn-outline download-btn" style="width: 100%; text-align: center;" onclick="smartDownload(event, 'pricing_free')">Commencer gratuitement</a>
-            </div>
-
-            <div class="plan animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="plan-name">Premium</h3>
-                <div class="plan-price">4.99€<span>/mois</span></div>
-                <ul>
-                    <li>✓ Tout du plan Gratuit</li>
-                    <li class="separator">+</li>
-                    <li>✓ Jusqu'à 4 collections</li>
-                    <li>✓ Scanner illimité</li>
-                    <li>✓ Historique de population (PSA/CGC)</li>
-                    <li>✓ Zéro publicité</li>
-                    <li>✓ Support prioritaire</li>
-                    <li class="support-team" style="font-weight: 600; color: #5a50f3;">Soutient l'équipe</li>
-                </ul>
-                <a href="#" class="btn btn-blue download-btn" style="width: 100%; text-align: center;" onclick="smartDownload(event, 'pricing_premium')">Essayer Premium</a>
-            </div>
+    <!-- Scanner -->
+    <section class="chapter" id="fonctionnalites">
+      <div class="glow" style="top:300px;background:radial-gradient(closest-side,rgba(143,99,255,.28),transparent)"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#i-scan"/></svg>Scanner</span>
+          <h2>Pointe.<br><span class="muted">C'est coté.</span></h2>
+          <p class="lead">Le scanner reconnaît la carte, son extension et son numéro, et affiche son prix en 2 secondes.</p>
         </div>
+        <div class="show reveal"><div class="device"><img src="/assets/device/scan.webp" alt="Le scanner de Pikacheck reconnaît une carte Pokémon et affiche son prix" width="720" height="1520" loading="lazy"></div></div>
+        <div class="points">
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-spark"/></svg></div><h3>30 000+ cartes reconnues</h3><p>Toutes les extensions françaises, mises à jour dès leur sortie.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-tag"/></svg></div><h3>Le prix tout de suite</h3><p>La cote du jour s'affiche dès que la carte est reconnue.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-check"/></svg></div><h3>Un appui, c'est ajouté</h3><p>Directement dans la collection de ton choix, avec ton prix d'achat.</p></div>
+        </div>
+      </div>
     </section>
 
-    <section id="faq">
-        <h2 class="section-heading animate-on-scroll" data-animation="fade-in-up">Questions fréquentes</h2>
+    <!-- Scellé -->
+    <section class="chapter">
+      <div class="glow" style="top:300px;background:radial-gradient(closest-side,rgba(255,209,102,.16),transparent)"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#i-box"/></svg>Produits scellés</span>
+          <h2>Ton scellé,<br><span class="muted">coté chaque jour.</span></h2>
+          <p class="lead">ETB, displays, coffrets, boosters, Pokébox, tins : plus de 1 000 produits avec leur cote, leur historique et ta plus-value.</p>
+        </div>
+        <div class="show two reveal">
+          <div class="device"><img src="/assets/device/grid.webp" alt="Produits scellés Pokémon et leur plus-value" width="720" height="1520" loading="lazy"></div>
+          <div class="device"><img src="/assets/device/item.webp" alt="Fiche d'un ETB Pokémon avec sa cote du jour" width="720" height="1520" loading="lazy"></div>
+        </div>
+        <div class="points">
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-up"/></svg></div><h3>Plus-value produit par produit</h3><p>Renseigne ton prix d'achat et vois ce que chaque produit a pris.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-chart"/></svg></div><h3>Historique des prix</h3><p>L'évolution de la cote, pour acheter et vendre au bon moment.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-store"/></svg></div><h3>Comparateur de prix</h3><p>Les prix des boutiques françaises, pour payer le juste prix.</p></div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Valeur -->
+    <section class="chapter">
+      <div class="glow" style="top:300px;background:radial-gradient(closest-side,rgba(106,208,151,.18),transparent)"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#i-up"/></svg>Valeur</span>
+          <h2>Combien vaut<br><span class="muted">ta collection&nbsp;?</span></h2>
+          <p class="lead">Cartes et scellé réunis, mis à jour chaque jour. Et découvre quel collectionneur tu es.</p>
+        </div>
+        <div class="show two reveal">
+          <div class="device"><img src="/assets/device/scelle.webp" alt="Valeur d'une collection Pokémon et sa plus-value" width="720" height="1520" loading="lazy"></div>
+          <div class="device"><img src="/assets/device/analyse.webp" alt="Score et profil de collectionneur" width="720" height="1520" loading="lazy"></div>
+        </div>
+        <div class="points">
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-up"/></svg></div><h3>Valeur et plus-value</h3><p>Sur 1 jour, 1 mois… depuis le début, par rapport à ce que tu as payé.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-spark"/></svg></div><h3>Profil de collectionneur</h3><p>Puriste, chasseur de Graal, défonceur de boosters… avec ton score.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-chart"/></svg></div><h3>Répartition détaillée</h3><p>Par rareté, type et extension&nbsp;: ce que contient vraiment ta collection.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partage -->
+    <section class="chapter" id="partage">
+      <div class="glow" style="top:300px;background:radial-gradient(closest-side,rgba(81,77,240,.3),transparent)"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#i-share"/></svg>Partage <span class="tag new">NOUVEAU</span></span>
+          <h2>Ta collection,<br><span class="muted">en un lien.</span></h2>
+          <p class="lead">Tes plus belles pièces, tes doubles et ta wishlist, sur le web ou dans l'app. Le lien se met à jour tout seul.</p>
+        </div>
+        <div class="show three reveal">
+          <div class="device"><img src="/assets/device/doubles.webp" alt="Les doubles d'un collectionneur, prêts à l'échange" width="720" height="1520" loading="lazy"></div>
+          <div class="device"><img src="/assets/device/shared.webp" alt="Collection Pokémon partagée par lien" width="720" height="1520" loading="lazy"></div>
+          <div class="device"><img src="/assets/device/share.webp" alt="Images de collection pour les stories" width="720" height="1520" loading="lazy"></div>
+        </div>
+        <div class="points">
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-swap"/></svg></div><h3>Tes doubles pour l'échange</h3><p>Tes amis voient tout de suite ce qu'ils cherchent dans tes doubles.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-heart"/></svg></div><h3>Ta wishlist</h3><p>Montre ce que tu recherches, avec ton prix visé.</p></div>
+          <div class="point reveal"><div class="badge"><svg class="ic"><use href="#i-share"/></svg></div><h3>4 images pour tes stories</h3><p>Avec QR code. La valeur, seulement si tu le décides.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bons plans -->
+    <section class="chapter" id="bons-plans">
+      <div class="glow" style="top:300px;background:radial-gradient(closest-side,rgba(255,138,0,.18),transparent)"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#i-tag"/></svg>Bons plans <span class="tag new">NOUVEAU</span></span>
+          <h2>Les bonnes affaires<br><span class="muted">viennent à toi.</span></h2>
+          <p class="lead">Enchères eBay sélectionnées, ventes Amazon sur invitation, retours en stock et notre boutique, au même endroit.</p>
+          <div class="sources">
+            <span><svg class="ic"><use href="#i-tag"/></svg>Enchères eBay</span>
+            <span><svg class="ic"><use href="#i-bell"/></svg>Amazon</span>
+            <span><svg class="ic"><use href="#i-store"/></svg>Boutique Pikacheck</span>
+            <span class="soon"><svg class="ic"><use href="#i-users"/></svg>Communauté · bientôt</span>
+          </div>
+        </div>
+        <div class="show three reveal">
+          <div class="device"><img src="/assets/device/alerts_ebay.webp" alt="Sélection d'enchères eBay Pokémon avec compte à rebours" width="720" height="1520" loading="lazy"></div>
+          <div class="device"><img src="/assets/device/alerts_shop.webp" alt="Produits de la boutique Pikacheck dans l'app" width="720" height="1520" loading="lazy"></div>
+          <div class="device"><img src="/assets/device/alerts_amazon.webp" alt="Alertes de retour en stock Amazon" width="720" height="1520" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Et aussi -->
+    <section class="chapter">
+      <div class="wrap">
+        <div class="reveal">
+          <h2>Et tout le reste.</h2>
+        </div>
+        <div class="grid6">
+          <div class="feat reveal"><div class="badge" style="background:rgba(81,77,240,.18);color:var(--soft)"><svg class="ic"><use href="#i-cal"/></svg></div><h3>Calendrier des sorties</h3><p>Les prochaines extensions, avec compte à rebours et rappel la veille.</p></div>
+          <div class="feat reveal"><div class="badge" style="background:rgba(240,96,122,.16);color:#ff8fa6"><svg class="ic"><use href="#i-heart"/></svg></div><h3>Wishlist et prix visé</h3><p>Prix au plus bas, baisses de prix, prix visé atteint&nbsp;: ne rate rien.</p></div>
+          <div class="feat reveal"><div class="badge" style="background:rgba(255,138,0,.16);color:#ffad5c"><svg class="ic"><use href="#i-bell"/></svg></div><h3>Alertes de restock</h3><p>Sois averti dès qu'un produit recherché revient en stock.</p></div>
+          <div class="feat reveal"><div class="badge" style="background:rgba(255,209,102,.14);color:var(--yellow)"><svg class="ic"><use href="#i-chart"/></svg></div><h3>Analyse du marché <span class="tag pro">PREMIUM</span></h3><p>Plus fortes hausses et baisses, classements et explorateur du catalogue.</p></div>
+          <div class="feat reveal"><div class="badge" style="background:rgba(106,208,151,.16);color:var(--green)"><svg class="ic"><use href="#i-down"/></svg></div><h3>Export Excel, CSV, JSON <span class="tag pro">PREMIUM</span></h3><p>Ta collection avec prix d'achat, valeur actuelle et plus-value.</p></div>
+          <div class="feat reveal"><div class="badge" style="background:rgba(59,130,246,.18);color:#7fb0ff"><svg class="ic"><use href="#i-devices"/></svg></div><h3>iPhone, iPad et Android</h3><p>Une vraie interface tablette, et ta collection sur tous tes appareils.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avis -->
+    <section class="chapter">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow"><span class="stars">★★★★★</span>4,8 sur l'App Store</span>
+          <h2>Ils en parlent<br><span class="muted">mieux que nous.</span></h2>
+        </div>
+        <div class="reviews">
+          <div class="review reveal"><span class="stars">★★★★★</span><p>« Le scan est le plus efficace que j'ai jamais vu. »</p><footer><span>TIM.poke</span><span>App Store</span></footer></div>
+          <div class="review reveal"><span class="stars">★★★★★</span><p>« On peut suivre toutes les cartes et tous les items scellés. Même les alertes de restocks sont au top ! »</p><footer><span>alyssiiiiiia13</span><span>App Store</span></footer></div>
+          <div class="review reveal"><span class="stars">★★★★★</span><p>« Pikacheck m'aide à connaître la valeur de mes cartes Pokémon en quelques secondes. C'est clair, rapide et bien fait ! »</p><footer><span>Sarah.Bnkk</span><span>App Store</span></footer></div>
+          <div class="review reveal"><span class="stars">★★★★★</span><p>« Enfin une application simple et efficace pour suivre sa collection et sa valeur. »</p><footer><span>13Appliqué</span><span>App Store</span></footer></div>
+          <div class="review reveal"><span class="stars">★★★★★</span><p>« Un retour super rapide, un contact très humain et surtout la résolution du problème ! »</p><footer><span>mrobyn_13</span><span>App Store</span></footer></div>
+          <div class="review reveal"><span class="stars">★★★★★</span><p>« Avant j'utilisais d'autres app, mais celle-là est vraiment meilleure. Le scanner est au top ! »</p><footer><span>alia idk</span><span>App Store</span></footer></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section class="vision">
+      <div class="wrap center">
+        <div class="reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>La suite</span>
+          <h2>La plateforme n°1<br><span class="muted">des collectionneurs.</span></h2>
+          <p class="lead">Pikacheck devient le lieu où l'on suit, achète, vend et partage sa collection.</p>
+        </div>
+        <div class="road">
+          <div class="step reveal"><div class="badge"><svg class="ic"><use href="#i-users"/></svg></div><h3>Social</h3><p>Suis tes amis et les collections qui t'inspirent.</p></div>
+          <div class="step reveal"><div class="badge"><svg class="ic"><use href="#i-swap"/></svg></div><h3>Rachat de collections</h3><p>Une offre pour ta collection, directement dans l'app.</p></div>
+          <div class="step reveal"><div class="badge"><svg class="ic"><use href="#i-store"/></svg></div><h3>Ventes entre collectionneurs</h3><p>Tes annonces Leboncoin, Vinted et eBay au même endroit.</p></div>
+          <div class="step reveal"><div class="badge"><svg class="ic"><use href="#i-bell"/></svg></div><h3>Plus d'enseignes</h3><p>Des alertes chez toujours plus de boutiques.</p></div>
+          <div class="step reveal"><div class="badge"><svg class="ic"><use href="#i-globe"/></svg></div><h3>Toutes les langues</h3><p>Japonais, anglais… toutes tes cartes, quelle que soit leur langue.</p></div>
+        </div>
+        <p style="margin-top:34px"><a class="link" href="/a-propos">Découvrir le projet <svg class="ic" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </section>
+
+    <!-- Premium -->
+    <section class="chapter" id="premium" style="padding-top:110px">
+      <div class="wrap">
+        <div class="reveal">
+          <h2>Gratuit.<br><span class="muted">Et encore plus avec Premium.</span></h2>
+        </div>
+        <div class="plans">
+          <div class="plan reveal">
+            <h3>Gratuit</h3>
+            <p class="price"><b>0 €</b> pour toujours</p>
+            <ul>
+              <li><svg class="ic"><use href="#i-check"/></svg>1 collection, cartes et produits illimités</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>50 scans offerts</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Cote du jour et plus-value</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Score et profil de collectionneur</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Partage, doubles et wishlist</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Bons plans, restocks et calendrier</li>
+            </ul>
+            <a class="btn ghost" href="/download" data-dl="plan_free">Télécharger gratuitement</a>
+          </div>
+          <div class="plan pro reveal">
+            <h3>Premium</h3>
+            <p class="price"><b>3,99 €</b>/mois ou <b style="font-size:20px">39,99 €</b>/an<br>Sans engagement</p>
+            <ul>
+              <li><svg class="ic"><use href="#i-check"/></svg>Scans illimités</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Jusqu'à 4 collections</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Analyse du marché et explorateur du catalogue</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Analyse complète de la collection</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Historique complet des prix et de la population</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Export Excel, CSV ou JSON</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Sans publicité</li>
+            </ul>
+            <a class="btn" href="/download" data-dl="plan_premium">Essayer Premium</a>
+          </div>
+        </div>
+        <p class="note">Prix en France. Résiliable à tout moment depuis ton compte App Store ou Google Play.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="chapter" id="faq" style="padding-top:120px">
+      <div class="wrap">
+        <div class="reveal"><h2>Questions fréquentes</h2></div>
         <div class="faq">
-            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="faq-question">Sur quels appareils ?</h3>
-                <p class="faq-answer">Pikacheck est disponible sur iPhone et Android. L'app fonctionne aussi sur iPad, Mac (puce Apple M1 ou ultérieure) et Apple Vision via la compatibilité iOS, même si l'interface est pensée avant tout pour smartphone.</p>
-            </div>
-
-            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="faq-question">C'est vraiment gratuit ?</h3>
-                <p class="faq-answer">Oui. La version gratuite permet une collection avec cartes et produits illimités. Premium (4.99€/mois) permet 4 collections et retire les publicités.</p>
-            </div>
-
-            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="faq-question">D'où viennent les prix ?</h3>
-                <p class="faq-answer">Cardmarket (Europe) et eBay (toutes régions). Estimation fiable et actualisée en temps réel.</p>
-            </div>
-
-            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="faq-question">Je peux suivre mes produits scellés ?</h3>
-                <p class="faq-answer">Absolument. Boosters, Displays, ETB et Coffrets. Le suivi fonctionne comme pour les cartes.</p>
-            </div>
-
-            <div class="faq-item animate-on-scroll" data-animation="fade-in-up">
-                <h3 class="faq-question">Comment marche le scanner ?</h3>
-                <p class="faq-answer">Pointez l'appareil photo vers la carte. Le système identifie automatiquement la carte, son édition et ses informations complètes.</p>
-            </div>
+          <details class="reveal"><summary>Pikacheck est-il vraiment gratuit&nbsp;?</summary><p>Oui. Une collection avec des cartes et des produits scellés illimités, la cote du jour, le partage et les bons plans sont gratuits. Premium ajoute les scans illimités, jusqu'à 4 collections, l'analyse du marché, l'historique complet des prix, l'export, et retire les publicités.</p></details>
+          <details class="reveal"><summary>D'où viennent les prix&nbsp;?</summary><p>Des prix du marché (Cardmarket pour l'Europe, et eBay), mis à jour chaque jour, pour les cartes comme pour le scellé. Affichage en euros, francs suisses ou dollars canadiens.</p></details>
+          <details class="reveal"><summary>Je peux suivre mes produits scellés&nbsp;?</summary><p>Oui&nbsp;: ETB, displays, coffrets, boosters, Pokébox et plus de 1 000 produits. Ils ont leur cote, leur historique et comptent dans la valeur et la plus-value de ta collection.</p></details>
+          <details class="reveal"><summary>Comment fonctionne le partage&nbsp;?</summary><p>Crée ton lien depuis ta collection&nbsp;: il montre tes plus belles pièces, tes doubles et ta wishlist, et la valeur seulement si tu l'actives. Tes amis l'ouvrent dans l'app, ou sur le web. Il se met à jour tout seul.</p></details>
+          <details class="reveal"><summary>Sur quels appareils&nbsp;?</summary><p>iPhone, iPad, et téléphones ou tablettes Android. Ta collection est liée à ton compte&nbsp;: tu la retrouves partout.</p></details>
+          <details class="reveal"><summary>Combien coûte Premium&nbsp;?</summary><p>3,99 € par mois ou 39,99 € par an, sans engagement. L'abonnement se gère et se résilie depuis ton compte App Store ou Google Play.</p></details>
         </div>
+        <p class="reveal" style="margin-top:40px"><a class="link" href="/articles">Lire nos guides de collectionneur <svg class="ic" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a></p>
+      </div>
     </section>
 
-    <section style="margin-top: 120px;">
-        <div class="hero animate-on-scroll" data-animation="fade-in-up">
-            <h1 style="font-size: 40px; line-height: 1.1;">Prêt à commencer ?</h1>
-            <p class="subtitle" style="font-size: 21px;">Rejoignez des milliers de collectionneurs</p>
-            <div class="cta-group">
-                <a href="#" class="btn btn-blue download-btn" onclick="smartDownload(event, 'cta_bottom')">Télécharger gratuitement</a>
-            </div>
+    <!-- Appel final -->
+    <section class="wrap">
+      <div class="final reveal">
+        <h2>Ta collection mérite<br>sa vraie valeur.</h2>
+        <p>Rejoins plus de 15 000 collectionneurs. Gratuit, ta première carte scannée en quelques secondes.</p>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&amp;utm_medium=cta&amp;utm_campaign=download" data-store="ios" data-loc="cta">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.28 1.86-3.38 1.95-3.43-1.06-1.55-2.71-1.77-3.3-1.79-1.4-.14-2.74.83-3.45.83-.71 0-1.8-.81-2.97-.79-1.53.02-2.94.89-3.72 2.25-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.66 2.33 2.84 2.28 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.21.87-1.27 1.22-2.5 1.24-2.57-.03-.01-2.38-.91-2.4-3.62zM14.1 5.9c.63-.76 1.05-1.82.93-2.88-.9.04-2 .6-2.65 1.36-.58.67-1.09 1.75-.95 2.79 1.01.08 2.04-.51 2.67-1.27z"/></svg>
+            <div><small>Télécharger dans</small><span>l'App Store</span></div>
+          </a>
+          <a class="store dark" href="https://play.google.com/store/apps/details?id=com.pikacheck.app&amp;utm_source=website&amp;utm_medium=cta&amp;utm_campaign=download" data-store="android" data-loc="cta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#6ad097" d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7z"/><path fill="#514df0" d="M16.3 15.2 13.1 12 3.6 21.7c.4.4 1 .4 1.7 0z"/><path fill="#ffd166" d="M20.2 10.6 16.3 8.4 13.1 12l3.2 3.2 3.9-2.2c1.1-.6 1.1-1.8 0-2.4z"/><path fill="#f0607a" d="M5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.5 9.7 3.2-3.6z"/></svg>
+            <div><small>Disponible sur</small><span>Google Play</span></div>
+          </a>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Section Pikacheck géant -->
-    <section class="pikacheck-giant" style="margin: 120px 0 80px 0; padding: 0; max-width: 100%; overflow: hidden;">
-        <h2 class="giant-text animate-on-scroll" data-animation="fade-in">Pikacheck</h2>
-    </section>
+  <div class="sticky" id="sticky">
+    <img src="/assets/app/icon.png" alt="" width="40" height="40">
+    <div><b>Pikacheck</b><span>★ 4,8 · Gratuit</span></div>
+    <a class="btn sm" href="/download" data-dl="sticky">Télécharger</a>
+  </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Pikacheck</h4>
-                    <p>L'app pour gérer votre collection Pokémon</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Produit</h4>
-                    <a href="#features">Fonctionnalités</a>
-                    <a href="#pricing">Tarifs</a>
-                    <a href="/articles">Articles</a>
-                    <a href="#faq">FAQ</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Télécharger</h4>
-                    <a href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=footer&utm_campaign=download" onclick="trackConversion('footer', 'iOS')">App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=footer&utm_campaign=download" onclick="trackConversion('footer', 'Android')">Google Play</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Légal</h4>
-                    <a href="https://app.pikacheck.com/pages/privacy">Confidentialité</a>
-                    <a href="https://app.pikacheck.com/pages/terms">Conditions</a>
-                </div>
-            </div>
-            <div class="copyright">
-                © 2026 Pikacheck. Tous droits réservés.
-            </div>
-        </div>
-    </footer>
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/app/icon.png" alt="" width="32" height="32">Pikacheck</a>
+      <nav aria-label="Liens">
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#premium">Premium</a>
+        <a href="#faq">FAQ</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/articles">Articles</a>
+        <a href="https://pikacheck.com/?utm_source=website&amp;utm_medium=footer" rel="noopener">Boutique</a>
+        <a href="https://x.com/pikacheck" rel="noopener">X (Twitter)</a>
+        <a href="mailto:support@pikacheck.com">Contact</a>
+        <a href="/pages/privacy">Confidentialité</a>
+        <a href="/pages/terms">Conditions</a>
+      </nav>
+      <p class="legal-note">© <span id="y">2026</span> Pikacheck. Pokémon et les noms associés sont des marques de Nintendo, Creatures Inc. et GAME FREAK inc. Pikacheck n'est ni affilié ni approuvé par ces sociétés.</p>
     </div>
+  </footer>
 
-    <script>
-        // Dark mode toggle with beautiful sun/moon switch
-        (function() {
-            const themeToggle = document.getElementById('themeToggle');
-            const html = document.documentElement;
+  <script>
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-            if (!themeToggle) {
-                console.error('Theme toggle checkbox not found!');
-                return;
-            }
+    // Menu mobile.
+    const burger = document.getElementById('burger');
+    const setMenu = (open) => { nav.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu'); };
+    burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    document.querySelectorAll('#menu a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 
-            // Check for saved theme preference or default to system preference
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Apparition au défilement.
+    const io = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .06 })
+      : null;
+    document.querySelectorAll('.reveal').forEach((el) => io ? io.observe(el) : el.classList.add('in'));
 
-            // Set initial theme
-            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                html.setAttribute('data-theme', 'dark');
-                themeToggle.checked = true;
-            } else {
-                html.setAttribute('data-theme', 'light');
-                themeToggle.checked = false;
-            }
+    // Barre de téléchargement mobile : après le haut de page, cachée sur l'appel final.
+    const sticky = document.getElementById('sticky');
+    const hero = document.querySelector('.hero');
+    const finalCta = document.querySelector('.final');
+    const updSticky = () => {
+      const r = finalCta.getBoundingClientRect();
+      sticky.classList.toggle('on', window.scrollY > hero.offsetHeight - 120 && !(r.top < window.innerHeight && r.bottom > 0));
+    };
+    updSticky();
+    window.addEventListener('scroll', updSticky, { passive: true });
 
-            // Toggle theme on checkbox change
-            themeToggle.addEventListener('change', () => {
-                const newTheme = themeToggle.checked ? 'dark' : 'light';
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-
-                console.log('Theme changed to:', newTheme);
-
-                // Track theme change
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'theme_change', {
-                        'theme': newTheme
-                    });
-                }
-            });
-
-            // Listen for system theme changes
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (!localStorage.getItem('theme')) {
-                    const isDark = e.matches;
-                    html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-                    themeToggle.checked = isDark;
-                }
-            });
-        })();
-    </script>
+    // Mesure des téléchargements (événement download_click, comme avant).
+    function track(loc, platform) {
+      if (typeof gtag === 'function') gtag('event', 'download_click', { event_category: 'engagement', event_label: loc, platform: platform, value: 1 });
+    }
+    document.querySelectorAll('[data-store]').forEach((a) => a.addEventListener('click', () => track(a.dataset.loc, a.dataset.store === 'ios' ? 'iOS' : 'Android')));
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isAndroid = /android/i.test(ua);
+    document.querySelectorAll('[data-dl]').forEach((a) => {
+      const loc = a.dataset.dl;
+      if (isIOS) a.href = 'https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=' + loc + '&utm_campaign=download';
+      else if (isAndroid) a.href = 'https://play.google.com/store/apps/details?id=com.pikacheck.app&utm_source=website&utm_medium=' + loc + '&utm_campaign=download';
+      a.addEventListener('click', () => track(loc, isIOS ? 'iOS' : isAndroid ? 'Android' : 'Desktop'));
+    });
+  </script>
 </body>
 </html>
