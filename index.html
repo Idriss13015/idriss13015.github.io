@@ -61,7 +61,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/assets/app/grid.webp">
+  <link rel="preload" as="image" href="/assets/app/scan.webp">
 
   <style>
     :root {
@@ -301,6 +301,37 @@
     footer nav a:hover { color: var(--text); }
     footer .legal { width: 100%; font-size: 12.5px; opacity: .7; }
 
+
+    /* ---------- 3 étapes ---------- */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px; }
+    .step { padding: 28px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+    .step b { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--violet), var(--purple)); font-size: 18px; font-weight: 800; margin-bottom: 18px; }
+    .step h4 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .step p { color: var(--muted); }
+    @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+    /* ---------- Appel intermédiaire ---------- */
+    .midcta { margin-top: 90px; padding: 30px 34px; border-radius: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      background: linear-gradient(120deg, rgba(90,80,243,.3), rgba(139,92,246,.16) 50%, rgba(240,80,122,.18)); border: 1px solid rgba(139,92,246,.4); }
+    .midcta h3 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; letter-spacing: -.6px; }
+    .midcta p { color: var(--muted); font-weight: 600; margin-top: 4px; }
+    .midcta .btn { flex: 0 0 auto; }
+    @media (max-width: 700px) { .midcta { flex-direction: column; text-align: center; padding: 28px 22px; } .midcta .btn { width: 100%; } }
+
+    /* ---------- Barre de téléchargement (mobile) ---------- */
+    .sticky { display: none; }
+    @media (max-width: 760px) {
+      .sticky { display: flex; align-items: center; gap: 12px; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 60;
+        padding: 10px 10px 10px 12px; border-radius: 20px; background: rgba(23,26,46,.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--line); box-shadow: 0 20px 40px -10px rgba(0,0,0,.7); transform: translateY(140%); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+      .sticky.on { transform: none; }
+      .sticky img { border-radius: 11px; }
+      .sticky div { flex: 1; line-height: 1.2; }
+      .sticky b { display: block; font-size: 15px; }
+      .sticky span { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+      footer { padding-bottom: 110px; }
+    }
+
     /* ---------- Apparition au défilement ---------- */
     .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
@@ -338,9 +369,9 @@
       <div class="glow" style="width:460px;height:460px;background:rgba(240,80,122,.18);top:260px;left:-200px"></div>
       <div class="wrap">
         <div class="reveal">
-          <span class="pill"><b>NOUVEAU</b> Partage de collection et bons plans</span>
-          <h1>Ta collection Pokémon, à sa <span class="grad">vraie valeur.</span></h1>
-          <p class="lead">Scanne tes cartes, suis la cote de tes cartes et produits scellés chaque jour, partage ta collection et ne rate plus aucune bonne affaire.</p>
+          <span class="pill"><b>GRATUIT</b> iPhone, iPad et Android</span>
+          <h1>Scanne une carte.<br><span class="grad">Découvre sa cote.</span></h1>
+          <p class="lead">Reconnue et chiffrée en 2 secondes. Pikacheck suit la valeur de tes cartes et de tes produits scellés chaque jour, et te montre combien vaut ta collection.</p>
           <div class="stores">
             <a class="store" href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=hero&utm_campaign=download" data-store="ios" data-loc="hero">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.28 1.86-3.38 1.95-3.43-1.06-1.55-2.71-1.77-3.3-1.79-1.4-.14-2.74.83-3.45.83-.71 0-1.8-.81-2.97-.79-1.53.02-2.94.89-3.72 2.25-1.59 2.76-.41 6.840 1.14 9.08.76 1.1 1.66 2.33 2.84 2.28 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.21.87-1.27 1.22-2.5 1.24-2.57-.03-.01-2.38-.91-2.4-3.62zM14.1 5.9c.63-.76 1.050-1.82.93-2.88-.9.04-2 .6-2.65 1.36-.58.67-1.090 1.75-.95 2.79 1.01.08 2.04-.51 2.67-1.27z"/></svg>
@@ -355,11 +386,11 @@
         </div>
 
         <div class="hero-visual reveal" aria-hidden="true">
-          <div class="phone p2"><img src="/assets/app/scan.webp" alt="" width="640" height="1391"></div>
-          <div class="phone p1"><img src="/assets/app/grid.webp" alt="" width="640" height="1391"></div>
+          <div class="phone p2"><img src="/assets/app/scelle.webp" alt="" width="640" height="1391"></div>
+          <div class="phone p1"><img src="/assets/app/scan.webp" alt="" width="640" height="1391"></div>
           <div class="phone p3"><img src="/assets/app/card.webp" alt="" width="640" height="1391"></div>
-          <div class="float f1"><i style="background:rgba(52,211,153,.18)">📈</i><div>Plus-value suivie<small>par rapport à ton prix d'achat</small></div></div>
-          <div class="float f2"><i style="background:rgba(90,80,243,.25)">⚡</i><div>Carte reconnue<small>en un instant</small></div></div>
+          <div class="float f1"><i style="background:rgba(52,211,153,.18)">📈</i><div>+1 846 € de plus-value<small>suivie chaque jour</small></div></div>
+          <div class="float f2"><i style="background:rgba(90,80,243,.25)">⚡</i><div>Reconnue en 2 s<small>et chiffrée aussitôt</small></div></div>
         </div>
       </div>
     </section>
@@ -374,76 +405,117 @@
       </div>
     </section>
 
-    <!-- Fonctionnalités -->
-    <section class="section" id="fonctionnalites">
+    <!-- 3 étapes -->
+    <section class="section steps-sec">
       <div class="wrap">
         <div class="center reveal">
-          <span class="eyebrow">Fonctionnalités</span>
-          <h2>Toute ta collection,<br>dans ta poche.</h2>
-          <p class="sub">De l'ajout d'une carte au suivi de sa cote, jusqu'au partage avec tes amis&nbsp;: tout est pensé pour les collectionneurs.</p>
+          <span class="eyebrow">Comment ça marche</span>
+          <h2>Ta collection chiffrée<br>en 3 étapes.</h2>
         </div>
+        <div class="steps">
+          <div class="step reveal"><b>1</b><h4>Scanne</h4><p>Pointe ton téléphone sur une carte&nbsp;: elle est reconnue et ajoutée à ta collection.</p></div>
+          <div class="step reveal"><b>2</b><h4>Suis la cote</h4><p>Cartes et produits scellés sont estimés chaque jour, avec ta plus-value.</p></div>
+          <div class="step reveal"><b>3</b><h4>Partage</h4><p>Envoie ta collection, tes doubles et ta wishlist en un lien.</p></div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Fonctionnalités principales (ordre des captures du store) -->
+    <section class="section" id="fonctionnalites">
+      <div class="wrap">
         <div class="feature">
           <div class="f-media reveal" style="--tint:rgba(139,92,246,.4)">
-            <div class="phone"><img src="/assets/app/scan.webp" alt="Le scanner de Pikacheck reconnaît une carte Pokémon" width="640" height="1391" loading="lazy"></div>
+            <div class="phone"><img src="/assets/app/scan.webp" alt="Le scanner de Pikacheck reconnaît une carte Pokémon et affiche son prix" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
             <span class="eyebrow">Scanner</span>
-            <h3>Pointe ton téléphone. C'est ajouté.</h3>
-            <p>Le scanner reconnaît la carte, son extension et son numéro, et l'ajoute à ta collection en un instant. Fini la recherche carte par carte.</p>
+            <h3>Scanne une carte, découvre sa cote.</h3>
+            <p>Reconnue et chiffrée en 2 secondes&nbsp;: la carte, son extension, son numéro et son prix. Un appui, et elle rejoint ta collection.</p>
             <ul class="ticks">
-              <li>Reconnaissance de la carte et de sa version</li>
-              <li>Prix affiché tout de suite</li>
+              <li>Fini la recherche carte par carte</li>
+              <li>Le prix s'affiche tout de suite</li>
               <li>Ajout direct dans la collection de ton choix</li>
             </ul>
           </div>
         </div>
 
         <div class="feature rev">
-          <div class="f-media reveal" style="--tint:rgba(52,211,153,.24)">
+          <div class="f-media reveal" style="--tint:rgba(52,211,153,.26)">
             <div class="phone"><img src="/assets/app/scelle.webp" alt="Valeur d'une collection Pokémon et sa plus-value" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
             <span class="eyebrow">Valeur</span>
-            <h3>Combien vaut ta collection, aujourd'hui.</h3>
-            <p>Cartes et produits scellés sont estimés chaque jour. Renseigne ton prix d'achat et vois ta plus-value, collection par collection.</p>
+            <h3>Combien vaut ta collection&nbsp;?</h3>
+            <p>Mise à jour chaque jour, avec ta plus-value par rapport à ce que tu as payé. Tu sais enfin ce que vaut ta passion.</p>
             <ul class="ticks">
-              <li>Valeur totale et évolution dans le temps</li>
+              <li>Valeur totale, mise à jour chaque jour</li>
               <li>Plus-value par rapport à ton prix d'achat</li>
-              <li>Boosters, displays, ETB, coffrets&nbsp;: le scellé aussi</li>
+              <li>Évolution sur 1 jour, 1 mois… depuis le début</li>
             </ul>
           </div>
         </div>
 
         <div class="feature">
-          <div class="f-media duo reveal" style="--tint:rgba(59,130,246,.3)">
-            <div class="phone"><img src="/assets/app/card.webp" alt="Fiche d'une carte Pokémon avec son prix et sa population" width="640" height="1391" loading="lazy"></div>
-            <div class="phone"><img src="/assets/app/item.webp" alt="Fiche d'un produit scellé Pokémon avec son prix" width="640" height="1391" loading="lazy"></div>
+          <div class="f-media duo reveal" style="--tint:rgba(59,130,246,.32)">
+            <div class="phone"><img src="/assets/app/card.webp" alt="Fiche d'une carte Pokémon avec son prix du jour" width="640" height="1391" loading="lazy"></div>
+            <div class="phone"><img src="/assets/app/item.webp" alt="Fiche d'un produit scellé Pokémon avec son prix du jour" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
-            <span class="eyebrow">Fiches et historique</span>
-            <h3>Chaque carte, chaque produit, à la loupe.</h3>
-            <p>Prix actuel, variations, historique des prix, population gradée et indice de rareté Pikacheck&nbsp;: tout pour acheter et vendre au bon moment.</p>
+            <span class="eyebrow">Cote</span>
+            <h3>La cote de chaque carte et de chaque produit scellé, chaque jour.</h3>
+            <p>Prix du jour, historique et rareté pour les cartes&nbsp;; ETB, displays, coffrets et boosters ont aussi leur cote.</p>
             <ul class="ticks">
-              <li>Variations sur 24 h, 1 mois, 6 mois et 1 an</li>
+              <li>Prix du jour et historique des prix</li>
+              <li>Population gradée et indice de rareté</li>
               <li>Liens directs vers Cardmarket, eBay et Vinted</li>
-              <li>Ajout à la wishlist d'un cœur, avec prix visé</li>
             </ul>
           </div>
         </div>
 
         <div class="feature rev">
+          <div class="f-media reveal" style="--tint:rgba(255,194,61,.2)">
+            <div class="phone"><img src="/assets/app/grid.webp" alt="Produits scellés Pokémon et leur plus-value" width="640" height="1391" loading="lazy"></div>
+          </div>
+          <div class="f-text reveal">
+            <span class="eyebrow">Scellé</span>
+            <h3>Tes produits scellés prennent de la valeur.</h3>
+            <p>Suis la plus-value de chacun de tes ETB, displays et coffrets, et repère ceux qui montent le plus.</p>
+            <ul class="ticks">
+              <li>Plus-value produit par produit</li>
+              <li>Quantités et prix d'achat</li>
+              <li>Le scellé compte dans la valeur de ta collection</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appel intermédiaire -->
+    <section class="wrap">
+      <div class="midcta reveal">
+        <div>
+          <h3>Découvre ce que vaut ta collection.</h3>
+          <p>Gratuit · ta première carte scannée en quelques secondes</p>
+        </div>
+        <a class="btn" href="/download" data-dl="mid">Télécharger gratuitement</a>
+      </div>
+    </section>
+
+    <!-- Profil -->
+    <section class="section">
+      <div class="wrap">
+        <div class="feature">
           <div class="f-media reveal" style="--tint:rgba(90,80,243,.42)">
-            <div class="phone"><img src="/assets/app/analyse.webp" alt="Analyse d'une collection Pokémon&nbsp;: score et profil de collectionneur" width="640" height="1391" loading="lazy"></div>
+            <div class="phone"><img src="/assets/app/analyse.webp" alt="Score et profil de collectionneur" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
             <span class="eyebrow">Analyse</span>
-            <h3>Découvre quel collectionneur tu es.</h3>
-            <p>Score de collection, profil de collectionneur, répartition par rareté, type ou extension&nbsp;: comprends ce que contient vraiment ta collection.</p>
+            <h3>Découvre ton profil de collectionneur.</h3>
+            <p>Score, profil et répartition de ta collection&nbsp;: puriste, chasseur de Graal, défonceur de boosters… quel collectionneur es-tu&nbsp;?</p>
             <ul class="ticks">
-              <li>Score et profil de collectionneur</li>
-              <li>Composition détaillée de la collection</li>
-              <li>Performance face au marché <span class="tag pro">PREMIUM</span></li>
+              <li>Score de collection</li>
+              <li>Profil de collectionneur</li>
+              <li>Répartition par rareté, type et extension</li>
             </ul>
           </div>
         </div>
@@ -453,32 +525,31 @@
     <!-- Partage -->
     <section class="section" id="partage">
       <div class="wrap">
-        <div class="feature">
+        <div class="feature rev">
           <div class="f-media trio reveal" style="--tint:rgba(240,80,122,.3)">
-            <div class="phone"><img src="/assets/app/share.webp" alt="Création d'une image de partage de collection" width="640" height="1391" loading="lazy"></div>
-            <div class="phone"><img src="/assets/app/shared.webp" alt="Collection Pokémon partagée par lien" width="640" height="1391" loading="lazy"></div>
             <div class="phone"><img src="/assets/app/doubles.webp" alt="Les doubles d'un collectionneur, prêts à l'échange" width="640" height="1391" loading="lazy"></div>
+            <div class="phone"><img src="/assets/app/shared.webp" alt="Collection Pokémon partagée par lien" width="640" height="1391" loading="lazy"></div>
+            <div class="phone"><img src="/assets/app/share.webp" alt="Images de collection pour les stories" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
             <span class="tag new">NOUVEAU</span>
             <h3>Partage ta collection en un lien.</h3>
-            <p>À envoyer à tes amis ou à mettre en bio. Le lien s'ouvre dans l'app, ou sur le web pour ceux qui ne l'ont pas encore, et se met à jour tout seul.</p>
+            <p>Tes plus belles pièces, sur le web ou dans l'app. Le lien se met à jour tout seul.</p>
             <ul class="ticks">
-              <li>Tes plus belles pièces en vitrine</li>
-              <li>Tes doubles, parfaits pour un échange</li>
+              <li>Tes doubles, prêts pour l'échange</li>
               <li>Ta wishlist, pour montrer ce que tu cherches</li>
-              <li>La valeur, seulement si tu le décides</li>
               <li>4 images pour tes stories, avec QR code</li>
+              <li>La valeur, seulement si tu le décides</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Bons plans -->
+    <!-- Bons plans et calendrier -->
     <section class="section" id="bons-plans">
       <div class="wrap">
-        <div class="feature rev">
+        <div class="feature">
           <div class="f-media trio reveal" style="--tint:rgba(255,138,0,.28)">
             <div class="phone"><img src="/assets/app/alerts_ebay.webp" alt="Sélection d'enchères eBay Pokémon avec compte à rebours" width="640" height="1391" loading="lazy"></div>
             <div class="phone"><img src="/assets/app/alerts_shop.webp" alt="Produits de la boutique Pikacheck dans l'app" width="640" height="1391" loading="lazy"></div>
@@ -487,7 +558,7 @@
           <div class="f-text reveal">
             <span class="tag new">NOUVEAU</span>
             <h3>Les bons plans, au même endroit.</h3>
-            <p>Les enchères eBay les plus intéressantes avec leur compte à rebours, les ventes Amazon sur invitation, les retours en stock, et notre boutique.</p>
+            <p>Enchères eBay sélectionnées, ventes Amazon sur invitation, retours en stock et notre boutique.</p>
             <div class="sources">
               <div class="src"><b>eBay</b>Enchères sélectionnées</div>
               <div class="src"><b>Amazon</b>Invitations et restocks</div>
@@ -497,14 +568,14 @@
           </div>
         </div>
 
-        <div class="feature">
+        <div class="feature rev">
           <div class="f-media reveal" style="--tint:rgba(90,80,243,.36)">
             <div class="phone"><img src="/assets/app/calendar.webp" alt="Calendrier des sorties Pokémon" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
             <span class="eyebrow">Calendrier</span>
             <h3>Ne rate plus aucune sortie.</h3>
-            <p>Les prochaines extensions et sorties officielles, avec compte à rebours et rappel la veille, pour préparer ton budget.</p>
+            <p>Le calendrier des extensions et sorties officielles, avec compte à rebours et rappel la veille.</p>
             <ul class="ticks">
               <li>Sorties à venir et passées</li>
               <li>Rappel la veille de chaque sortie</li>
@@ -680,6 +751,12 @@
     </section>
   </main>
 
+  <div class="sticky" id="sticky">
+    <img src="/assets/app/icon.png" alt="" width="40" height="40">
+    <div><b>Pikacheck</b><span>★ 4,8 · Gratuit</span></div>
+    <a class="btn sm" href="/download" data-dl="sticky">Télécharger</a>
+  </div>
+
   <footer>
     <div class="wrap">
       <a class="brand" href="/"><img src="/assets/app/icon.png" alt="" width="34" height="34">Pikacheck</a>
@@ -712,6 +789,20 @@
         }), { rootMargin: '0px 0px -8% 0px', threshold: .08 })
       : null;
     document.querySelectorAll('.reveal').forEach((el) => io ? io.observe(el) : el.classList.add('in'));
+
+
+    // Barre de téléchargement mobile : après le haut de page, cachée sur l'appel final.
+    const sticky = document.getElementById('sticky');
+    const hero = document.querySelector('.hero');
+    const finalCta = document.querySelector('.cta');
+    const updSticky = () => {
+      const past = window.scrollY > hero.offsetHeight - 80;
+      const r = finalCta.getBoundingClientRect();
+      const atCta = r.top < window.innerHeight && r.bottom > 0;
+      sticky.classList.toggle('on', past && !atCta);
+    };
+    updSticky();
+    window.addEventListener('scroll', updSticky, { passive: true });
 
     document.getElementById('y').textContent = new Date().getFullYear();
 
