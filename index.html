@@ -45,7 +45,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-  <meta name="theme-color" content="#0d0f1c">
+  <meta name="theme-color" content="#1e2431">
   <meta name="color-scheme" content="dark">
   <meta name="apple-itunes-app" content="app-id=6749660231">
 
@@ -65,14 +65,17 @@
 
   <style>
     :root {
-      --bg: #0d0f1c;
-      --card: #171a2e;
-      --line: rgba(255,255,255,.08);
-      --text: #eeedf7;
-      --muted: #a2a5c3;
-      --violet: #5a50f3;
-      --purple: #8b5cf6;
-      --pink: #f0507a;
+      /* Couleurs de l'app (thème sombre) */
+      --bg: #1e2431;
+      --card: #252a37;
+      --line: #313641;
+      --text: #eceaea;
+      --muted: #a4a8b8;
+      --violet: #514df0;
+      --purple: #6c68f5;
+      --green: #6ad097;
+      --yellow: #ffd166;
+      --pink: #514df0;
       --radius: 24px;
       --max: 1160px;
     }
@@ -93,7 +96,7 @@
 
     /* ---------- Barre du haut ---------- */
     .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .25s, border-color .25s; border-bottom: 1px solid transparent; }
-    .nav.scrolled { background: rgba(13,15,28,.78); backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); border-color: var(--line); }
+    .nav.scrolled { background: rgba(30,36,49,.82); backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); border-color: var(--line); }
     .nav .wrap { display: flex; align-items: center; height: 68px; gap: 28px; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -.2px; }
     .brand img { width: 34px; height: 34px; border-radius: 9px; }
@@ -103,9 +106,9 @@
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       height: 46px; padding: 0 22px; border-radius: 14px; font-weight: 800; font-size: 15px;
       background: linear-gradient(135deg, var(--violet), var(--purple)); color: #fff; border: 0; cursor: pointer;
-      box-shadow: 0 10px 30px -8px rgba(90,80,243,.7); transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 10px 30px -8px rgba(81,77,240,.7); transition: transform .15s, box-shadow .15s;
     }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -8px rgba(90,80,243,.85); }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -8px rgba(81,77,240,.85); }
     .btn.sm { height: 40px; padding: 0 16px; font-size: 14px; border-radius: 12px; }
     .btn.ghost { background: rgba(255,255,255,.06); box-shadow: none; border: 1px solid var(--line); }
     @media (max-width: 860px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
@@ -117,9 +120,9 @@
       display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 8px; border-radius: 999px;
       background: rgba(255,255,255,.06); border: 1px solid var(--line); font-size: 13.5px; font-weight: 700; color: var(--muted);
     }
-    .pill b { background: var(--pink); color: #fff; padding: 3px 9px; border-radius: 999px; font-size: 11.5px; letter-spacing: .4px; }
+    .pill b { background: var(--yellow); color: #1e2431; padding: 3px 9px; border-radius: 999px; font-size: 11.5px; letter-spacing: .4px; }
     h1 { font-size: clamp(40px, 6.2vw, 68px); line-height: 1.04; letter-spacing: -2px; font-weight: 800; margin: 22px 0 18px; }
-    .grad { background: linear-gradient(100deg, #a5a0ff 0%, var(--purple) 40%, var(--pink) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .grad { background: linear-gradient(100deg, #a9a6ff 0%, #7c78f7 50%, var(--violet) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .lead { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 540px; }
     .stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
     .store { display: flex; align-items: center; gap: 10px; height: 56px; padding: 0 20px 0 16px; border-radius: 16px; background: #fff; color: #0d0f1c; font-weight: 800; transition: transform .15s; }
@@ -142,7 +145,7 @@
     .hero-visual .p3 { right: 2%; top: 90px; transform: rotate(8deg); z-index: 2; }
     .float {
       position: absolute; z-index: 4; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 18px;
-      background: rgba(23,26,46,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(37,42,55,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--line); box-shadow: 0 20px 40px -12px rgba(0,0,0,.6); font-size: 14px; font-weight: 700; text-align: left;
       animation: bob 6s ease-in-out infinite;
     }
@@ -178,14 +181,14 @@
     .strip { padding: 34px 0 10px; }
     .strip .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .stat { padding: 18px 20px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
-    .stat b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -.4px; }
+    .stat b { display: block; font-size: 30px; color: var(--text); font-weight: 800; letter-spacing: -.4px; }
     .stat span { color: var(--muted); font-size: 13.5px; font-weight: 600; }
-    @media (max-width: 760px) { .strip .wrap { grid-template-columns: 1fr 1fr; } .stat b { font-size: 18px; } }
+    @media (max-width: 760px) { .strip .wrap { grid-template-columns: 1fr 1fr; } .stat b { font-size: 24px; } }
 
     /* ---------- Sections ---------- */
     section { position: relative; }
     .section { padding: 110px 0 0; }
-    .eyebrow { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: #a5a0ff; margin-bottom: 14px; }
+    .eyebrow { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: #9d9aff; margin-bottom: 14px; }
     h2 { font-size: clamp(32px, 4.4vw, 48px); line-height: 1.08; letter-spacing: -1.4px; font-weight: 800; }
     .sub { color: var(--muted); font-size: 18px; margin-top: 14px; max-width: 620px; }
     .center { text-align: center; }
@@ -200,14 +203,14 @@
     .ticks li { display: flex; gap: 12px; font-weight: 600; align-items: flex-start; }
     .ticks li::before {
       content: ""; flex: 0 0 22px; height: 22px; border-radius: 7px; margin-top: 1px;
-      background: rgba(90,80,243,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a5a0ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/14px no-repeat;
+      background: rgba(81,77,240,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a5a0ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/14px no-repeat;
     }
     .tag { display: inline-flex; align-items: center; padding: 5px 11px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .3px; margin-bottom: 16px; }
-    .tag.new { background: rgba(240,80,122,.16); color: #ff8fac; }
-    .tag.pro { background: rgba(255,194,61,.14); color: #ffc23d; margin: 0 0 0 8px; padding: 2px 8px; font-size: 11px; vertical-align: middle; }
+    .tag.new { background: var(--yellow); color: #1e2431; }
+    .tag.pro { background: rgba(255,209,102,.16); color: var(--yellow); margin: 0 0 0 8px; padding: 2px 8px; font-size: 11px; vertical-align: middle; }
 
     .f-media { position: relative; display: flex; justify-content: center; align-items: center; min-height: 580px; border-radius: 32px; overflow: hidden; }
-    .f-media::before { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 55% at 50% 48%, var(--tint, rgba(90,80,243,.35)), transparent 72%); }
+    .f-media::before { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 55% at 50% 48%, var(--tint, rgba(81,77,240,.35)), transparent 72%); }
     .f-media .phone { position: relative; width: 260px; flex: 0 0 auto; }
     .duo .phone:nth-child(1) { transform: translateX(30px) rotate(-5deg); z-index: 1; }
     .duo .phone:nth-child(2) { transform: translate(-30px, 28px) rotate(5deg); z-index: 2; }
@@ -265,9 +268,9 @@
     .plan li { display: flex; gap: 12px; font-weight: 600; font-size: 15.5px; }
     .plan li::before { content: "✓"; flex: 0 0 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; font-size: 12px; font-weight: 900; background: rgba(255,255,255,.08); color: var(--muted); }
     .plan li span { color: var(--muted); font-weight: 500; display: block; font-size: 14px; }
-    .plan.pro { background: linear-gradient(160deg, rgba(90,80,243,.28), rgba(139,92,246,.12) 40%, var(--card) 75%); border-color: rgba(139,92,246,.45); }
+    .plan.pro { background: linear-gradient(160deg, rgba(81,77,240,.3), rgba(81,77,240,.1) 40%, var(--card) 75%); border-color: rgba(81,77,240,.6); }
     .plan.pro li::before { background: linear-gradient(135deg, var(--violet), var(--purple)); color: #fff; }
-    .plan.pro .badge { position: absolute; top: 28px; right: 28px; background: #ffc23d; color: #241a00; font-size: 12px; font-weight: 900; padding: 5px 11px; border-radius: 999px; }
+    .plan.pro .badge { position: absolute; top: 28px; right: 28px; background: var(--yellow); color: #1e2431; font-size: 12px; font-weight: 900; padding: 5px 11px; border-radius: 999px; }
     .plan .btn { width: 100%; margin-top: 26px; }
     .note { color: var(--muted); font-size: 13.5px; margin-top: 16px; text-align: center; }
     @media (max-width: 820px) { .plans { grid-template-columns: 1fr; } .plan { padding: 26px; } }
@@ -285,11 +288,11 @@
     .articles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 36px; }
     .article { padding: 20px 22px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); font-weight: 700; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
     .article:hover { border-color: rgba(165,160,255,.35); }
-    .article::after { content: "→"; color: #a5a0ff; }
+    .article::after { content: "→"; color: #9d9aff; }
     @media (max-width: 860px) { .articles { grid-template-columns: 1fr; } }
 
     /* ---------- Appel final ---------- */
-    .cta { margin: 120px auto 0; padding: 60px 24px; border-radius: 36px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #4b42e6, #7c3aed 55%, #d9467e); }
+    .cta { margin: 120px auto 0; padding: 60px 24px; border-radius: 36px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #514df0, #6c68f5 60%, #8a86ff); }
     .cta h2 { color: #fff; }
     .cta p { color: rgba(255,255,255,.88); font-size: 18px; margin: 14px auto 28px; max-width: 520px; }
     .cta .stores { justify-content: center; }
@@ -312,7 +315,7 @@
 
     /* ---------- Appel intermédiaire ---------- */
     .midcta { margin-top: 90px; padding: 30px 34px; border-radius: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
-      background: linear-gradient(120deg, rgba(90,80,243,.3), rgba(139,92,246,.16) 50%, rgba(240,80,122,.18)); border: 1px solid rgba(139,92,246,.4); }
+      background: linear-gradient(120deg, rgba(81,77,240,.32), rgba(81,77,240,.12)); border: 1px solid rgba(81,77,240,.5); }
     .midcta h3 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; letter-spacing: -.6px; }
     .midcta p { color: var(--muted); font-weight: 600; margin-top: 4px; }
     .midcta .btn { flex: 0 0 auto; }
@@ -322,7 +325,7 @@
     .sticky { display: none; }
     @media (max-width: 760px) {
       .sticky { display: flex; align-items: center; gap: 12px; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 60;
-        padding: 10px 10px 10px 12px; border-radius: 20px; background: rgba(23,26,46,.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        padding: 10px 10px 10px 12px; border-radius: 20px; background: rgba(37,42,55,.94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
         border: 1px solid var(--line); box-shadow: 0 20px 40px -10px rgba(0,0,0,.7); transform: translateY(140%); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
       .sticky.on { transform: none; }
       .sticky img { border-radius: 11px; }
@@ -365,8 +368,8 @@
   <main>
     <!-- Hero -->
     <section class="hero">
-      <div class="glow" style="width:620px;height:620px;background:rgba(90,80,243,.35);top:-180px;right:-120px"></div>
-      <div class="glow" style="width:460px;height:460px;background:rgba(240,80,122,.18);top:260px;left:-200px"></div>
+      <div class="glow" style="width:620px;height:620px;background:rgba(81,77,240,.4);top:-180px;right:-120px"></div>
+      <div class="glow" style="width:460px;height:460px;background:rgba(81,77,240,.18);top:260px;left:-200px"></div>
       <div class="wrap">
         <div class="reveal">
           <span class="pill"><b>GRATUIT</b> iPhone, iPad et Android</span>
@@ -382,15 +385,15 @@
               <div><small>Disponible sur</small><span>Google Play</span></div>
             </a>
           </div>
-          <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span> 4,8 sur 5 · 124 avis sur l'App Store</div>
+          <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span> 4,8 · 15K+ collectionneurs</div>
         </div>
 
         <div class="hero-visual reveal" aria-hidden="true">
           <div class="phone p2"><img src="/assets/app/scelle.webp" alt="" width="640" height="1391"></div>
           <div class="phone p1"><img src="/assets/app/scan.webp" alt="" width="640" height="1391"></div>
           <div class="phone p3"><img src="/assets/app/card.webp" alt="" width="640" height="1391"></div>
-          <div class="float f1"><i style="background:rgba(52,211,153,.18)">📈</i><div>+1 846 € de plus-value<small>suivie chaque jour</small></div></div>
-          <div class="float f2"><i style="background:rgba(90,80,243,.25)">⚡</i><div>Reconnue en 2 s<small>et chiffrée aussitôt</small></div></div>
+          <div class="float f1"><i style="background:rgba(106,208,151,.18)">📈</i><div><span style="color:var(--green)">+1 846 €</span> de plus-value<small>suivie chaque jour</small></div></div>
+          <div class="float f2"><i style="background:rgba(81,77,240,.25)">⚡</i><div>Reconnue en 2 s<small>et chiffrée aussitôt</small></div></div>
         </div>
       </div>
     </section>
@@ -398,10 +401,10 @@
     <!-- Chiffres -->
     <section class="strip">
       <div class="wrap">
-        <div class="stat reveal"><b>4,8 ★</b><span>124 avis sur l'App Store</span></div>
-        <div class="stat reveal"><b>Chaque jour</b><span>Prix mis à jour</span></div>
-        <div class="stat reveal"><b>Cartes + scellés</b><span>Boosters, displays, ETB, coffrets</span></div>
-        <div class="stat reveal"><b>€ · CHF · CA$</b><span>Ta devise, au choix</span></div>
+        <div class="stat reveal"><b>15K+</b><span>Collectionneurs</span></div>
+        <div class="stat reveal"><b>20M€+</b><span>Valeur suivie</span></div>
+        <div class="stat reveal"><b>30K+</b><span>Cartes référencées</span></div>
+        <div class="stat reveal"><b>1 000+</b><span>Produits scellés</span></div>
       </div>
     </section>
 
@@ -424,7 +427,7 @@
     <section class="section" id="fonctionnalites">
       <div class="wrap">
         <div class="feature">
-          <div class="f-media reveal" style="--tint:rgba(139,92,246,.4)">
+          <div class="f-media reveal" style="--tint:rgba(81,77,240,.4)">
             <div class="phone"><img src="/assets/app/scan.webp" alt="Le scanner de Pikacheck reconnaît une carte Pokémon et affiche son prix" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
@@ -505,7 +508,7 @@
     <section class="section">
       <div class="wrap">
         <div class="feature">
-          <div class="f-media reveal" style="--tint:rgba(90,80,243,.42)">
+          <div class="f-media reveal" style="--tint:rgba(81,77,240,.42)">
             <div class="phone"><img src="/assets/app/analyse.webp" alt="Score et profil de collectionneur" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
@@ -569,7 +572,7 @@
         </div>
 
         <div class="feature rev">
-          <div class="f-media reveal" style="--tint:rgba(90,80,243,.36)">
+          <div class="f-media reveal" style="--tint:rgba(81,77,240,.36)">
             <div class="phone"><img src="/assets/app/calendar.webp" alt="Calendrier des sorties Pokémon" width="640" height="1391" loading="lazy"></div>
           </div>
           <div class="f-text reveal">
@@ -596,14 +599,14 @@
         <div class="bento">
           <div class="tile wide reveal">
             <div>
-              <div class="ic" style="background:rgba(90,80,243,.2)">📊</div>
+              <div class="ic" style="background:rgba(81,77,240,.2)">📊</div>
               <h4>Analyse du marché <span class="tag pro">PREMIUM</span></h4>
               <p>Indice du marché, cartes et produits qui montent ou qui baissent, classements et explorateur du catalogue&nbsp;: achète et vends au bon moment.</p>
             </div>
             <svg class="spark" viewBox="0 0 240 120" aria-hidden="true">
               <defs><linearGradient id="sg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".45"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs>
               <path d="M0 96 L30 88 L60 92 L90 70 L120 76 L150 52 L180 58 L210 30 L240 18 L240 120 L0 120Z" fill="url(#sg)"/>
-              <path d="M0 96 L30 88 L60 92 L90 70 L120 76 L150 52 L180 58 L210 30 L240 18" fill="none" stroke="#a5a0ff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M0 96 L30 88 L60 92 L90 70 L120 76 L150 52 L180 58 L210 30 L240 18" fill="none" stroke="#9d9aff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
               <circle cx="240" cy="18" r="5" fill="#fff"/>
             </svg>
           </div>
@@ -736,7 +739,7 @@
     <section class="wrap">
       <div class="cta reveal">
         <h2>Prêt à découvrir la valeur<br>de ta collection&nbsp;?</h2>
-        <p>Télécharge Pikacheck gratuitement et scanne ta première carte en quelques secondes.</p>
+        <p>Rejoins plus de 15 000 collectionneurs. Gratuit, ta première carte scannée en quelques secondes.</p>
         <div class="stores">
           <a class="store" href="https://apps.apple.com/fr/app/pikacheck-tracker-alertes/id6749660231?utm_source=website&utm_medium=cta&utm_campaign=download" data-store="ios" data-loc="cta">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.28 1.86-3.38 1.95-3.43-1.06-1.55-2.71-1.77-3.3-1.79-1.4-.14-2.74.83-3.45.83-.71 0-1.8-.81-2.97-.79-1.53.02-2.94.89-3.72 2.250-1.59 2.76-.41 6.84 1.14 9.08.76 1.1 1.66 2.33 2.84 2.28 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.21.87-1.27 1.22-2.5 1.24-2.57-.03-.01-2.38-.91-2.4-3.62zM14.1 5.9c.63-.76 1.05-1.82.93-2.88-.9.04-2 .6-2.65 1.36-.58.67-1.09 1.75-.95 2.79 1.01.08 2.04-.51 2.67-1.27z"/></svg>
