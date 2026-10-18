@@ -14,3 +14,5 @@ rsync -a \
   --exclude '.firebase' --exclude '*.log' \
   ./ _site/
 mv _site/c/index.html _site/c/page.html
+# /calendrier est rendu par la fonction `calendarPage` à partir de ce gabarit.
+mv _site/calendrier/index.html _site/calendrier/page.html

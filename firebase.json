@@ -37,6 +37,20 @@
         }
       },
       {
+        "source": "/calendrier",
+        "function": {
+          "functionId": "calendarPage",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/calendrier/",
+        "function": {
+          "functionId": "calendarPage",
+          "region": "europe-west1"
+        }
+      },
+      {
         "source": "/c",
         "function": {
           "functionId": "shareMeta",
