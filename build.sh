@@ -16,3 +16,5 @@ rsync -a \
 mv _site/c/index.html _site/c/page.html
 # /calendrier est rendu par la fonction `calendarPage` à partir de ce gabarit.
 mv _site/calendrier/index.html _site/calendrier/page.html
+# /invitations est rendu par la fonction `invitationsPage` à partir de ce gabarit.
+mv _site/invitations/index.html _site/invitations/page.html

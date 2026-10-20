@@ -37,6 +37,20 @@
         }
       },
       {
+        "source": "/invitations",
+        "function": {
+          "functionId": "invitationsPage",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/invitations/",
+        "function": {
+          "functionId": "invitationsPage",
+          "region": "europe-west1"
+        }
+      },
+      {
         "source": "/calendrier",
         "function": {
           "functionId": "calendarPage",
