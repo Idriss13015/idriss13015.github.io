@@ -115,6 +115,10 @@
         "destination": "/pages/privacy.html"
       },
       {
+        "source": "/pages/privacy-en",
+        "destination": "/pages/privacy-en.html"
+      },
+      {
         "source": "/pages/terms",
         "destination": "/pages/terms.html"
       }
