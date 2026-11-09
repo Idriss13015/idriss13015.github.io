@@ -121,6 +121,10 @@
       {
         "source": "/pages/terms",
         "destination": "/pages/terms.html"
+      },
+      {
+        "source": "/pages/suppression-compte",
+        "destination": "/pages/suppression-compte.html"
       }
     ]
   }
